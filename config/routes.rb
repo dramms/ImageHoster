@@ -1,4 +1,7 @@
 ImageHoster::Application.routes.draw do
+  resources :file_uploads
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
