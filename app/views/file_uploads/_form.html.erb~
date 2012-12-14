@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :file_path %><br />
-    <%= f.text_field :file_path %>
+    <%= f.file_field :file_path %>
   </div>
   <div class="field">
     <%= f.label :file_type %><br />

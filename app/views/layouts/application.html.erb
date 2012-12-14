@@ -3,12 +3,50 @@
 <head>
   <title>ImageHoster</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag	 "elements", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+		<div id="menu" class="Shadow">
+			<ul class="Menu">
+				<li><a href="#Home">Home</a></li>
+				<li><a href="#Bilder">Bilder</a>
+					<ul>
+						<li><a href="#myPictures">Meine Bilder</a></li>
+						<li><a href="#picturesUpload">Bilder hochladen</a></li>
+					</ul>
+				</li>
+				<li><a href="#documents">Dokumente</a>
+					<ul>
+						<li><a href="#">Meine Dokumente</a></li>
+						<li><a href="#">Dokumente hochladen</a></li>
+					</ul>
+				<li><a href="#documents">Freunde</a>
+					<ul>
+						<li><a href="#myDocuments">Meine Freunde</a></li>
+					</ul>
+				</li>
+				</li>
+			</ul>
+			<ul class="Menu Settings">
+				<li><a href="#settings">Einstellungen</a>
+					<ul>
+						<li><a href="#profile">Profil</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Sign out</a></li>
+			</ul>
+		</div>
+		<div id="logo">
+		</div>
+		<div id="main">
+			<div class="InnerMain">
+				<%= yield %>
+			</div>
+		</div>
 
-<%= yield %>
-
+					
+				
 </body>
 </html>

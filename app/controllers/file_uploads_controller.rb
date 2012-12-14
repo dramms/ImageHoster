@@ -42,23 +42,28 @@ class FileUploadsController < ApplicationController
   # POST /file_uploads.json
   def create
     @file_upload = FileUpload.new(params[:file_upload])
-	
-	#setting new filename bevor saving
-	newFileName = Time.now.to_formatted_s(:number)
-	if(@file_upload.user_id)
-		newFileName = newFileName + "_" + @file_upload.user_id.to_s
-	end
-	newFileName = newFileName + "_" + @file_upload.file_path.original_filename
-	directory = "uploadedFiles/"+newFileName
 
-	#create new file and copie the value
-	File.open(directory, "wb"){ |f| f.write(@file_upload.file_path.read) }
-	flash[:notice] = "File uploaded to "
-	#redirect_to "file_upload/new"
+
+    extname = File.extname(@file_upload.file_path.original_filename)[1..-1]
+    
+
+  	#setting new filename bevor saving
+  	newFileName = Time.now.to_formatted_s(:number)
+  	if(@file_upload.user_id)
+  		newFileName = newFileName + "_" + @file_upload.user_id.to_s
+  	end
+  	newFileName = newFileName + "." + extname
+  	directory = "uploadedFiles/"+newFileName
+
+  	#create new file and copie the value
+  	File.open(directory, "wb"){ |f| f.write(@file_upload.file_path.read) }
+  	flash[:notice] = "File uploaded to "
+  	#redirect_to "file_upload/new"
 	
 	
 
 	@file_upload.file_path = directory
+	@file_upload.file_type = extname
     
 
 	respond_to do |format|

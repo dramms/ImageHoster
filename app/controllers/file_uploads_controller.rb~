@@ -42,13 +42,17 @@ class FileUploadsController < ApplicationController
   # POST /file_uploads.json
   def create
     @file_upload = FileUpload.new(params[:file_upload])
-	
+
+
+    extname = File.extname(@file_upload.file_path.original_filename)[1..-1]
+    
+
 	#setting new filename bevor saving
 	newFileName = Time.now.to_formatted_s(:number)
 	if(@file_upload.user_id)
 		newFileName = newFileName + "_" + @file_upload.user_id.to_s
 	end
-	newFileName = newFileName + "_" + @file_upload.file_path.original_filename + "_"
+	newFileName = newFileName + "_" + @file_upload.file_path.original_filename + "." + extname
 	directory = "uploadedFiles/"+newFileName
 
 	#create new file and copie the value
@@ -59,8 +63,9 @@ class FileUploadsController < ApplicationController
 	
 
 	@file_upload.file_path = directory
+	@file_upload.file_type = extname
     
-
+if 
 	respond_to do |format|
       if @file_upload.save
         format.html { redirect_to @file_upload, notice: 'File upload was successfully created.' }
@@ -70,6 +75,9 @@ class FileUploadsController < ApplicationController
         format.json { render json: @file_upload.errors, status: :unprocessable_entity }
       end
     end
+else
+	redirect_to @file_upload, notice: 'Upload failed'
+end
   end
 
   # PUT /file_uploads/1
