@@ -1,0 +1,12 @@
+<% if flash[:notice] %>
+			<%= flash[:notice] %>
+		<% end %>
+
+<%= form_for current_user, :url => { :action => "edit_email", :controller => "user"} do |f| %>
+  
+
+	E-Mail:
+	<%= f.text_field :email, :value => current_user.email  %> <br>	
+
+	<%= f.submit "E-Mail ändern" %> <br>
+<% end %>

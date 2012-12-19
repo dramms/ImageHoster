@@ -9,7 +9,6 @@ ImageHoster::Application.routes.draw do
 	get "user/settings"
 	post "edit/name", :to => "user#edit_name"
 	post "edit/email", :to => "user#edit_email"
-	put "edit/name", :to => "user#edit_name"
 	put "edit/email", :to => "user#edit_email"
 	get "user/test"
 	get "user/newtest"

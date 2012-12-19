@@ -1,0 +1,5 @@
+<h1>Home</h1>
+<%= link_to "Test", user_test_path %>
+<%= link_to "newTest", user_newtest_path %>
+
+<%= link_to "Passwort ändern", edit_user_password_path %>

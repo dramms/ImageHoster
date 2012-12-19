@@ -1,0 +1,37 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<div>
+	<%= form_for current_user, :url => { :action => "edit_email", :controller => "user" } do |f| %>
+
+		E-Mail:
+		<%= f.text_field :email, :value => current_user.email  %> <br>	
+
+		<%= f.submit "E-Mail ändern" %> <br>
+	<% end %>
+</div>
+
+<div>
+	<%= form_for current_user, :url => { :action => "edit_name", :controller => "user" } do |f| %>
+		Vorname:
+		<%= f.text_field :first_name, :value => current_user.first_name %> <br>
+
+		Nachname:
+		<%= f.text_field :last_name, :value => current_user.last_name %> <br>
+
+		<%= f.submit "Name ändern" %> <br>
+
+	<% end %>
+</div>
+
+<div>
+		Profilbild hochladen:
+		to do
+</div>
+
+<div>
+	<%= render "devise/registrations/edit" %>
+</div>
+
+form_for(resource, :as => resource_name, :url => edit_name_path(resource_name), :html => { :method => :post }) do |f|
