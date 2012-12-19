@@ -1,4 +1,6 @@
 ImageHoster::Application.routes.draw do
+
+	#encoding: utf-8
 #	resources :user
 
 	get "start/index"
@@ -14,7 +16,8 @@ ImageHoster::Application.routes.draw do
 	get "user/test"
 	get "user/newtest"
 	get "change/pw", :to => "devise/password#edit"
-		
+	resources :file_uploads
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

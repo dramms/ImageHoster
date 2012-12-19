@@ -13,3 +13,23 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+
+jQuery(document).ready(function(){
+
+/******* PICTURES ***********/
+jQuery('.Picture').mouseover(function(){
+	jQuery(this).find('.PictureToolbar').show();
+}).mouseout(function(){
+	jQuery(this).find('.PictureToolbar').hide();
+});
+
+
+/********** Toolbar **************/
+jQuery('#toolbarSlider').click(function(){
+	jQuery('#toolbarMain').toggleClass('FadedOUT');
+	jQuery('#toolbarSlider').toggleClass('FadedOUT');
+});
+
+});
