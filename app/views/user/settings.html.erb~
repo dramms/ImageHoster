@@ -2,37 +2,61 @@
 	<%= flash[:notice] %>
 <% end %>
 
-<div>
-	<%= form_for current_user, :url => { :action => "edit_email", :controller => "user" } do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  
+	<%= devise_error_messages! %><br>
 
-		E-Mail:
-		<%= f.text_field :email, :value => current_user.email  %> <br>	
+	<div>
+	<%= I18n.t('settings.email') %><br>
+	<%= f.text_field :email, :value => current_user.email  %><br>
 
-		<%= f.submit "E-Mail ändern" %> <br>
-	<% end %>
-</div>
+	<%= I18n.t('settings.firstname') %><br>
+	<%= f.text_field :first_name, :value => current_user.first_name %><br>
+	
+	<%= I18n.t('settings.lastname') %><br>
+	<%= f.text_field :last_name, :value => current_user.last_name %><br>
 
-<div>
-	<%= #  %>
-	<%= form_for current_user, :url => { :action => "edit_name", :controller => "user" } do |f| %>
-		Vorname:
-		<%= f.text_field :first_name, :value => current_user.first_name %> <br>
+  <%= f.label "Neues Passwort" %><br />
+  <%= f.password_field :password, :autocomplete => "off" %></div>
 
-		Nachname:
-		<%= f.text_field :last_name, :value => current_user.last_name %> <br>
+  <div><%= f.label "Wiederhole Passwort" %><br />
+  <%= f.password_field :password_confirmation %></div>
 
-		<%= f.submit "Name ändern" %> <br>
+  <div><%= f.label "aktuelles Passwort" %><br />
+  <%= f.password_field :current_password %></div>
 
-	<% end %>
-</div>
+  <div><%= f.submit "Update" %></div>
+<% end %>
 
-<div>
-		Profilbild hochladen:
-		to do
-</div>
 
-<div>
-	<%= render "devise/registrations/edit" %>
-</div>
+Profilbild:
+		<div>
+				Profilbild hochladen:
+				to do
+		</div>
 
-form_for(resource, :as => resource_name, :url => edit_name_path(resource_name), :html => { :method => :post }) do |f|
+
+		<div>
+			<%= form_for current_user, :url => { :action => "edit_email", :controller => "user" } do |f| %>
+
+				<%= I18n.t('settings.email') %>
+				<%= f.text_field :email, :value => current_user.email  %>
+
+				<%= f.submit "E-Mail ändern" %>
+			<% end %>
+		</div>
+
+		<div>
+			<%= form_for current_user, :url => { :action => "edit_name", :controller => "user" } do |f| %>
+				<%= I18n.t('settings.firstname') %><%= f.text_field :first_name, :value => current_user.first_name %><br>
+				<%= I18n.t('settings.lastname') %><%= f.text_field :last_name, :value => current_user.last_name %> 
+
+				<%= f.submit "Name ändern" %>
+
+			<% end %>
+		</div>
+
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+

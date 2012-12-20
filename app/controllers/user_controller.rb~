@@ -1,21 +1,25 @@
+# encoding: utf-8
+
 class UserController < ApplicationController
 
-	#encoding: utf-8
+	def index
+		@user = User.all()
+#    @user = current_user
 
-	def show
-
-    respond_to do |format|
-      format.html { render user_test_path }
-      format.json { render json: @post }
-    end
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.json { render json: @posts }
+#    end
   end
 
 	def edit_email
 		respond_to do |format|
       if current_user.update_attributes(params[:user])
-				format.html { redirect_to user_settings_path, notice: 'E-Mail wurde erfolgreich geandert.' }
+				format.html { redirect_to user_settings_path, notice: 'E-Mail wurde erfolgreich geändert.' }
+#				format.html { redirect_to :back }
         format.json { head :no_content }
 			else
+#				format.html { redirect_to :back }
 				format.html { redirect_to user_settings_path, notice: 'Fehler beim ändern der E-Mail.' }
 			end
 		end
@@ -27,8 +31,22 @@ class UserController < ApplicationController
 				format.html { redirect_to user_settings_path, notice: 'Name wurde erfolgsreich geandert.' }
         format.json { head :no_content }
 			else
-				format.html { redirect_to user_settings_path, notice: 'Fehler beim ändern des Names.' }
+				format.html { redirect_to user_settings_path, notice: 'Fehler beim andern des Names.' }
 			end
 		end
-	end		
+	end	
+
+	def search_user
+		@user = User.where(:email => params[:user][:email])
+		respond_to do |format|
+			format.html
+			redirect_to :back
+		end
+	end
+
+	def search
+  	@users = User.search params[:search]
+	end
+
+	
 end

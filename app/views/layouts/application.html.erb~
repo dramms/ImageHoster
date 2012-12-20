@@ -12,37 +12,38 @@
 		<div id="menu">
 			<div class="MenuPlaceholder">
 
-			</diV>
+			</div>
+			<% if user_signed_in? %>
 			<ul>
-				<li><div class="MenuButton"><%= link_to 'Home', user_home_path %>Home</div></li>
-				<li><div class="MenuButton">Bilder</div>
+				<li><div class="MenuButton"><%= link_to 'Home', user_home_path %></div></li>
+				<li><div class="MenuButton"><%= I18n.t('main.pictures') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= link_to 'Meine Bilder', file_uploads_path %></div></li>
-						<li><div class="MenuButton"><%= link_to 'Bilder hochladen', new_file_upload_path %></div>
-						</li>
-						<li><div class="MenuButton">Bilder löschen</div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.myPics'), file_uploads_path %></div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.picUpload'), new_file_upload_path %></div></li>
+						<li><div class="MenuButton"><%= I18n.t('main.deletePic') %></div></li>
 					</ul>
 				</li>
-				<li><div class="MenuButton">Dokumente</div></li>
-				<li><div class="MenuButton">Freunde</div>
+				<li><div class="MenuButton"><%= I18n.t('main.documents') %></div></li>
+				<li><div class="MenuButton"><%= link_to I18n.t('main.friends'), user_searchforfriend_path %></div>
 					<ul>
-						<li><div class="MenuButton">Meine Freunde</div></li>
-						<li><div class="MenuButton">Neue Freunde suchen</div></li>
+						<li><div class="MenuButton"><%= I18n.t('main.myFriends') %></div></li>
+						<li><div class="MenuButton"><%= I18n.t('main.findFriends') %></div></li>
 					</ul>
 				</li>
 				
 			</ul>
 			
 			<ul class="LogOut">
-				<li><div class="MenuButton">Einstellungen</div>
+				<li><div class="MenuButton"><%= I18n.t('main.settings') %></div>
 					<ul>
-						<li><div class="MenuButton">Profil</div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.profile'), user_settings_path %></div></li>
 						<li><div class="MenuButton">Ansicht</div></li>
 					</ul>
 				</li>
-				<li><div class="MenuButton"><%= link_to 'Ausloggen', destroy_user_session_path, :method => :delete %></div></li>
+				<li><div class="MenuButton"><%= link_to I18n.t('main.sign_out'), destroy_user_session_path, :method => :delete %></div></li>
 			</ul>
 		</div>
+		<% end %>
 			<div id="toolbarMain" class="Toolbar FadedOUT">
 
 			</div>
@@ -51,10 +52,7 @@
 			</div>
 		<div id="main">
 				<%= yield %>
-		</div>
-
-
-					
-				
+		</div>	
+			
 </body>
 </html>

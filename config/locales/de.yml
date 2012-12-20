@@ -1,0 +1,29 @@
+de:
+  hello: "Hallo Welt"
+  main:
+    pictures: "Bilder"
+    myPics: "Meine Bilder"
+    picUpload: "Bilder hochladen"
+    deletePic: "Bilder löschen"
+    documents: "Dokumente"
+    friends: "Freunde"
+    myFriends: "Meine Freunde"
+    findFriends: "Freunde suchen"
+    settings: "Einstellungen"
+    profile: "Profil"
+    sign_out: "Ausloggen"
+  settings:
+    firstname: "Vorname"
+    lastname: "Nachname"
+    email: "E-Mail"
+  activerecord:
+    attributes:
+      user:
+        email: "E-Mail Adresse"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "muss angegeben werden!"
+  

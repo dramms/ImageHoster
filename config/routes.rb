@@ -2,21 +2,27 @@ ImageHoster::Application.routes.draw do
 
 	#encoding: utf-8
 #	resources :user
+	scope "(:locale)", :locale => /en|de/ do
 
-	get "start/index"
-	root :to => "start#index"
-  devise_for :users
+		get "start/index"
+		root :to => "start#index"
+		devise_for :users, :controllers => {:registrations => "registrations"}
+#		resources :user
 
-	get "user/home"
-	get "user/settings"
-	post "edit/name", :to => "user#edit_name"
-	post "edit/email", :to => "user#edit_email"
-	put "edit/name", :to => "user#edit_name"
-	put "edit/email", :to => "user#edit_email"
-	get "user/test"
-	get "user/newtest"
-	get "change/pw", :to => "devise/password#edit"
-	resources :file_uploads
+		get "user/home"
+		get "user/settings"
+		post "edit/name", :to => "user#edit_name"
+		post "edit/email", :to => "user#edit_email"
+		put "edit/name", :to => "user#edit_name"
+		put "edit/email", :to => "user#edit_email"
+		get "user/test"
+		get "user/newtest"
+		get "change/pw", :to => "devise/password#edit"
+		get "user/searchforfriend"
+		put "user/searchforfriend", :to => "user#search_user"
+		put "user/searchforfriend", :to => "user#search"
+		resources :file_uploads
+	end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

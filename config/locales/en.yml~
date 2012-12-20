@@ -17,7 +17,7 @@ en:
     sign_out: "Log Out"
   settings:
     firstname: "First Name"
-    lastname: "Last Name"
+    secondname: "Last Name"
     email: "E-Mail"
   activerecord:
     attributes:

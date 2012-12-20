@@ -1,12 +1,20 @@
-<% if flash[:notice] %>
-			<%= flash[:notice] %>
-		<% end %>
+<%= form_for current_user, :url => { :action => "edit_email", :controller => "user" } do |f| %>
+  <% if current_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-<%= form_for current_user, :url => { :action => "edit_email", :controller => "user"} %>
-  
+      <ul>
+      <% current_user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-	E-Mail:
-	<%= f.text_field :email, :value => current_user.email  %> <br>	
+  <div>
+		<%= f.text_field :email, :value => current_user.email  %>
 
-	<%= f.submit "E-Mail ändern" %> <br>
+		<%= f.submit "E-Mail ändern" %>
+	</div>
 <% end %>
+

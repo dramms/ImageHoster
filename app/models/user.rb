@@ -14,11 +14,19 @@ class User < ActiveRecord::Base
 	validates :email, 
 						:presence => true,
 						:uniqueness => true,
-						:format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => "Invalide E-Mail adresse" }
+						:format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
 	validates :first_name,
 						:presence => true;
 
 	validates :last_name,
 						:presence => true;
+
+	has_many :friends
+
+	def self.search(search)
+		search_condition = search
+		find(:all, :conditions => ['title last_name', search_condition])
+	end
+
 end

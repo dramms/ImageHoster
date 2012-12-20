@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.9'
 gem 'jquery-rails'
 gem 'devise', '2.1.2'
+gem 'dynamic_form'
 
 
 # Bundle edge Rails instead:
