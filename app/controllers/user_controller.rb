@@ -44,9 +44,36 @@ class UserController < ApplicationController
 		end
 	end
 
-	def search
-  	@users = User.search params[:search]
+	def profile
+#		@user = current_user.id
+		if params[:user] == nil
+			@user = current_user.id
+			@friends = User.joins(:friends).where(:friends => {:friend_id => current_user})
+		else
+			@user = params[:user]
+			@friends = User.joins(:friends).where(:friends => {:friend_id => params[:user]})
+			@is_friend = Friend.where(:user_id => current_user.id, :friend_id => params[:user]).count
+		end
+		
 	end
 
+	def show_profile 
+		render :action => 'profile'
+	end
+
+#	def search
+#		if params[:search]
+ # 			@users = User.search params[:search]
+#			render :action => 'search'
+#		end
+#	end
+#
+#	def send_friendship_request
+#		if params
+#			Friend.create_request current_user.id, params[:user][:id]
+#			render :action => 'search'
+#		end
+#	end
+#
 	
 end

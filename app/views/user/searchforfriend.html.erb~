@@ -5,13 +5,13 @@
 	<%= submit_tag "Search", :name => nil %> 
 	<%= link_to_function "Clear", "$('search_field').clear()" %>
 <% end %>
-
+<% if @users.present? %>
 <ul>
   <% @users.each do |users| %>
-  <li><%= link_to users.first_name, :action => 'show', :id => grant.id  %></li>
+  <li><%= link_to users.first_name, :action => 'show', :id => users.id  %></li>
   <% end %>
 </ul>
-
+<% end %>
 
 <br><br><br><br>
 ---------------------------<br>

@@ -3,7 +3,7 @@
 class UserController < ApplicationController
 
 	def index
-		@user = User.all()
+		@users = User.all()
 #    @user = current_user
 
 #    respond_to do |format|
@@ -45,7 +45,10 @@ class UserController < ApplicationController
 	end
 
 	def search
+		if params[:search]
   	@users = User.search params[:search]
+		#redirect_to :back
+end
 	end
 
 	

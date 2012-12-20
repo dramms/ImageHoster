@@ -18,8 +18,9 @@ ImageHoster::Application.routes.draw do
 		get "user/test"
 		get "user/newtest"
 		get "change/pw", :to => "devise/password#edit"
-		get "user/searchforfriend"
-		put "user/searchforfriend", :to => "user#search"
+		get "user/search"
+		#put "user/search", :to => "user#search_user"
+		post "user/search", :to => "user#search"
 		resources :file_uploads
 	end
 
