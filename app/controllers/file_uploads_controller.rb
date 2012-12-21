@@ -56,7 +56,7 @@ class FileUploadsController < ApplicationController
   	directory = "uploadedFiles/"+newFileName
 
   	#create new file and copie the value
-  	File.open(directory, "wb"){ |f| f.write(@file_upload.file_path.read) }
+  	File.open("app/assets/images/"+directory, "wb"){ |f| f.write(@file_upload.file_path.read) }
   	flash[:notice] = "File uploaded to "
   	#redirect_to "file_upload/new"
 	
@@ -97,6 +97,7 @@ class FileUploadsController < ApplicationController
   # DELETE /file_uploads/1.json
   def destroy
     @file_upload = FileUpload.find(params[:id])
+    File.delete('app/assets/images/'+@file_upload.file_path);
     @file_upload.destroy
 
     respond_to do |format|

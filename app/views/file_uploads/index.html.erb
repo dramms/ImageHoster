@@ -1,29 +1,49 @@
-<h1>Listing file_uploads</h1>
 
+<div class="InnerMenu" style="display: none;">
+  <ul class="Menu">
+    <li><%= link_to 'Bilder hochgeladen', new_file_upload_path %></li>
+   <li><%= link_to 'Test', new_file_upload_path %></li>
+  </ul>
+</div>
+<div style="display: none;">
 <table>
   <tr>
-    <th>File path</th>
-    <th>User</th>
-    <th>File type</th>
-    <th>Description</th>
+    <th>Datum</td>
+    <th>Beschreibung</th>
+    <th>Dateityp</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
+<script>
+</script>
 <% @file_uploads.each do |file_upload| %>
   <tr>
-    <td><%= file_upload.file_path %></td>
-    <td><%= file_upload.user_id %></td>
-    <td><%= file_upload.file_type %></td>
+   <td><%= file_upload.created_at %></td>
     <td><%= file_upload.description %></td>
-    <td><%= link_to 'Show', file_upload %></td>
-    <td><%= link_to 'Edit', edit_file_upload_path(file_upload) %></td>
-    <td><%= link_to 'Destroy', file_upload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= file_upload.file_type %></td>
+    <td><%= link_to 'zeigen', file_upload %></td>
+    <td><%= link_to 'ändern', edit_file_upload_path(file_upload) %></td>
+    <td><%= link_to 'löschen', file_upload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
+</div>
+<h1>Meine Bilder</h1>
+<% @file_uploads.each do |file_upload| %>
+  <div class="Picture">
+      <div class="PictureToolbar">
+          <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), file_upload %>
+          </div>
+          <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), edit_file_upload_path(file_upload) %>
+          </div>
+          <div class="PictureToolbarIcon">
+            <%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), file_upload, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+          
+        </div>
+      <%= image_tag(file_upload.file_path, :alt => file_upload.description) %>
+  </div>
+<% end %>
 
-<br />
 
-<%= link_to 'New File upload', new_file_upload_path %>

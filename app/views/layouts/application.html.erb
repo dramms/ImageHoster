@@ -8,43 +8,50 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-		<div id="menu" class="Shadow">
-			<ul class="Menu">
-				<li><a href="#Home">Home</a></li>
-				<li><a href="#Bilder">Bilder</a>
+		<div id="menu">
+			<div class="MenuPlaceholder">
+
+			</diV>
+			<ul>
+				<li><div class="MenuButton">Home</div></li>
+				<li><div class="MenuButton">Bilder</div>
 					<ul>
-						<li><a href="#myPictures">Meine Bilder</a></li>
-						<li><a href="#picturesUpload">Bilder hochladen</a></li>
+						<li><div class="MenuButton"><%= link_to 'Meine Bilder', file_uploads_path %></div></li>
+						<li><div class="MenuButton"><%= link_to 'Bilder hochladen', new_file_upload_path %></div>
+						</li>
+						<li><div class="MenuButton">Bilder löschen</div></li>
 					</ul>
 				</li>
-				<li><a href="#documents">Dokumente</a>
+				<li><div class="MenuButton">Dokumente</div></li>
+				<li><div class="MenuButton">Freunde</div>
 					<ul>
-						<li><a href="#">Meine Dokumente</a></li>
-						<li><a href="#">Dokumente hochladen</a></li>
-					</ul>
-				<li><a href="#documents">Freunde</a>
-					<ul>
-						<li><a href="#myDocuments">Meine Freunde</a></li>
+						<li><div class="MenuButton">Meine Freunde</div></li>
+						<li><div class="MenuButton">Neue Freunde suchen</div></li>
 					</ul>
 				</li>
-				</li>
+				
 			</ul>
-			<ul class="Menu Settings">
-				<li><a href="#settings">Einstellungen</a>
+			
+			<ul class="LogOut">
+				<li><div class="MenuButton">Einstellungen</div>
 					<ul>
-						<li><a href="#profile">Profil</a></li>
+						<li><div class="MenuButton">Profil</div></li>
+						<li><div class="MenuButton">Ansicht</div></li>
 					</ul>
 				</li>
-				<li><a href="#">Sign out</a></li>
+				<li><div class="MenuButton">Sign out</div></li>
 			</ul>
 		</div>
-		<div id="logo">
-		</div>
-		<div id="main">
-			<div class="InnerMain">
-				<%= yield %>
+			<div id="toolbarMain" class="Toolbar FadedOUT">
+
 			</div>
+			<div id="toolbarSlider" class="Toolbar FadedOUT">
+			<!--	<img src="arrow_double_up.png" />-->
+			</div>
+		<div id="main">
+				<%= yield %>
 		</div>
+
 
 					
 				
