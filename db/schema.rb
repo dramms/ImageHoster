@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204174109) do
+ActiveRecord::Schema.define(:version => 20130111141205) do
 
   create_table "file_uploads", :force => true do |t|
     t.string   "file_path"
@@ -20,6 +20,24 @@ ActiveRecord::Schema.define(:version => 20121204174109) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "project_id"
+    t.string   "images_file_name"
+    t.string   "images_content_type"
+    t.integer  "images_file_size"
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
