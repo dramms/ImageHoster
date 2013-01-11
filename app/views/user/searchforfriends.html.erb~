@@ -1,0 +1,5 @@
+<div>
+	<%= form_for do |f| %>
+		<%= f.submit "Suche starten" %>
+	<% end %>
+</div>

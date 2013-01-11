@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>Index</title>
+	</head>
+
+	<body>
+		<h1>Index1</h1>
+		<div id="sign_in">
+			<!-- <%= render "devise/sessions/new" %> -->
+		</div>
+		<div id="sign_up">
+				<!-- <%= render "devise/registrations/new" %> -->
+		</div>
+	</body>
+</html>

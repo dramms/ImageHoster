@@ -1,0 +1,8 @@
+# ruby-encoding: utf-8
+
+de:
+  activerecord:
+    models:
+      user: 'Nutzer'
+    attributes:
+      email: 'E-Mail'

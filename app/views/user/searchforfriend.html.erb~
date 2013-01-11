@@ -1,0 +1,26 @@
+
+
+<%= form_tag :controller => 'user', :action => 'search', :method => 'get' do %>
+	<%= text_field_tag :search, params[:search], :id => 'search_field' %>
+	<%= submit_tag "Search", :name => nil %> 
+	<%= link_to_function "Clear", "$('search_field').clear()" %>
+<% end %>
+
+<ul>
+  <% @users.each do |users| %>
+  <li><%= link_to users.first_name, :action => 'show', :id => grant.id  %></li>
+  <% end %>
+</ul>
+
+
+<br><br><br><br>
+---------------------------<br>
+---------------------------<br>
+---------------------------<br>
+Suche einen Freund
+<div>
+	<%= form_for current_user, :url => { :action => "search_user", :controller => "user" } do |f| %>
+		<%= f.text_field :email  %><br>
+		<%= f.submit "Suche starten" %>
+	<% end %>
+</div>

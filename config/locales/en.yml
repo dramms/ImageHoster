@@ -3,3 +3,30 @@
 
 en:
   hello: "Hello world"
+  main:
+    pictures: "Pictures"
+    myPics: "my Pictures"
+    picUpload: "Upload Pictures"
+    deletePic: "Delete Pictures"
+    documents: "Documents"
+    friends: "Friends"
+    myFriends: "My Friends"
+    findFriends: "Find Friends"
+    settings: "Settings"
+    profile: "Profile"
+    sign_out: "Log Out"
+  settings:
+    firstname: "First Name"
+    lastname: "Last Name"
+    email: "E-Mail"
+  activerecord:
+    attributes:
+      user:
+        email: "E-Mail adress"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "is required!"
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <title>ImageHoster</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag	 "elements", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+		<div id="menu">
+			<div class="MenuPlaceholder">
+
+			</div>
+			<% if user_signed_in? %>
+			<ul>
+				<li><div class="MenuButton"><%= link_to 'Home', user_home_path %></div></li>
+				<li><div class="MenuButton"><%= I18n.t('main.pictures') %></div>
+					<ul>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.myPics'), file_uploads_path %></div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.picUpload'), new_file_upload_path %></div></li>
+						<li><div class="MenuButton"><%= I18n.t('main.deletePic') %></div></li>
+					</ul>
+				</li>
+				<li><div class="MenuButton"><%= I18n.t('main.documents') %></div></li>
+				<li><div class="MenuButton"><%= link_to I18n.t('main.friends'), user_searchforfriend_path %></div>
+					<ul>
+						<li><div class="MenuButton"><%= I18n.t('main.myFriends') %></div></li>
+						<li><div class="MenuButton"><%= I18n.t('main.findFriends') %></div></li>
+					</ul>
+				</li>
+				
+			</ul>
+			
+			<ul class="LogOut">
+				<li><div class="MenuButton"><%= I18n.t('main.settings') %></div>
+					<ul>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.profile'), user_settings_path %></div></li>
+						<li><div class="MenuButton">Ansicht</div></li>
+					</ul>
+				</li>
+				<li><div class="MenuButton"><%= link_to I18n.t('main.sign_out'), destroy_user_session_path, :method => :delete %></div></li>
+			</ul>
+		</div>
+		<% end %>
+			<div id="toolbarMain" class="Toolbar FadedOUT">
+
+			</div>
+			<div id="toolbarSlider" class="Toolbar FadedOUT">
+			<!--	<img src="arrow_double_up.png" />-->
+			</div>
+		<div id="main">
+				<%= yield %>
+		</div>	
+			
+</body>
+</html>

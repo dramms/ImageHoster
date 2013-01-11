@@ -1,0 +1,32 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  main:
+    pictures: "Pictures"
+    myPics: "my Pictures"
+    picUpload: "Upload Pictures"
+    deletePic: "Delete Pictures"
+    documents: "Documents"
+    friends: "Friends"
+    myFriends: "My Friends"
+    findFriends: "Find Friends"
+    settings: "Settings"
+    profile: "Profile"
+    sign_out: "Log Out"
+  settings:
+    firstname: "First Name"
+    secondname: "Last Name"
+    email: "E-Mail"
+  activerecord:
+    attributes:
+      user:
+        email: "E-Mail adress"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "is required!"
+
