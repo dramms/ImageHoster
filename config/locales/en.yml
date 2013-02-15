@@ -6,6 +6,7 @@ en:
   main:
     pictures: "Pictures"
     myPics: "my Pictures"
+    myProjects: "my Projects"
     picUpload: "Upload Pictures"
     deletePic: "Delete Pictures"
     documents: "Documents"

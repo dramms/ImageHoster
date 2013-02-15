@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     @images = Image.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @images }
@@ -44,7 +44,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
+        format.html { redirect_to @image.project, notice: 'Image was successfully created.' }
         format.json { render json: @image, status: :created, location: @image }
       else
         format.html { render action: "new" }
@@ -76,7 +76,7 @@ class ImagesController < ApplicationController
     @image.destroy
 
     respond_to do |format|
-      format.html { redirect_to images_url }
+      format.html { redirect_to @image.project, notice: 'Image was successfully deleted' }
       format.json { head :no_content }
     end
   end

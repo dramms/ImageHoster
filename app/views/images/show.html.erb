@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
   <b>Title:</b>
   <%= @image.title %>
@@ -9,6 +10,7 @@
   <b>Content:</b>
   <%= @image.content %>
 </p>
+<%= image_tag @image.images(:xtraLarge) %>
 
 
 <%= link_to 'Edit', edit_image_path(@image) %> |

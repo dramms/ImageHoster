@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    #@image = @project.images.build
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,13 +36,14 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
-  end
+    @image = Image.where("project_id = " + params[:id])
+    end
 
   # POST /projects
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
-
+    @project.user_id = current_user.id
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -73,7 +75,10 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     @project = Project.find(params[:id])
+
+
     @project.destroy
+
 
     respond_to do |format|
       format.html { redirect_to projects_url }
