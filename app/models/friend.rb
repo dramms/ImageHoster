@@ -12,4 +12,9 @@ class Friend < ActiveRecord::Base
 		FriendRequests.where(:user_id => fid, :friend_id => uid).first.delete
 #		FriendRequests.find(1).delete
 	end
+
+	def self.delete_friendship uid, fid
+		Friend.where(:user_id => uid, :friend_id => fid).first.delete
+		Friend.where(:user_id => fid, :friend_id => uid).first.delete
+	end
 end

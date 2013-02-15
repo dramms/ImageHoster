@@ -9,27 +9,53 @@ ImageHoster::Application.routes.draw do
 		devise_for :users, :controllers => {:registrations => "registrations"}
 #		resources :user
 
+    resources :friends
 		get "user/home"
 		get "user/settings"
+
 		post "edit/name", :to => "user#edit_name"
 		post "edit/email", :to => "user#edit_email"
 		put "edit/name", :to => "user#edit_name"
 		put "edit/email", :to => "user#edit_email"
+
 		get "user/test"
 		get "user/newtest"
 		get "change/pw", :to => "devise/password#edit"
+
     get "friend/search"
-    put "friend/search", :to => "friend#send_friendship_request"
     post "friend/search", :to => "friend#search"
+    put "friend/search", :to => "friend#send_friendship_request"   
     get "friend/search", :to => "friend#send_friendship_request"
+
+    get "friend/delete_friendship", :to => "friend#delete_friendship"
+    put "friend/delete_friendship", :to => "friend#delete_friendship"
+
     get "friend/showrequest"
     put "friend/showrequest", :to => "friend#accept_friendship_request"
     get "friend/showrequest", :to => "friend#accept_friendship_request"
+    get "friend/accept_friendship_request", :to => "friend#accept_friendship_request"
+    put "friend/accept_friendship_request", :to => "friend#accept_friendship_request"
+    get "friend/delete_friendship_request", :to => "friend#delete_friendship_request"
+    put "friend/delete_friendship_request", :to => "friend#delete_friendship_request"
     post "friend/showrequest"
+
     get "friend/showfriends"
+    get "friend/showfriends", :to => "friend#delete_friendship"
+    put "friend/showfriends", :to => "friend#delete_friendship"
+
     get "user/profile"
+    post "user/profile"
     get "user/profile", :to => "user#show_profile"
+    put "user/profile", :to => "friend#search"
+    post "user/profile", :to => "friend#send_friendship_request"
+    put "user/profile", :to => "friend#send_friendship_request"
+    get "user/profile", :to => "user#send_friendship_request"
+
+    get "friend/send_friendship_request", :to => "friend#send_friendship_request"
+    put "friend/send_friendship_request", :to => "friend#send_friendship_request"
+
 		resources :file_uploads
+
 	end
 
   # The priority is based upon order of creation:

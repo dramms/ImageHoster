@@ -1,0 +1,15 @@
+<h1> Freundschaftsanfragen </h1>
+
+<% if @requests.present? %>
+	<ul>
+		<% @requests.each do |request| %>
+			<%= form_for request, :url => { :action => "accept_friendship_request", :controller => "friend" } do |f|%>
+			  	<li>
+			  		<%= link_to request.first_name + " " + request.last_name, :controller => "user", :action => "show_profile", :user => request.id %>
+			  		<%= f.hidden_field :id, :value => request.id %>
+			  		<%= f.submit "Annehmen" %> 
+			  	</li><br><br>
+			<% end %>
+		<% end %>
+	</ul>
+<% end %>

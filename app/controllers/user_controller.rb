@@ -4,22 +4,14 @@ class UserController < ApplicationController
 
 	def index
 		@users = User.all()
-#    @user = current_user
-
-#    respond_to do |format|
-#      format.html # index.html.erb
-#      format.json { render json: @posts }
-#    end
   end
 
 	def edit_email
 		respond_to do |format|
       if current_user.update_attributes(params[:user])
 				format.html { redirect_to user_settings_path, notice: 'E-Mail wurde erfolgreich geändert.' }
-#				format.html { redirect_to :back }
         format.json { head :no_content }
 			else
-#				format.html { redirect_to :back }
 				format.html { redirect_to user_settings_path, notice: 'Fehler beim ändern der E-Mail.' }
 			end
 		end
@@ -27,9 +19,9 @@ class UserController < ApplicationController
 	
 	def edit_name
 		respond_to do |format|
-      if current_user.update_attributes(params[:user])
+	      	if current_user.update_attributes(params[:user])
 				format.html { redirect_to user_settings_path, notice: 'Name wurde erfolgsreich geandert.' }
-        format.json { head :no_content }
+	        	format.json { head :no_content }
 			else
 				format.html { redirect_to user_settings_path, notice: 'Fehler beim andern des Names.' }
 			end
@@ -46,34 +38,34 @@ class UserController < ApplicationController
 
 	def profile
 #		@user = current_user.id
-		if params[:user] == nil
-			@user = current_user.id
+		if params[:user] == nil || params[:user] == current_user.id.to_s
+			#@user is ID of current user
+			@user_id = current_user.id
+			#gets own friends to display on profile
 			@friends = User.joins(:friends).where(:friends => {:friend_id => current_user})
+			@test = 1
+	
 		else
-			@user = params[:user]
-			@friends = User.joins(:friends).where(:friends => {:friend_id => params[:user]})
+			#request if profile belongs to friend (1: is friend; 0: is not a friend)
 			@is_friend = Friend.where(:user_id => current_user.id, :friend_id => params[:user]).count
+			#Abfrage, ob schon eine Anfrage von einer der beiden Personen vorliegt, wenn nicht befreundet
+			if @is_friend == 1
+				@friends = User.joins(:friends).where(:friends => {:friend_id => params[:user]})
+			else
+				#Abfrage ob current_user eine gestellt hat
+				@current_user_request = FriendRequests.where(:user_id => current_user.id, :friend_id => params[:user]).count
+				@other_user_request = FriendRequests.where(:user_id => params[:user], :friend_id => current_user.id).count
+			
+			end
+			#@user is ID of other user
+			@user_id = params[:user]
+			@users = User.where("id = " + params[:user])
+			@test = 2
 		end
-		
 	end
 
 	def show_profile 
 		render :action => 'profile'
 	end
-
-#	def search
-#		if params[:search]
- # 			@users = User.search params[:search]
-#			render :action => 'search'
-#		end
-#	end
-#
-#	def send_friendship_request
-#		if params
-#			Friend.create_request current_user.id, params[:user][:id]
-#			render :action => 'search'
-#		end
-#	end
-#
 	
 end
