@@ -1,0 +1,63 @@
+<% if @user_id == current_user.id %>
+	<h1>Mein Profil: </h1><br>
+	<h2>Freunde: </h2>
+		<% if @friends.present? %>
+			<ul>
+			<% @friends.each do |f| %>
+				<li>
+					<%= link_to f.first_name + " " + f.last_name, :controller => "user", :action => "show_profile", :user => f.id %>
+				</li><br>
+			<% end %>
+			</ul><br>
+		<% end %>
+	<h2>Bilder:</h2><br>
+<% else %>
+	<% if @is_friend == 1 %>
+		<h1>xyzs Profil: </h1><br>
+		<% @users.each do |user| %>
+			<%= form_for user, :url => friend_delete_friendship_path do |f|%>
+		  		<%= f.hidden_field :id, :value => @user_id %>
+		  		<%= f.submit "Freundschaft löschen" %>
+			<% end %>
+		<% end %>
+		<h2>Freunde: </h2>
+			<% if @friends.present? %>
+				<ul>
+				<% @friends.each do |f| %>
+					<li>
+						<%= link_to f.first_name + " " + f.last_name, :controller => "user", :action => "show_profile", :user => f.id %>
+					</li><br>
+				<% end %>
+				</ul><br>
+			<% end %>
+		<h2>Bilder:</h2><br>
+	<% else %>
+		Du bist nicht mit ... befreundet
+		<% if @current_user_request == 1 %>
+			<% users = [@user_id] %>
+			<% @users.each do |user| %>
+				<%= form_for user, :url => friend_delete_friendship_request_path do |f| %>
+			  		<%= f.hidden_field :id, :value => @user_id %>
+			  		<%= f.submit "Anfrage zurückziehen" %>
+				<% end %>
+			<% end %>
+		<% elsif @other_user_request == 1 %>
+			<% users = [@user_id] %>
+			<% @users.each do |user| %>
+				<%= form_for user, :url => friend_accept_friendship_request_path do |f| %>
+			  		<%= f.hidden_field :id, :value => @user_id %>
+			  		<%= f.submit "Freundschaft bestätigen" %>
+				<% end %>
+			<% end %>
+		<% else %>
+			<% users = [@user_id] %>
+			<% @users.each do |user| %>
+				<%= form_for user, :url => friend_send_friendship_request_path do |f| %>
+			  		<%= f.hidden_field :id, :value => @user_id %>
+			  		<%= f.submit "Freundschaft anfragen" %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+	Not my Page
+<% end %>

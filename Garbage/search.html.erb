@@ -1,0 +1,21 @@
+
+
+<%= form_tag :controller => 'user', :action => 'search' do %>
+	<%= text_field_tag :search, params[:search], :id => 'search_field' %>
+	<%= submit_tag "Search", :name => nil %> 
+	<%= link_to_function "Clear", "$('search_field').clear()" %>
+<% end %>
+<% if @users.present? %>
+	<ul>
+		<% @users.each do |users| %>
+			<%= form_for @users, :url => { :action => "send_friendship_request", :controller => "user" } do |f|%>
+			  	<li>
+			  		<%= users.first_name  %><%= users.last_name %><br>
+			  		<%= f.hidden_field :id, :value => users.id %>
+			  		<%= f.submit "Send Request" %> 
+			  	</li>
+			<% end %>
+		<% end %>
+	</ul>
+<% end %>
+

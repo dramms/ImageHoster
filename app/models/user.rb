@@ -23,10 +23,16 @@ class User < ActiveRecord::Base
 						:presence => true;
 
 	has_many :friends
+	has_many :friend_requestss
 
 	def self.search(search)
 		search_condition = search
-		find(:all, :conditions => ['title last_name', search_condition])
+		find(:all, :conditions => ['last_name like ?', '%' + search_condition + '%'])
 	end
 
+	def self.newsearch(search, search_last_name)
+		search_condition = search
+		search_condition_last = search_last_name
+		find(:all, :conditions => ['first_name like ? AND last_name like ?', '%' + search_condition + '%', '%' + search_condition_last + '%'])
+	end
 end

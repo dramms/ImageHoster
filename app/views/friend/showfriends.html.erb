@@ -1,0 +1,15 @@
+<h1>Deine Freunde</h1>
+
+<% if @friends.present? %>
+	<ul>
+	<% @friends.each do |friend| %>
+		<li>
+			<%= form_for friend, :url => friend_delete_friendship_path do |f| %>
+				<%= link_to friend.first_name + " " + friend.last_name, :controller => "user", :action => "show_profile", :user => friend.id %>
+				<%= f.hidden_field :id, :value => friend.id %>
+				<%= f.submit "Freundschaft löschen" %>
+			<% end %>
+		</li><br>
+	<% end %>
+	</ul>
+<% end %>

@@ -27,8 +27,10 @@
 				<li><div class="MenuButton"><%= I18n.t('main.documents') %></div></li>
 				<li><div class="MenuButton"><%= I18n.t('main.friends') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= I18n.t('main.myFriends') %></div></li>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.findFriends'), user_searchforfriend_path %></div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.myFriends'), friend_showfriends_path %></div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.findFriends'), friend_search_path %><div>
+						<li><div class="MenuButton"><%= link_to 'Anfragen anzeigen', friend_showrequest_path %>
+						</div></li>
 					</ul>
 				</li>
 				
