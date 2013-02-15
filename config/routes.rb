@@ -1,5 +1,8 @@
 ImageHoster::Application.routes.draw do
 
+  
+
+
 	#encoding: utf-8
 #	resources :user
 	scope "(:locale)", :locale => /en|de/ do
@@ -21,6 +24,7 @@ ImageHoster::Application.routes.draw do
 		get "user/test"
 		get "user/newtest"
 		get "change/pw", :to => "devise/password#edit"
+<<<<<<< HEAD
 
     get "friend/search"
     post "friend/search", :to => "friend#search"
@@ -56,6 +60,14 @@ ImageHoster::Application.routes.draw do
 
 		resources :file_uploads
 
+=======
+		get "user/searchforfriend"
+		put "user/searchforfriend", :to => "user#search_user"
+		put "user/searchforfriend", :to => "user#search"
+    resources :images
+    resources :projects
+    resources :file_uploads
+>>>>>>> 1fa0d11b2726bef34f79d1fcae3f45f0e7abbff7
 	end
 
   # The priority is based upon order of creation:

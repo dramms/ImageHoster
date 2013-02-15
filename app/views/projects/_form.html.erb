@@ -1,0 +1,45 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+
+  <%  @project.images.each do |image|%>
+  <div class="Picture">
+      <div class="PictureToolbar">
+          <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), image %>
+          </div>
+          <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), edit_image_path(image) %>
+          </div>
+          <div class="PictureToolbarIcon">
+            <%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), image, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+          
+        </div>
+  <%= image_tag image.images(:small) %>
+</div>
+<% end %>
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

@@ -3,6 +3,7 @@ de:
   main:
     pictures: "Bilder"
     myPics: "Meine Bilder"
+    myProjects: "Meine Projekte"
     picUpload: "Bilder hochladen"
     deletePic: "Bilder löschen"
     documents: "Dokumente"

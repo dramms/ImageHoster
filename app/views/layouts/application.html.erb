@@ -18,9 +18,10 @@
 				<li><div class="MenuButton"><%= link_to 'Home', user_home_path %></div></li>
 				<li><div class="MenuButton"><%= I18n.t('main.pictures') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.myPics'), file_uploads_path %></div></li>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.picUpload'), new_file_upload_path %></div></li>
-						<li><div class="MenuButton"><%= I18n.t('main.deletePic') %></div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.myProjects'), projects_path %></div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.myPics'), images_path %></div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.picUpload'), new_image_path %></div></li>
+
 					</ul>
 				</li>
 				<li><div class="MenuButton"><%= I18n.t('main.documents') %></div></li>
