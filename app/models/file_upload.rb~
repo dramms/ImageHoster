@@ -1,3 +1,0 @@
-class FileUpload < ActiveRecord::Base
-  attr_accessible :description, :file_path, :user_idfile_type
-end

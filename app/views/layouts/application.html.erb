@@ -24,7 +24,13 @@
 
 					</ul>
 				</li>
-				<li><div class="MenuButton"><%= I18n.t('main.documents') %></div></li>
+				<li>
+					<% if @message_info %>
+						<div class="MenuButton"><%= link_to "Neue Nachrichten", messages_path %></div>
+					<% else %>
+						<div class="MenuButton"><%= link_to "Nachrichten", messages_path %></div>
+					<% end %>
+				</li>
 				<li><div class="MenuButton"><%= I18n.t('main.friends') %></div>
 					<ul>
 						<li><div class="MenuButton"><%= link_to I18n.t('main.myFriends'), friend_showfriends_path %></div></li>
@@ -39,8 +45,8 @@
 			<ul class="LogOut">
 				<li><div class="MenuButton"><%= I18n.t('main.settings') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.profile'), user_settings_path %></div></li>
-						<li><div class="MenuButton">Ansicht</div></li>
+						<li><div class="MenuButton"><%= link_to "Einstellungen", user_settings_path %></div></li>
+						<li><div class="MenuButton"><%= link_to "Profil", user_profile_path %></div></li>
 					</ul>
 				</li>
 				<li><div class="MenuButton"><%= link_to I18n.t('main.sign_out'), destroy_user_session_path, :method => :delete %></div></li>
@@ -54,6 +60,7 @@
 			<!--	<img src="arrow_double_up.png" />-->
 			</div>
 		<div id="main">
+				<%= @message_info %>
 				<%= yield %>
 		</div>	
 			

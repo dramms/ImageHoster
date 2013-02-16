@@ -42,15 +42,20 @@ class UserController < ApplicationController
 			#@user is ID of current user
 			@user_id = current_user.id
 			#gets own friends to display on profile
-			@friends = User.joins(:friends).where(:friends => {:friend_id => current_user})
+			@friends = Friend.find_friends current_user.id
+			#old
+			#@friends = User.joins(:friends).where(:friends => {:friend_id => current_user})
+			@projects = Project.where(:user_id => current_user.id)
+
 			@test = 1
 	
 		else
 			#request if profile belongs to friend (1: is friend; 0: is not a friend)
-			@is_friend = Friend.where(:user_id => current_user.id, :friend_id => params[:user]).count
+			p = params[:user]
+			@is_friend = Friend.is_friend current_user.id, params[:user]
 			#Abfrage, ob schon eine Anfrage von einer der beiden Personen vorliegt, wenn nicht befreundet
 			if @is_friend == 1
-				@friends = User.joins(:friends).where(:friends => {:friend_id => params[:user]})
+				@friends = Friend.find_friends params[:user]
 			else
 				#Abfrage ob current_user eine gestellt hat
 				@current_user_request = FriendRequests.where(:user_id => current_user.id, :friend_id => params[:user]).count

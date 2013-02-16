@@ -3,6 +3,16 @@ class ApplicationController < ActionController::Base
 
 	before_filter :authenticate_user!, :except => [:index]
 	before_filter :set_locale
+	before_filter :get_message_info
+
+	def get_message_info
+		if user_signed_in?
+			@message_info = MessageInfo.new_message current_user.id
+		else
+			#@message_info = "laal2"
+		end
+		
+	end
 
 	private
 	def set_locale

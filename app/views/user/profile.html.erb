@@ -1,3 +1,4 @@
+<%= @is_friend %>
 <% if @user_id == current_user.id %>
 	<h1>Mein Profil: </h1><br>
 	<h2>Freunde: </h2>
@@ -10,7 +11,10 @@
 			<% end %>
 			</ul><br>
 		<% end %>
-	<h2>Bilder:</h2><br>
+	<h2>Projekte:</h2><br>
+	<% @projects.each do |p| %>
+		<%= p.title %><br>
+	<% end %>
 <% else %>
 	<% if @is_friend == 1 %>
 		<h1>xyzs Profil: </h1><br>
@@ -30,7 +34,7 @@
 				<% end %>
 				</ul><br>
 			<% end %>
-		<h2>Bilder:</h2><br>
+		<h2>Projekte:</h2><br>
 	<% else %>
 		Du bist nicht mit ... befreundet
 		<% if @current_user_request == 1 %>

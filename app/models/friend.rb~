@@ -1,4 +1,0 @@
-class Friend < ActiveRecord::Base
-		attr_accessible :id_one, :id_two
-		has_one :user
-end

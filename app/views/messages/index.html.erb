@@ -1,0 +1,52 @@
+<% if @conversations.present? %>
+	<% @conversations.each do |c| %>
+		<%= link_to c.topic, messages_path(:conv_id => c.id) %><br>
+	<% end %>
+<% end %>
+
+<br>
+
+<%= link_to "Neue Nachricht", messages_path(:new_message => true) %>
+
+<h1>Nachricht</h1>
+
+<% if @message.present? %>
+	<% @message.each do |m| %>
+		<%= m.user.name %> gesendet am: <%= m.send_at %><br>
+		<%= m.content %><br><br>
+	<% end %>
+<% end %>
+
+<% if @is_answer %>
+	Antworten
+	<%= form_tag messages_create_answer_path do %>
+		<%= text_area_tag "answer", nil, :size => "50x10" %><br>
+		<%= hidden_field_tag :conv_id, @conv_id %>
+		<%= submit_tag "Antworten" %>
+	<% end %>
+	Neuen Nutzer hinzufügen:
+	<%= form_tag messages_add_user_path do %>	
+		<select name = "friend">
+			<% @friends.each do |f| %>
+				<option value=<%= f.id %>><%= f.name %></option>
+			<% end %>
+		</select><br>
+		<%= hidden_field_tag :conv_id, @conv_id %>
+		<%= submit_tag "Hinzufügen" %>
+	<% end %>
+<% end %>
+<br>
+
+<% if @is_new_conversation %>
+	<% if @friends.present? %>
+		<%= form_tag messages_create_conversation_path do %>	
+			<select name = "friend">
+				<% @friends.each do |f| %>
+					<option value=<%= f.id %>><%= f.name %></option>
+				<% end %>
+			</select><br>
+			Thema eingeben: <%= text_field_tag :topic %><br>
+			<%= submit_tag "Schreiben" %>
+		<% end %>
+	<% end %>
+<% end %>

@@ -1,4 +1,10 @@
 Schritte zur Einrichtung der Anwendung:
+
+Bei verwendung von Ubuntu muss ImageMagick installiert werden:
+apt-get install imagemagick
+apt-get install libmagickwand-dev
+gem install rmagick
+
 1. Bundle Install
 2. Seeds ausführen
 3. Passwörter sind immer 123456

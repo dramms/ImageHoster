@@ -24,15 +24,27 @@ class User < ActiveRecord::Base
 
 	has_many :friends
 	has_many :friend_requestss
+	has_many :messages
+	has_many :conversations, :through => :conv_users
+	has_many :message_infos
 
-	def self.search(search)
-		search_condition = search
-		find(:all, :conditions => ['last_name like ?', '%' + search_condition + '%'])
-	end
 
-	def self.newsearch(search, search_last_name)
+	def self.search(search, search_last_name)
 		search_condition = search
 		search_condition_last = search_last_name
 		find(:all, :conditions => ['first_name like ? AND last_name like ?', '%' + search_condition + '%', '%' + search_condition_last + '%'])
 	end
+
+	def self.find_friends uid
+		User.joins(:friends).where(:friends => {:friend_id => uid})
+	end
+
+	def self.find_requests uid
+		User.joins(:friend_requestss).where(:friend_requests => {:friend_id => uid})
+	end
+
+	def name
+		"#{first_name} #{last_name}"
+	end
+
 end

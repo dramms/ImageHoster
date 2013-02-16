@@ -9,6 +9,9 @@ gem 'paperclip'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+group :development, :test do
+	gem 'rspec-rails'
+end
 gem 'sqlite3'
 
 
