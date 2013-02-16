@@ -1,17 +1,24 @@
-<h1>Meine Bilder</h1>
-<% @images.each do |image| %>
-  <div class="Picture">
-      <div class="PictureToolbar">
-          <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), image %>
+
+
+  <h1>Meine Bilder</h1>
+  <% @images.each do |image| %>
+  <% if image.project.user_id == current_user.id %>
+    <div class="Picture">
+        <div class="PictureToolbar">
+            <div class="PictureToolbarIcon">
+              <%= link_to image_tag("/assets/loupe.png", :border=>0), image %>
+            </div>
+            <div class="PictureToolbarIcon">
+              <%= link_to image_tag("/assets/edit.png", :border=>0), edit_image_path(image) %>
+            </div>
+            <div class="PictureToolbarIcon Delete">
+              <%= link_to image_tag("/assets/delete.png", :border=>0), image, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+            
           </div>
-          <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), edit_image_path(image) %>
-          </div>
-          <div class="PictureToolbarIcon">
-            <%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), image, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-          
-        </div>
-        <%= image_tag image.images(:small) %>
-     
-  </div>
-<% end %>
+          <%= image_tag image.images(:small) %>
+       
+    </div>
+    <% end %>
+  <% end %>
+

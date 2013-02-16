@@ -67,8 +67,6 @@ body{
 }
 
 #main > div.Picture{
-	width: 200px;
-	height: 150px;
 	border: 1px solid lightgrey;
 	margin-right: 10px;
 	float: left;
@@ -78,10 +76,7 @@ body{
 	cursor: pointer;
 }
 
-#main > div.Picture img{
-	width: 200px;
-	height: 150px;
-}
+
 
 
 ul,

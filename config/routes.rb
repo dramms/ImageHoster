@@ -7,11 +7,18 @@ ImageHoster::Application.routes.draw do
 		get "start/index"
 		root :to => "start#index"
 		devise_for :users, :controllers => {:registrations => "registrations"}
-  	resources :users
+
+  	#resources :users
+
+		#resources :user
+
 
     resources :friends
 		get "user/home"
 		get "user/settings"
+    get "user/settings", :to => "user#settings"
+    post "user/settings", :to => "user#avatar_upload"
+    post "user/avatar_upload", :to => "user#avatar_upload"
 
 		post "edit/name", :to => "user#edit_name"
 		post "edit/email", :to => "user#edit_email"
@@ -55,6 +62,12 @@ ImageHoster::Application.routes.draw do
     get "friend/send_friendship_request", :to => "friend#send_friendship_request"
     put "friend/send_friendship_request", :to => "friend#send_friendship_request"
 
+    get "images/show", :to => "images#addComment"
+    get "images/addComment", :to => "images#addComment"
+    post "images/addComment", :to => "images#addComment"
+
+
+
 		resources :file_uploads
 
 		get "user/searchforfriend"
@@ -70,6 +83,7 @@ ImageHoster::Application.routes.draw do
     resources :images
     resources :projects
     resources :file_uploads
+
 	end
 
   # The priority is based upon order of creation:

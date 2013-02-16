@@ -1,22 +1,38 @@
 <%= form_for @project.images.build, :html => {:multipart => true} do |f| %>
 
+<table class="AddPicture">
+  <tr>
+    <th>
+      <%= f.label :title %>
+    </th>
+    <td>
+      <%= f.text_field :title  %>
+      <%= f.hidden_field :project_id %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <%= f.label :content %>
+    </th>
+    <td>
+      <%= f.text_field :content %>
+    </td>
+  </tr>
+    <tr>
+    <th>
+    </th>
+    <td>
+      <%= f.file_field :images %>
+    </td>
+  </tr>
+    <tr>
+    <th>
+    </th>
+    <td>
+      <%= f.submit %>
+    </td>
+  </tr>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title  %>
-  </div>
-  <%= f.hidden_field :project_id %>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_field :content %>
-  </div>
-  <div class="field">
-    <%= f.file_field :images %>
-  </div>
+</table>
 
-  <div class="field">
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

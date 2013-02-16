@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20130216155010) do
 
   create_table "conv_users", :force => true do |t|
@@ -26,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20130216155010) do
     t.datetime "updated_at", :null => false
   end
 
+#ActiveRecord::Schema.define(:version => 20130221124343) do
+
   create_table "friend_requests", :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -36,6 +39,14 @@ ActiveRecord::Schema.define(:version => 20130216155010) do
   create_table "friends", :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "image_comments", :force => true do |t|
+    t.integer  "image_id"
+    t.integer  "user_id"
+    t.string   "comment"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -89,6 +100,10 @@ ActiveRecord::Schema.define(:version => 20130216155010) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "profilpic"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

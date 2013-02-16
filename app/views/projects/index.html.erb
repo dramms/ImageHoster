@@ -1,25 +1,39 @@
-<h1>Listing projects</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
+
+<h1>Meine Projekte</h1>
+<%= link_to 'New Project', new_project_path, :class => "MenuButton" %>
+<input type="Button" value="Projekt suchen" id="ProjectSearchButton" class="MenuButton" />
+<p>
+
+
+<table class="ProjectList">
+  <thead>
+    <tr>
+      <th class="Title TitleHead">Title</th>
+      <th class="Content ContentHead">Content</th>
+      <th></th>
+
+    </tr>
+    <tr>
+      <th class=""><input type="text" id="ProjectTitleSearch" style="display: none;" /></th>
+      <th class=""><input type="text" id="ProjectContentSearch" style="display: none;" /></th>
+      <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
 <% @projects.each do |project| %>
-  <tr>
-    <td><%= project.title %></td>
-    <td><%= project.content %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <tr class="ProjectSearchRow Show">
+    <td class="Title"><%= link_to project.title, project %></td>
+    <td class="Content"><%= project.content %></td>
+    <td>
+      <%= link_to "Projekt ansehen", project, :class => 'MenuButton' %>
+      <%= link_to 'Bearbeiten', edit_project_path(project), :class => 'MenuButton' %>
+      <%= link_to 'Löschen', project, method: :delete, data: { confirm: 'All pictures of this project will be deleted too. Are you sure?' }, :class => "MenuButton" %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
+</p>
 
-<br />
-
-<%= link_to 'New Project', new_project_path %>

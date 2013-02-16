@@ -11,16 +11,32 @@ color: #666;
 h1{
 text-transform: uppercase;
 color: grey;
+font-size: 20px;
 }
 
-table{
+/*table{
 width: 900px;
-}
+}*/
+
 th{
 text-align: left;
-padding-bottom: 10px;
-text-transform: uppercase;
+/*padding-bottom: 10px;
+text-transform: uppercase;*/
+    vertical-align: top;
+    padding-right: 10px;
+    font-weight: bold;
+    padding-top: 6px;
 }
+
+.UserName{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.UserName:hover{
+    color: gold;
+}
+
 
 .MenuButton,
 .MenuPlaceholder {
@@ -81,7 +97,79 @@ text-transform: uppercase;
 	float: left;
 }
 #main .PictureToolbarIcon a img{
+    background-color: white;
+    opacity: 0.8;
 	width: 20px;
 	height: 20px;
 	float: left;
+}
+
+#main .PictureToolbarIcon.Delete a img{
+    background-color: white;
+}
+
+
+/*
+table.UserList td.Thumb{
+    width: 60px;
+}
+
+table.ProjectList{
+    border-collapse: collapse;
+}
+
+table.ProjectList .ProjectSearchRow{
+    cursor: pointer;
+}
+
+table.ProjectList td.Title,
+table.ProjectList th.Title{
+    width: 200px;
+}
+
+table.ProjectList td.Content{
+    width: 400px;
+}*/
+
+table th.Thumb,
+table td.Thumb{
+    width: 70px;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+table tr.Show{
+    cursor: pointer;
+}
+
+table .Title{
+    width: 300px;
+    vertical-align: top;
+}
+
+table .Content{
+    width: 400px;
+    padding-right: 15px;
+    vertical-align: top;
+}
+
+table .UserName{
+    width: 200px;
+}
+
+.DefaultThumb{
+    width: 100px;
+}
+
+h3.ProjectHead{
+    margin-bottom: 0px;
+    text-decoration: underline;
+}
+
+textarea{
+    border: 1px solid grey;
+    width: 400px;
+    height: 100px;
 }

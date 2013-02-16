@@ -1,9 +1,12 @@
+<%= link_to "Projekt ansehen", @project, :class => "MenuButton" %>
+<%= link_to I18n.t('main.myProjects'), projects_path, :class => "MenuButton" %>
 <h1>Editing project</h1>
 
+
+
+<p>
 <%= render 'form' %>
-<%= @image[0].id %>
+</p>
 
 
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>

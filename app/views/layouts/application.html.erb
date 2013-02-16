@@ -5,7 +5,10 @@
   <title>ImageHoster</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag	 "elements", :media => "all" %>
+  <%= stylesheet_link_tag "images", :media=> "all" %>
+  <%= javascript_include_tag "jquery-1.9.0" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "projects" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -20,7 +23,6 @@
 					<ul>
 						<li><div class="MenuButton"><%= link_to I18n.t('main.myProjects'), projects_path %></div></li>
 						<li><div class="MenuButton"><%= link_to I18n.t('main.myPics'), images_path %></div></li>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.picUpload'), new_image_path %></div></li>
 
 					</ul>
 				</li>
@@ -53,12 +55,11 @@
 			</ul>
 		</div>
 		<% end %>
-			<div id="toolbarMain" class="Toolbar FadedOUT">
+		<!--	<div id="toolbarMain" class="Toolbar FadedOUT">
 
 			</div>
 			<div id="toolbarSlider" class="Toolbar FadedOUT">
-			<!--	<img src="arrow_double_up.png" />-->
-			</div>
+			</div>-->
 		<div id="main">
 				<%= @message_info %>
 				<%= yield %>

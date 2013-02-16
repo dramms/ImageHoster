@@ -1,15 +1,25 @@
 <h1>Deine Freunde</h1>
-
+<input type="Button" value="in meine Freunde suchen" id="ProjectFriendButton" class="MenuButton" />
+<%= link_to I18n.t('main.findFriends'), friend_search_path, :class => "MenuButton" %>
+<p>
 <% if @friends.present? %>
-	<ul>
+	<table class="UserList" >
 	<% @friends.each do |friend| %>
-		<li>
+		<tr>
 			<%= form_for friend, :url => friend_delete_friendship_path do |f| %>
-				<%= link_to friend.first_name + " " + friend.last_name, :controller => "user", :action => "show_profile", :user => friend.id %>
-				<%= f.hidden_field :id, :value => friend.id %>
-				<%= f.submit "Freundschaft löschen" %>
+			<td class="Thumb" >
+				<%= image_tag friend.avatar(:miniThumb) %>
+			</td>
+				<td class="UserName">
+					<%= link_to friend.first_name + " " + friend.last_name, :controller => "user", :action => "show_profile", :user => friend.id %>
+				</td>
+				<td>
+					<%= f.hidden_field :id, :value => friend.id %>
+					<%= f.submit "Freundschaft löschen", :class => "MenuButton" %>
+				</td>
 			<% end %>
-		</li><br>
+		</tr>
 	<% end %>
-	</ul>
+	</table>
 <% end %>
+</p>

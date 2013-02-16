@@ -6,6 +6,14 @@ class UserController < ApplicationController
 		@users = User.all()
   end
 
+  def settings
+  	@user = User.create(params[:id]);
+  end
+
+  def avatar_upload
+  	render :action => "settings"
+  end
+
 	def edit_email
 		respond_to do |format|
       if current_user.update_attributes(params[:user])
@@ -65,6 +73,7 @@ class UserController < ApplicationController
 			#@user is ID of other user
 			@user_id = params[:user]
 			@users = User.where("id = " + params[:user])
+			@thisUser = User.find(params[:user])
 			@test = 2
 		end
 	end

@@ -1,28 +1,48 @@
-
-
+<h1>Freunde suchen</h1>
+<p>
 <%= form_tag :controller => 'friend', :action => 'search' do %>
 	<%= text_field_tag :search, params[:search], :id => 'search_field' %>
 	<%= text_field_tag :search_last_name, params[:search_last_name], :id => 'search_field_last_name' %>
-	<%= submit_tag "Search", :name => nil %> 
-	<%= link_to_function "Clear", "$('search_field').clear()" %>
+	<%= submit_tag "Search", :name => nil, :class => "MenuButton" %> 
+	<%= link_to_function "Clear", "$('search_field').clear()", :class => "MenuButton" %>
 <% end %>
+</p>
+<p>
+	<table>
+		<thead>
+			<tr>
+				<td class="Thumb">
+				</td>
+				<td class="UserName">
+					Name
+				</td>
+				<td>
+				</td>
 
+			</tr>
+		</thead>
+		<tbody>
 <%= @is_friend %>
 <% if @users.present? %>
-	<ul>
+
+
 		<% @users.each do |users| %>
 			<%= form_for @users, :url => { :action => "send_friendship_request", :controller => "friend" } do |f|%>
-			  	<li>
-			  		<%= link_to users.first_name + " " + users.last_name, :controller => "user", :action => "show_profile", :user => users.id %><br>
+			  	<tr>
+			  		<td class="Thumb"><%= image_tag users.avatar(:miniThumb) %></td>
+			  		<td class="UserName"><%= link_to users.first_name + " " + users.last_name, :controller => "user", :action => "show_profile", :user => users.id %></td>
 			  		<%= f.hidden_field :id, :value => users.id %>
-			  		<% if @is_friend == 1 %>
 			  		
+			  		<% if @is_friend == 1 %>
+			  			<td>Ist bereits dein Freund</td>
 			  		<% else %>
-			  			<%= f.submit "Send Request" %> 
+			  			<td><%= f.submit "Send Request", :class => "MenuButton" %> </td>
 			  		<% end %>
-			  	</li><br>
+			  	</tr>
 			<% end %>
 		<% end %>
-	</ul>
+	</tbody>
+	</table>
 <% end %>
 
+</p>

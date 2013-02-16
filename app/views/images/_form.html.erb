@@ -1,17 +1,27 @@
+
+<%= image_tag @image.images(:thumb) %>   
 <%= form_for @image, :html => {:multipart => true} do |f| %>
-    <div class="field">
-        <%= f.label :title %><br />
-        <%= f.text_field :title  %>
-    </div>
-      <%= f.hidden_field :project_id %>
-    <div class="field">
-        <%= f.label :content %><br />
-        <%= f.text_field :content %>
-    </div>
-    <div class="field">
-        <%= f.file_field :images %>
-    </div>
-    <div class="actions">
-        <%= f.submit %>
-    </div>
-<% end %>
+
+       
+        <table>
+            <tr>
+                <th><%= f.label :title %></th>
+                <td><%= f.text_field :title  %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :content %></th>
+                <td><%= f.text_area :content %></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><%= f.file_field :images %></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><%= f.submit "Abschicken", :class => "MenuButton" %></td>
+            </tr>
+        </table>
+<%= f.hidden_field :project_id %>
+
+    <% end %>
+

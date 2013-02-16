@@ -1,11 +1,25 @@
-lalallalala
-
 <h1>Home</h1>
-<%= link_to "Test", user_test_path %>
-<%= link_to "newTest", user_newtest_path %>
 
-<%= link_to "Passwort ändern", edit_user_registration_path %><br>
+<h3 class="ProjectHead"><%= link_to I18n.t('main.myProjects'), projects_path %>:</h2>
+<table>
+		<% current_user.projects.each do |project| %>
+			<tr class="ProjectSearchRow Show">
+			    <td class="Title"><%= link_to project.title, project %></td>
+			    <td class="Content"><%= project.content %></td>
+			    <td>
+			      <%= link_to 'Show', project, :class => 'MenuButton' %>
+			      <%= link_to 'Edit', edit_project_path(project), :class => 'MenuButton' %>
+			      <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'All pictures of this project will be deleted too. Are you sure?' }, :class => "MenuButton" %></td>
+			</tr>
+		<% end %>
+</table> 
 
-<%= I18n.locale %>
-
-
+<h3 class="ProjectHead"><%= link_to I18n.t('main.myPics') , images_path %>:</h2>
+<% current_user.projects.each do |project| %>
+  		<% project.images.each do |image| %>
+  			<div class="Picture">
+     		
+        	<%= link_to image_tag image.images(:miniThumb) %>
+     	</div>
+  	<% end %>
+  <% end %>
