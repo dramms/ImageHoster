@@ -1,17 +1,46 @@
+<%= link_to 'Edit', edit_image_path(@image), :class => "MenuButton" %>
+<%= link_to 'Back', images_path, :class => "MenuButton" %>
 <p id="notice"><%= notice %></p>
 
+<p>
+ <h1> <%= @image.title %></h1>
 
 <p>
-  <b>Title:</b>
-  <%= @image.title %>
-</p>
-
-<p>
-  <b>Content:</b>
   <%= @image.content %>
-</p>
+<p/>
+
+
+
+
+
 <%= image_tag @image.images(:middleLarge) %>
 
+<div style="float: left;" class="Comments">
+Kommentar<br/>
+	<table >
+		<% @image.imageComments.each do |comment|%>
+			<tr>
+				<td class="Thumb" style="font-size: 10px" colspan="2">
+					<%= comment.user.first_name %> <%= comment.user.last_name %>schrieb am <%= comment.created_at%>
+				</td>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+			</tr>
+			<tr>
+				<td class="Thumb" style="width: 55px"><%= image_tag comment.user.avatar(:miniThumb) %></td>
+				<td><%= comment.comment %></td>
+
+			</tr>
+			
+		<% end %>
+
+		<%= form_tag images_addComment_path do %>
+		<tr>
+			<td colspan="2"><%= text_area_tag :comment, params[:comment], :class => "InputComment" %><br/>
+			<%= submit_tag "Kommentieren", :class => "MenuButton" %></td>
+			<%= hidden_field_tag :imageid, params[:imageid], :value => @image.id %>
+		</tr>
+
+		<% end %>
+	</table>
+</div>
+

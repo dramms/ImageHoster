@@ -10,11 +10,14 @@ ImageHoster::Application.routes.draw do
 		get "start/index"
 		root :to => "start#index"
 		devise_for :users, :controllers => {:registrations => "registrations"}
-#		resources :user
+		#resources :user
 
     resources :friends
 		get "user/home"
 		get "user/settings"
+    get "user/settings", :to => "user#settings"
+    post "user/settings", :to => "user#avatar_upload"
+    post "user/avatar_upload", :to => "user#avatar_upload"
 
 		post "edit/name", :to => "user#edit_name"
 		post "edit/email", :to => "user#edit_email"
@@ -24,7 +27,7 @@ ImageHoster::Application.routes.draw do
 		get "user/test"
 		get "user/newtest"
 		get "change/pw", :to => "devise/password#edit"
-<<<<<<< HEAD
+
 
     get "friend/search"
     post "friend/search", :to => "friend#search"
@@ -58,16 +61,23 @@ ImageHoster::Application.routes.draw do
     get "friend/send_friendship_request", :to => "friend#send_friendship_request"
     put "friend/send_friendship_request", :to => "friend#send_friendship_request"
 
+##################IMAGES############################################################
+    get "images/show", :to => "images#addComment"
+    get "images/addComment", :to => "images#addComment"
+    post "images/addComment", :to => "images#addComment"
+
+
+
 		resources :file_uploads
 
-=======
+
 		get "user/searchforfriend"
 		put "user/searchforfriend", :to => "user#search_user"
 		put "user/searchforfriend", :to => "user#search"
     resources :images
     resources :projects
     resources :file_uploads
->>>>>>> 1fa0d11b2726bef34f79d1fcae3f45f0e7abbff7
+
 	end
 
   # The priority is based upon order of creation:

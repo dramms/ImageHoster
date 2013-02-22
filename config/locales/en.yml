@@ -5,6 +5,8 @@ en:
   hello: "Hello world"
   main:
     pictures: "Pictures"
+    back: "Back"
+    edit: "Edit"
     myPics: "my Pictures"
     myProjects: "my Projects"
     picUpload: "Upload Pictures"

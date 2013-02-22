@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :profilpic
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :profilpic, :avatar
 
 	validates :email, 
 						:presence => true,
@@ -23,7 +23,11 @@ class User < ActiveRecord::Base
 						:presence => true;
 
 	has_many :friends
+	has_many :imageComments
 	has_many :friend_requestss
+	has_many :projects
+	has_attached_file :avatar, :styles => {:medium => "300x300>", :thumb => "100x100>", :miniThumb => "50x50>"}
+
 
 	def self.search(search)
 		search_condition = search

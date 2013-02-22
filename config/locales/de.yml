@@ -2,6 +2,8 @@ de:
   hello: "Hallo Welt"
   main:
     pictures: "Bilder"
+    edit: "Bearbeiten"
+    back: "Zurück"
     myPics: "Meine Bilder"
     myProjects: "Meine Projekte"
     picUpload: "Bilder hochladen"

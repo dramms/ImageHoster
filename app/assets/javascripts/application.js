@@ -18,18 +18,84 @@
 
 jQuery(document).ready(function(){
 
-/******* PICTURES ***********/
-jQuery('.Picture').mouseover(function(){
-	jQuery(this).find('.PictureToolbar').show();
-}).mouseout(function(){
-	jQuery(this).find('.PictureToolbar').hide();
-});
 
 
-/********** Toolbar **************/
-jQuery('#toolbarSlider').click(function(){
-	jQuery('#toolbarMain').toggleClass('FadedOUT');
-	jQuery('#toolbarSlider').toggleClass('FadedOUT');
-});
+	jQuery('.Picture').mouseover(function(){
+		jQuery(this).children('.PictureToolbar').show();
+	});
+	jQuery('.Picture').mouseout(function(){
+		jQuery(this).children('.PictureToolbar').hide();
+	});
+
+	jQuery('tbody tr').mouseover(function(){
+		jQuery(this).css('background-color', '#E9E9E9');
+	});
+	jQuery('tbody tr').mouseout(function(){
+		jQuery(this).css('background-color', 'white');
+	});
+
+/*****************************ProjectSearch***********************************************************/
+
+
+	jQuery('#ProjectSearchButton').click(function(){
+		jQuery('#ProjectTitleSearch').toggle();
+		jQuery('#ProjectContentSearch').toggle();
+	});
+
+
+
+	/*Search Title*/
+	jQuery('#ProjectTitleSearch').focusin(function(){
+		
+		jQuery(this).keyup(function(){
+
+			jQuery(".ProjectList .ProjectSearchRow").hide();
+			var $searchItem = jQuery(this).val();
+
+			if($searchItem == ""){
+				jQuery(".ProjectList .ProjectSearchRow").show();
+			}else{
+				jQuery.expr[':'].contains = function(a, i, m) {
+				  return jQuery(a).text().toUpperCase()
+				      .indexOf(m[3].toUpperCase()) >= 0;
+				};
+
+
+				jQuery("td.Title a:contains('"+$searchItem+"')").each(function(){
+						jQuery(this).parent().parent().show();
+				});
+			}
+
+		});
+	});
+
+	/*Search Content*/
+	jQuery('#ProjectContentSearch').focusin(function(){
+		
+		jQuery(this).keyup(function(){
+
+			jQuery(".ProjectList .ProjectSearchRow").hide();
+			var $searchItem = jQuery(this).val();
+
+			if($searchItem == ""){
+				jQuery(".ProjectList .ProjectSearchRow").show();
+			}else{
+				jQuery.expr[':'].contains = function(a, i, m) {
+				  return jQuery(a).text().toUpperCase()
+				      .indexOf(m[3].toUpperCase()) >= 0;
+				};
+
+
+				jQuery("td.Content a:contains('"+$searchItem+"')").each(function(){
+						jQuery(this).parent().parent().show();
+				});
+			}
+
+		});
+	});
+
+
+
+
 
 });

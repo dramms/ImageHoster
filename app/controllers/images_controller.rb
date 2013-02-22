@@ -2,11 +2,14 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
+    if @is_friend != 1 ||  1 == 1 
+ 
     @images = Image.all
     
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @images }
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @images }
+      end
     end
   end
 
@@ -80,4 +83,20 @@ class ImagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def addComment
+    ImageComment.create(:user_id => current_user.id, :image_id => params[:imageid], :comment=> params[:comment])
+    @image = Image.find(params[:imageid])
+
+    redirect_to @image
+    
+
+  end
+
+
+
+
+
+
+
 end

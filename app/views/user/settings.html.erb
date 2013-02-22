@@ -1,62 +1,48 @@
-<% if flash[:notice] %>
+<!--<% if flash[:notice] %>
 	<%= flash[:notice] %>
-<% end %>
+<% end %>-->
 
+<h1><%= image_tag current_user.avatar(:thumb)  %> Dein Profil</h1>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  
+
 	<%= devise_error_messages! %><br>
 
-	<div>
-	<%= I18n.t('settings.email') %><br>
-	<%= f.text_field :email, :value => current_user.email  %><br>
-
-	<%= I18n.t('settings.firstname') %><br>
-	<%= f.text_field :first_name, :value => current_user.first_name %><br>
-	
-	<%= I18n.t('settings.lastname') %><br>
-	<%= f.text_field :last_name, :value => current_user.last_name %><br>
-
-  <%= f.label "Neues Passwort" %><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
-
-  <div><%= f.label "Wiederhole Passwort" %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label "aktuelles Passwort (zur Bestätigung)" %><br />
-  <%= f.password_field :current_password %></div>
-
-  <div><%= f.submit "Update" %></div>
+<p>
+	<table style="clear: both;">
+		<tr>
+			<th><%= I18n.t('settings.email') %></th>
+			<td><%= f.text_field :email, :value => current_user.email  %></td>
+		</tr>
+		<tr>
+			<th><%= I18n.t('settings.firstname') %></th>
+			<td><%= f.text_field :first_name, :value => current_user.first_name %></td>
+		</tr>
+		<tr>
+			<th><%= I18n.t('settings.lastname') %></th>
+			<td><%= f.text_field :last_name, :value => current_user.last_name %></td>
+		</tr>
+		<tr>
+			<th><%= f.label "Neues Passwort" %></th>
+			<td><%= f.password_field :password, :autocomplete => "off" %></td>
+		</tr>
+		<tr>
+			<th><%= f.label "Wiederhole Passwort" %></th>
+			<td><%= f.password_field :password_confirmation %></td>
+		</tr>
+		<tr>
+			<th><%= f.label "aktuelles Passwort" %></th>
+			<td><%= f.password_field :current_password %></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><%= f.file_field :avatar %></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><%= f.submit "Update", data: { confirm: 'Sollen die Profildaten wirklich geändert werden?' }, :class => "MenuButton" %></td>
+		</tr>
+	</table>
+</p>	  
 <% end %>
 
-
-Profilbild:
-		<div>
-				Profilbild hochladen:
-				to do
-		</div>
-
-
-		<div>
-			<%= form_for current_user, :url => { :action => "edit_email", :controller => "user" } do |f| %>
-
-				<%= I18n.t('settings.email') %>
-				<%= f.text_field :email, :value => current_user.email  %>
-
-				<%= f.submit "E-Mail ändern" %>
-			<% end %>
-		</div>
-
-		<div>
-			<%= form_for current_user, :url => { :action => "edit_name", :controller => "user" } do |f| %>
-				<%= I18n.t('settings.firstname') %><%= f.text_field :first_name, :value => current_user.first_name %><br>
-				<%= I18n.t('settings.lastname') %><%= f.text_field :last_name, :value => current_user.last_name %> 
-
-				<%= f.submit "Name ändern" %>
-
-			<% end %>
-		</div>
-
-<% if flash[:notice] %>
-	<%= flash[:notice] %>
-<% end %>
 

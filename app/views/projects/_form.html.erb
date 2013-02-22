@@ -10,25 +10,29 @@
       </ul>
     </div>
   <% end %>
-
+<p>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_field :content %>
+    <%= f.text_area :content %>
   </div>
+    <div class="actions">
+    <%= f.submit %>
+  </div>
+</p>
 
   <%  @project.images.each do |image|%>
   <div class="Picture">
       <div class="PictureToolbar">
-          <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), image %>
+          <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/show.png", :border=>0), image %>
           </div>
-          <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), edit_image_path(image) %>
+          <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/edit.png", :border=>0), edit_image_path(image) %>
           </div>
           <div class="PictureToolbarIcon">
-            <%= link_to image_tag("/assets/uploadedFiles/20121214150436.jpg", :border=>0), image, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to image_tag("/assets/delete.png", :border=>0), image, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
           
         </div>
@@ -36,10 +40,6 @@
 </div>
 <% end %>
   
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
 
 
