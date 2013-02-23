@@ -23,10 +23,22 @@ de:
     attributes:
       user:
         email: "E-Mail Adresse"
+        password: "Passwort"
+        first_name: "Vorname"
+        last_name: "Nachname"
     errors:
       models:
         user:
           attributes:
             email:
               blank: "muss angegeben werden!"
-  
+              taken: "ist schon vergeben"
+            password:
+              blank: "muss angegeben werden"
+              confirmation: "müssen übereinstimmen"
+              too_short: "ist zu kurz"
+            first_name:
+              blank: "muss angegeben werden"
+            last_name:
+              blank: "muss angegeben werden"
+

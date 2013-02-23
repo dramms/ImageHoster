@@ -14,11 +14,7 @@ class FriendController < ApplicationController
 	def send_friendship_request
 		if params
 			FriendRequests.create_request current_user.id, params[:user][:id]
-			if params[:last_site] == "profile"
-				render :action => 'profile'
-			else 
-				render :action => 'search'
-			end
+			redirect_to :back
 		end
 	end
 
@@ -33,21 +29,22 @@ class FriendController < ApplicationController
 	def accept_friendship_request
 		if params
 			Friend.create_friendship current_user.id, params[:user][:id]
-			render :action => 'showrequest'
+			#render :action => 'showrequest'
+			redirect_to :back
 		end
 	end
 
 	def delete_friendship
 		if params
 			Friend.delete_friendship current_user.id, params[:user][:id]
-			render :action => 'showfriends'
+			redirect_to :back
 		end
 	end
 
 	def delete_friendship_request
 		if params
 			FriendRequests.delete_request current_user.id, params[:user][:id]
-			render :action => 'showfriends'
+			redirect_to :back
 		end
 	end
 end

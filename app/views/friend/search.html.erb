@@ -3,7 +3,7 @@
 <%= form_tag :controller => 'friend', :action => 'search' do %>
 	<%= text_field_tag :search, params[:search], :id => 'search_field' %>
 	<%= text_field_tag :search_last_name, params[:search_last_name], :id => 'search_field_last_name' %>
-	<%= submit_tag "Search", :name => nil, :class => "MenuButton" %> 
+	<%= submit_tag "Search", :name => nil, :class => "MenuButton", :id => "search" %> 
 	<%= link_to_function "Clear", "$('search_field').clear()", :class => "MenuButton" %>
 <% end %>
 </p>
@@ -30,13 +30,13 @@
 			<%= form_for @users, :url => { :action => "send_friendship_request", :controller => "friend" } do |f|%>
 			  	<tr>
 			  		<td class="Thumb"><%= image_tag users.avatar(:miniThumb) %></td>
-			  		<td class="UserName"><%= link_to users.first_name + " " + users.last_name, :controller => "user", :action => "show_profile", :user => users.id %></td>
+			  		<td class="UserName"><%= link_to users.name, :controller => "user", :action => "show", :user => users.id %></td>
 			  		<%= f.hidden_field :id, :value => users.id %>
 			  		
 			  		<% if @is_friend == 1 %>
 			  			<td>Ist bereits dein Freund</td>
 			  		<% else %>
-			  			<td><%= f.submit "Send Request", :class => "MenuButton" %> </td>
+			  			<td><%= f.submit "Send Request", :class => "MenuButton", :id => "sendRequest" %> </td>
 			  		<% end %>
 			  	</tr>
 			<% end %>

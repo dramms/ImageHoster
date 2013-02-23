@@ -23,7 +23,7 @@ describe Friend do
 	end
 
 	it "should not be a friend" do
-		Friend.is_friend(1, 2).should == 0
+		Friend.is_friend(1, 4).should == 0
 	end
 
 	it "should be a friend" do
