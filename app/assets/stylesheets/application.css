@@ -129,3 +129,10 @@ ul li ul li .MenuButton{
 	border: 1px solid black;
 	float: right;
 }
+
+h1,
+h2,
+h3,
+input{
+	font-family: arial;
+}
