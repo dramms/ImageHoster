@@ -1,0 +1,7 @@
+<% if @conversations.present? %>
+	<% @conversations.each do |c| %>
+		<%= link_to c.topic, messages_show_conversation_path(:conv_id => c.id) %><br>
+	<% end %>
+<% end %>
+
+<%= link_to "Neue Nachricht", messages_new_conversation_path %>
