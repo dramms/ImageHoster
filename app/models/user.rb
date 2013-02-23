@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
 	has_many :projects
 	has_attached_file :avatar, :styles => {:medium => "300x300>", :thumb => "100x100>", :miniThumb => "50x50>"}
 
-	def self.search(search, search_last_name)
-		search_condition = search
+	def self.search(search_first_name, search_last_name)
+		search_condition = search_first_name
 		search_condition_last = search_last_name
 		find(:all, :conditions => ['first_name like ? AND last_name like ?', '%' + search_condition + '%', '%' + search_condition_last + '%'])
 	end

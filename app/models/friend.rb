@@ -8,6 +8,8 @@ class Friend < ActiveRecord::Base
 	validates :user_id,  
 						:uniqueness => {:scope => :friend_id}
 
+	#validates_association?
+
 
 	def self.create_friendship uid, fid
 		Friend.create(:user_id => uid, :friend_id => fid)

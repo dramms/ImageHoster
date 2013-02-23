@@ -1,0 +1,11 @@
+escribe Message do
+
+	it "shows all conversations" do
+		visit "/"
+		fill_in "user_email", :with => "dr@mymail.com"
+		fill_in "user_password", :with => "123456"
+		click_button "sign_in_button"
+
+		#page.should have_content "Home"
+	end
+end

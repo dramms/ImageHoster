@@ -19,8 +19,6 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
 			redirect_to :back
-#      clean_up_passwords resource
-#      respond_with resource
     end
 	end
 
@@ -38,9 +36,6 @@ class RegistrationsController < Devise::RegistrationsController
       respond_with resource, :location => after_update_path_for(resource)
     else
 	    clean_up_passwords resource
-#			redirect_to :back
-#     respond_with resource
-#		user_settings_path
 			respond_to do |format|
 		    format.html { redirect_to user_settings_path }
 		    format.json { render json: @posts }

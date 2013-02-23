@@ -18,26 +18,26 @@
 			</div>
 			<% if user_signed_in? %>
 			<ul>
-				<li><div class="MenuButton"><%= link_to 'Home', user_home_path %></div></li>
+				<li><div class="MenuButton"><%= link_to 'Home', user_home_path, :id => "home" %></div></li>
 				<li><div class="MenuButton"><%= I18n.t('main.pictures') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.myProjects'), projects_path %></div></li>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.myPics'), images_path %></div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.myProjects'), projects_path, :id => "showProjects" %></div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.myPics'), images_path, :id => "showPictures" %></div></li>
 
 					</ul>
 				</li>
 				<li>
 					<% if @message_info %>
-						<div class="MenuButton"><%= link_to "Neue Nachrichten", messages_path %></div>
+						<div class="MenuButton"><%= link_to "Neue Nachrichten", messages_path, :id => "message" %></div>
 					<% else %>
-						<div class="MenuButton"><%= link_to "Nachrichten", messages_path %></div>
+						<div class="MenuButton"><%= link_to "Nachrichten", messages_path, :id => "message" %></div>
 					<% end %>
 				</li>
 				<li><div class="MenuButton"><%= I18n.t('main.friends') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.myFriends'), friend_showfriends_path %></div></li>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.findFriends'), friend_search_path %><div>
-						<li><div class="MenuButton"><%= link_to 'Anfragen anzeigen', friend_showrequest_path %>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.myFriends'), friend_showfriends_path, :id => "myFriends" %></div></li>
+						<li><div class="MenuButton"><%= link_to I18n.t('main.findFriends'), friend_search_path, :id => "findFriends" %><div>
+						<li><div class="MenuButton"><%= link_to 'Anfragen anzeigen', friend_showrequest_path, :id => "showRequests" %>
 						</div></li>
 					</ul>
 				</li>
@@ -47,11 +47,11 @@
 			<ul class="LogOut">
 				<li><div class="MenuButton"><%= I18n.t('main.settings') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= link_to "Einstellungen", user_settings_path %></div></li>
-						<li><div class="MenuButton"><%= link_to "Profil", user_profile_path %></div></li>
+						<li><div class="MenuButton"><%= link_to "Einstellungen", user_settings_path, :id => "settings" %></div></li>
+						<li><div class="MenuButton"><%= link_to "Profil", user_profile_path, :id => "profile" %></div></li>
 					</ul>
 				</li>
-				<li><div class="MenuButton"><%= link_to I18n.t('main.sign_out'), destroy_user_session_path, :method => :delete %></div></li>
+				<li><div class="MenuButton"><%= link_to I18n.t('main.sign_out'), destroy_user_session_path, :id => "sign_out", :method => :delete %></div></li>
 			</ul>
 		</div>
 		<% end %>
@@ -61,7 +61,6 @@
 			<div id="toolbarSlider" class="Toolbar FadedOUT">
 			</div>-->
 		<div id="main">
-				<%= @message_info %>
 				<%= yield %>
 		</div>	
 			
