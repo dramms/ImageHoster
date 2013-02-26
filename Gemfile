@@ -7,14 +7,19 @@ gem 'dynamic_form'
 
 gem 'paperclip'
 gem 'will_paginate', '~> 3.0.0'
+gem 'heroku'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'capybara'
+	gem 'sqlite3'
 end
-gem 'sqlite3'
+
+group :production do
+	gem 'pg'
+end
 
 
 # Gems used only for assets and not required
