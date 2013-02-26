@@ -173,3 +173,8 @@ textarea{
     width: 400px;
     height: 100px;
 }
+
+.SearchInputField{
+    width: 240px;
+    display: none;
+}

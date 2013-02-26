@@ -4,8 +4,9 @@ class ImagesController < ApplicationController
   def index
     if @is_friend != 1 ||  1 == 1 
  
-    @images = Image.all
-    
+    #@images = Image.all
+    @images = Image.get_Current_user_images current_user.id, params[:page]
+
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @images }

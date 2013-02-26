@@ -2,7 +2,6 @@
 
   <h1>Meine Bilder</h1>
   <% @images.each do |image| %>
-  <% if image.project.user_id == current_user.id %>
     <div class="Picture">
         <div class="PictureToolbar">
             <div class="PictureToolbarIcon">
@@ -19,6 +18,8 @@
           <%= image_tag image.images(:small) %>
        
     </div>
-    <% end %>
+
   <% end %>
+
+  <%= will_paginate @message %>
 

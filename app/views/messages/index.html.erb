@@ -1,20 +1,41 @@
+<h1>Deine Nachrichten</h1>
+<div class="SubMenu">
+	<%= link_to "Neue Nachricht", messages_path(:new_message => true), :class=>"MenuButton" %>
+</div>
+
 <% if @conversations.present? %>
-	<% @conversations.each do |c| %>
-		<%= link_to c.topic, messages_path(:conv_id => c.id) %><br>
-	<% end %>
+	<div style="width: 300px; min-height: 200px; float: left;">
+		<table>
+			<thead>
+				<tr>
+					<th>Nachrichten:</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @conversations.each do |c| %>
+			<tr>
+				<td>
+					<%= link_to c.topic, messages_path(:conv_id => c.id) %>
+				</td>
+			</tr>
+			<% end %>
+			</tbody>
+		</table>
+	</div>
 <% end %>
 
-<br>
 
-<%= link_to "Neue Nachricht", messages_path(:new_message => true) %>
 
-<h1>Nachricht</h1>
 
+<div style="float: left; padding-left: 20px;">
 <% if @message.present? %>
-	<% @message.each do |m| %>
-		<%= m.user.name %> gesendet am: <%= m.send_at %><br>
-		<%= m.content %><br><br>
-	<% end %>
+
+		<% @message.each do |m| %>
+			<%= m.user.name %> gesendet am: <%= m.send_at %><br>
+			<%= m.content %><br><br>
+		<% end %>
+		<%= will_paginate @message %>
+	
 <% end %>
 
 <% if @is_answer %>
@@ -22,8 +43,10 @@
 	<%= form_tag messages_create_answer_path do %>
 		<%= text_area_tag "answer", nil, :size => "50x10" %><br>
 		<%= hidden_field_tag :conv_id, @conv_id %>
-		<%= submit_tag "Antworten" %>
+		<%= submit_tag "Antworten", :class => "MenuButton" %>
 	<% end %>
+</div>
+<div style="width: 300px; float: left; padding-left: 20px;">
 	Neuen Nutzer hinzufügen:
 	<%= form_tag messages_add_user_path do %>	
 		<select name = "friend">
@@ -32,11 +55,11 @@
 			<% end %>
 		</select><br>
 		<%= hidden_field_tag :conv_id, @conv_id %>
-		<%= submit_tag "Hinzufügen" %>
+		<%= submit_tag "Hinzufügen", :class => "MenuButton" %>
 	<% end %>
-<% end %>
-<br>
-
+</div>
+<%end%>
+<div style="float: left">
 <% if @is_new_conversation %>
 	<% if @friends.present? %>
 		<%= form_tag messages_create_conversation_path do %>	
@@ -46,7 +69,8 @@
 				<% end %>
 			</select><br>
 			Thema eingeben: <%= text_field_tag :topic %><br>
-			<%= submit_tag "Schreiben" %>
+			<%= submit_tag "Schreiben", :class=>"MenuButton" %>
 		<% end %>
 	<% end %>
 <% end %>
+</div>

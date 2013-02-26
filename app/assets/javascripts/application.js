@@ -37,60 +37,31 @@ jQuery(document).ready(function(){
 /*****************************ProjectSearch***********************************************************/
 
 
-	jQuery('#ProjectSearchButton').click(function(){
-		jQuery('#ProjectTitleSearch').toggle();
-		jQuery('#ProjectContentSearch').toggle();
+	jQuery('#searchButton').click(function(){
+		jQuery('#searchTableRows').toggle();
+		jQuery('#searchContentForm').toggle();
 	});
 
 
-
-	/*Search Title*/
-	jQuery('#ProjectTitleSearch').focusin(function(){
-		
+	jQuery('#searchTableRows').focusin(function(){
 		jQuery(this).keyup(function(){
-
-			jQuery(".ProjectList .ProjectSearchRow").hide();
+			jQuery("#searchTable .SearchRow").hide();
 			var $searchItem = jQuery(this).val();
 
 			if($searchItem == ""){
-				jQuery(".ProjectList .ProjectSearchRow").show();
+				jQuery('#searchTable .SearchRow').show();
 			}else{
 				jQuery.expr[':'].contains = function(a, i, m) {
-				  return jQuery(a).text().toUpperCase()
-				      .indexOf(m[3].toUpperCase()) >= 0;
+					  return jQuery(a).text().toUpperCase()
+					      .indexOf(m[3].toUpperCase()) >= 0;
 				};
 
-
-				jQuery("td.Title a:contains('"+$searchItem+"')").each(function(){
-						jQuery(this).parent().parent().show();
+				console.log($searchItem);
+				$test = jQuery("td:contains('"+$searchItem+"')");
+				jQuery("td:contains('"+$searchItem+"')").each(function(){
+					jQuery(this).parent().show();
 				});
 			}
-
-		});
-	});
-
-	/*Search Content*/
-	jQuery('#ProjectContentSearch').focusin(function(){
-		
-		jQuery(this).keyup(function(){
-
-			jQuery(".ProjectList .ProjectSearchRow").hide();
-			var $searchItem = jQuery(this).val();
-
-			if($searchItem == ""){
-				jQuery(".ProjectList .ProjectSearchRow").show();
-			}else{
-				jQuery.expr[':'].contains = function(a, i, m) {
-				  return jQuery(a).text().toUpperCase()
-				      .indexOf(m[3].toUpperCase()) >= 0;
-				};
-
-
-				jQuery("td.Content a:contains('"+$searchItem+"')").each(function(){
-						jQuery(this).parent().parent().show();
-				});
-			}
-
 		});
 	});
 

@@ -32,4 +32,19 @@ en:
           attributes:
             email:
               blank: "is required!"
-
+  will_paginate:
+    next_label: Next
+    page_entries_info:
+      multi_page: Show %{model} %{from} - %{to} von %{count} insgesamt
+      multi_page_html: Show %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> von <b>%{count}</b>
+        insgesamt
+      single_page:
+        one: Show 1 %{model}
+        other: Show all %{count} %{model}
+        zero: Kein(e) %{model} gefunden
+      single_page_html:
+        one: Show <b>1</b> %{model}
+        other: Show <b>alle&nbsp;%{count}</b> %{model}
+        zero: Kein(e) %{model} gefunden
+    page_gap: ! '&hellip;'
+    previous_label: Previous

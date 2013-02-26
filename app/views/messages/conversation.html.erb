@@ -6,7 +6,7 @@
 
 <br>
 
-<%= link_to "Neue Nachricht", messages_conversation_path(:new_message => true) %>
+<%= link_to "Neue Nachricht", messages_conversation_path(:new_message => true), :class => "MenuButton" %>
 
 <h1>Nachricht</h1>
 
@@ -20,7 +20,7 @@
 	<%= form_tag messages_create_answer_path do %>
 		<%= text_area_tag "answer", nil, :size => "50x10" %><br>
 		<%= hidden_field_tag :conv_id, @conv_id %>
-		<%= submit_tag "Antworten" %>
+		<%= submit_tag "Antworten", :class => "MenuButton" %>
 	<% end %>
 <% end %>
 <br>
@@ -33,6 +33,6 @@
 			<% end %>
 		</select><br>
 		Thema eingeben: <%= text_field_tag :topic %><br>
-		<%= submit_tag "Schreiben" %>
+		<%= submit_tag "Schreiben" :class => "MenuButton" %>
 	<% end %>
 <% end %>

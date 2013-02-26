@@ -2,12 +2,13 @@
 
 
 <h1>Meine Projekte</h1>
-<%= link_to 'New Project', new_project_path, :class => "MenuButton" %>
-<input type="Button" value="Projekt suchen" id="ProjectSearchButton" class="MenuButton" />
-<p>
+<div class="SubMenu">
+  <%= link_to 'New Project', new_project_path, :class => "MenuButton" %>
+  <input type="Button" value="Projekt suchen" id="searchButton" class="MenuButton" />
+</div>
 
 
-<table class="ProjectList">
+<table id="searchTable">
   <thead>
     <tr>
       <th class="Title TitleHead">Title</th>
@@ -16,15 +17,14 @@
 
     </tr>
     <tr>
-      <th class=""><input type="text" id="ProjectTitleSearch" style="display: none;" /></th>
-      <th class=""><input type="text" id="ProjectContentSearch" style="display: none;" /></th>
+      <th colspan="2"><input type="text" class="SearchInputField" id="searchTableRows" /></th>
       <th></th>
 
     </tr>
   </thead>
   <tbody>
 <% @projects.each do |project| %>
-  <tr class="ProjectSearchRow Show">
+  <tr class="SearchRow Show">
     <td class="Title"><%= link_to project.title, project %></td>
     <td class="Content"><%= project.content %></td>
     <td>

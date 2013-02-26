@@ -18,4 +18,13 @@ class Image < ActiveRecord::Base
     :xtraLarge => "1024*1024>" }
 
     accepts_nested_attributes_for :project
+
+    def self.get_Current_user_images curId, params
+      Image.joins(:project).where(:projects => {:user_id => curId}).paginate(:page => params,
+      :per_page => 20,
+      :order => 'created_at DESC') 
+    end
+
+
+
 end

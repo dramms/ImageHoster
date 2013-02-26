@@ -6,6 +6,7 @@ gem 'devise', '2.1.2'
 gem 'dynamic_form'
 
 gem 'paperclip'
+gem 'will_paginate', '~> 3.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
