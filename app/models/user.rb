@@ -31,12 +31,25 @@ class User < ActiveRecord::Base
 	has_many :message_infos
 
 	has_many :projects
-	has_attached_file :avatar, :styles => {:medium => "300x300>", :thumb => "100x100>", :miniThumb => "50x50>"}
+	has_attached_file :avatar, 
+			:storage => :dropbox, 
+			:dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
+			:styles => {:medium => "300x300", :thumb => "100x100", :miniThumb => "50x50"},
+			#:dropbox_options => { :path => proc {|style| "#{style}/#{id}_#{avatar.original_filename}"}}
+			:dropbox_options => { :path => proc {|style| "avatar/#{id}/#{style}/#{avatar.original_filename}"}}
 
-	def self.search(search_first_name, search_last_name)
+	def self.search(search_first_name, search_last_name, uid)
 		search_condition = search_first_name
 		search_condition_last = search_last_name
-		find(:all, :conditions => ['first_name like ? AND last_name like ?', '%' + search_condition + '%', '%' + search_condition_last + '%'])
+		temp = find(:all, :conditions => ['lower(first_name) like ? AND lower(last_name) like ?', '%' + search_condition + '%', '%' + search_condition_last + '%'])
+		result = Array.new
+		temp.each do |t|
+			a = Friend.where(:user_id => uid, :friend_id => t.id).count
+			if a == 0
+				result << t
+			end
+		end
+		return result
 	end
 
 	def self.find_friends uid
@@ -45,6 +58,10 @@ class User < ActiveRecord::Base
 
 	def self.find_requests uid
 		User.joins(:friend_requestss).where(:friend_requests => {:friend_id => uid})
+	end
+
+	def self.find_own_requests uid
+		User.joins(:friend_requestss).where(:friend_requests => {:user_id => uid})
 	end
 
 	def name

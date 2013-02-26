@@ -5,7 +5,7 @@ gem 'jquery-rails'
 gem 'devise', '2.1.2'
 gem 'dynamic_form'
 
-gem 'paperclip'
+gem 'paperclip-dropbox'
 gem 'will_paginate', '~> 3.0.0'
 gem 'heroku'
 # Bundle edge Rails instead:

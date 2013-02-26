@@ -40,16 +40,27 @@ describe Message do
 
 	it "new conversation" do
 		click_link "newMessage"
-		
-
+		page.should have_content "Sascha Nonte"
+		page.should have_content "Thema eingeben"
+		page.should have_content "Inhalt"
 	end
 
 	it "new answer" do
-
+		click_link "showConversation1"
+		page.should have_content "Dominic Ramms"
+		page.should have_content "Sascha Nonte"
+		page.should have_content "Marvin Caspar"
+		page.should_not have_content "Tobias Prein"
 	end
 
 	it "add user" do
-
+		User.new(:email => "tk@mymail.com", :first_name => "Till", :last_name => "Krueger", :password => "123456").save
+		Friend.new(:user_id => 1, :friend_id => 5).save
+		Friend.new(:user_id => 5, :friend_id => 1).save
+		click_link "showConversation1"
+		page.should have_content "Till Krueger"
+		click_button "addUser"
+		page.should_not have_content "Till Krueger"
 	end
 
 	it "see if new message info appers" do

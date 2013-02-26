@@ -4,10 +4,6 @@ class MessagesController < ApplicationController
 		@conversations = Conversation.get_conversations current_user.id
 		MessageInfo.delete_info current_user.id
 		if params[:conv_id].present?
-			#@message = Message.get_ordered_messages params[:conv_id]
-			#@message = Message.paginate(:page => params[:page], :per_page   => 2,
-			#				:order      => 'created_at DESC',
-             #              :conditions => { :conv_id => params[:conv_id] })
 			@message = Message.where(:conversation_id => params[:conv_id]).paginate(:page => params[:page],
 			:per_page => 5,
 			:order => 'created_at DESC')
@@ -31,12 +27,17 @@ class MessagesController < ApplicationController
 	end
 
 	def create_conversation
-		Conversation.create_conversation params[:topic], current_user.id, params[:friend]
+		Conversation.create_conversation params[:topic], current_user.id, params[:friend], params[:answer]
 		redirect_to messages_path
 	end
 
 	def add_user
 		ConvUser.add_user params[:friend], params[:conv_id]
 		redirect_to messages_path(:conv_id => params[:conv_id])
+	end
+
+	def show_conversation
+		#message_info spalte für converstion_id hinzufügen, hierdrauf für Nachrichten verlinken
+		#Info aus message_info löschen
 	end
 end

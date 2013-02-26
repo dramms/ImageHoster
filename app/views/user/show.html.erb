@@ -7,7 +7,7 @@
 			
 			<% @friends.each do |f| %>
 				<tr>
-					<td class="Thumb"> <%= image_tag f.avatar(:miniThumb) %> </td>
+					<td class="Thumb"> <%= image_tag f.avatar.url(:miniThumb) %> </td>
 					<td class="UserName"><%= link_to f.name, :controller => "user", :action => "show", :user => f.id %></td>
 				</tr>
 			<% end %>

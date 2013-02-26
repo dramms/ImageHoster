@@ -8,8 +8,14 @@ class Friend < ActiveRecord::Base
 	validates :user_id,  
 						:uniqueness => {:scope => :friend_id}
 
-	#validates_association?
+	validate :not_name_person
 
+	#validates_association?
+	def not_name_person
+		if (user_id == friend_id)
+			errors.add(:same_person, "...")
+		end
+	end
 
 	def self.create_friendship uid, fid
 		Friend.create(:user_id => uid, :friend_id => fid)
@@ -24,6 +30,10 @@ class Friend < ActiveRecord::Base
 
 	def self.is_friend uid, fid
 		Friend.where(:user_id => uid, :friend_id => fid).count
+	end
+
+	def self.is_friendd uid
+		Friend.where(:user_id => uid)
 	end
 
 	def self.find_friends uid

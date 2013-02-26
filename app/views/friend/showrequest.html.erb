@@ -7,8 +7,13 @@
 			  	<li>
 			  		<%= link_to request.name, :controller => "user", :action => "show", :user => request.id %>
 			  		<%= f.hidden_field :id, :value => request.id %>
-			  		<%= f.submit "Annehmen", :id => "accept" %> 
-			  	</li><br><br>
+			  		<%= f.submit "Annehmen", :id => "accept" %>
+			  	
+			<% end %>
+			<%= form_for request, :url => { :action => "reject_friendship_request", :controller => "friend" } do |f|%>
+				<%= f.hidden_field :id, :value => request.id %>
+				<%= f.submit "Ablehnen", :id => "accept" %>
+				</li><br><br>
 			<% end %>
 		<% end %>
 	</ul>

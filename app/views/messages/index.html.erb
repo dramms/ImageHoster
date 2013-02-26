@@ -1,6 +1,6 @@
 <h1>Deine Nachrichten</h1>
 <div class="SubMenu">
-	<%= link_to "Neue Nachricht", messages_path(:new_message => true), :class=>"MenuButton" %>
+	<%= link_to "Neue Nachricht", messages_path(:new_message => true), :class=>"MenuButton", :id => "newMessage" %>
 </div>
 
 <% if @conversations.present? %>
@@ -15,7 +15,7 @@
 			<% @conversations.each do |c| %>
 			<tr>
 				<td>
-					<%= link_to c.topic, messages_path(:conv_id => c.id) %>
+					<%= link_to c.topic, messages_path(:conv_id => c.id), :id => "showConversation" + c.id.to_s %>
 				</td>
 			</tr>
 			<% end %>
@@ -54,7 +54,7 @@
 			<% end %>
 		</select><br>
 		<%= hidden_field_tag :conv_id, @conv_id %>
-		<%= submit_tag "Hinzufügen", :class => "MenuButton" %>
+		<%= submit_tag "Hinzufügen", :class => "MenuButton", :id => "addUser" %>
 	<% end %>
 </div>
 <%end%>
@@ -68,6 +68,8 @@
 				<% end %>
 			</select><br>
 			Thema eingeben: <%= text_field_tag :topic %><br>
+			Inhalt:<br>
+			<%= text_area_tag "answer", nil, :size => "50x10" %><br>
 			<%= submit_tag "Schreiben", :class=>"MenuButton" %>
 		<% end %>
 	<% end %>
