@@ -8,3 +8,5 @@ gem install rmagick
 1. Bundle Install
 2. Seeds ausführen
 3. Passwörter sind immer 123456
+
+sudo apt-get instlal postgresql
