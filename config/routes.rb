@@ -1,89 +1,39 @@
 ImageHoster::Application.routes.draw do
 
 	#encoding: utf-8
-#	resources :user
 	scope "(:locale)", :locale => /en|de/ do
 
 		get "start/index"
 		root :to => "start#index"
 		devise_for :users, :controllers => {:registrations => "registrations"}
 
-  	#resources :users
-
-		#resources :user
-
+		resources :user
+    post "user/show"
 
     resources :friends
-		get "user/home"
-		get "user/settings"
-    get "user/settings", :to => "user#settings"
-    post "user/settings", :to => "user#avatar_upload"
-    post "user/avatar_upload", :to => "user#avatar_upload"
-
-		post "edit/name", :to => "user#edit_name"
-		post "edit/email", :to => "user#edit_email"
-		put "edit/name", :to => "user#edit_name"
-		put "edit/email", :to => "user#edit_email"
-
-		get "user/test"
-		get "user/newtest"
-		get "change/pw", :to => "devise/password#edit"
-
-
     get "friend/search"
-    post "friend/search", :to => "friend#search"
-    put "friend/search", :to => "friend#send_friendship_request"   
-    get "friend/search", :to => "friend#send_friendship_request"
-
-    get "friend/delete_friendship", :to => "friend#delete_friendship"
-    put "friend/delete_friendship", :to => "friend#delete_friendship"
-
     get "friend/showrequest"
-    put "friend/showrequest", :to => "friend#accept_friendship_request"
-    get "friend/showrequest", :to => "friend#accept_friendship_request"
-    get "friend/accept_friendship_request", :to => "friend#accept_friendship_request"
-    put "friend/accept_friendship_request", :to => "friend#accept_friendship_request"
-    get "friend/delete_friendship_request", :to => "friend#delete_friendship_request"
-    put "friend/delete_friendship_request", :to => "friend#delete_friendship_request"
-    post "friend/showrequest"
-
     get "friend/showfriends"
-    get "friend/showfriends", :to => "friend#delete_friendship"
-    put "friend/showfriends", :to => "friend#delete_friendship"
-
-    get "user/profile"
-    post "user/profile"
-    get "user/profile", :to => "user#show_profile"
-    put "user/profile", :to => "friend#search"
-    post "user/profile", :to => "friend#send_friendship_request"
-    put "user/profile", :to => "friend#send_friendship_request"
-    get "user/profile", :to => "user#send_friendship_request"
-
-    get "friend/send_friendship_request", :to => "friend#send_friendship_request"
-    put "friend/send_friendship_request", :to => "friend#send_friendship_request"
-
-    get "images/show", :to => "images#addComment"
-    get "images/addComment", :to => "images#addComment"
-    post "images/addComment", :to => "images#addComment"
-
-
-
-		resources :file_uploads
-
-		get "user/searchforfriend"
-		put "user/searchforfriend", :to => "user#search_user"
-		put "user/searchforfriend", :to => "user#search"
+    put "friend/delete_friendship"
+    post "friend/search"
+    post "friend/send_friendship_request"
+    put "friend/send_friendship_request"
+    post "friend/accept_friendship_request"
+    put "friend/accept_friendship_request"
+    put "friend/delete_friendship_request"
 
     resources :messages
     post "messages/create_answer"
     post "messages/create_conversation"
     post "messages/add_user"
 
-   
-    resources :images
-    resources :projects
     resources :file_uploads
+    resources :images
+    get "images/show", :to => "images#addComment"
+    get "images/addComment", :to => "images#addComment"
+    post "images/addComment", :to => "images#addComment"
 
+    resources :projects
 	end
 
   # The priority is based upon order of creation:

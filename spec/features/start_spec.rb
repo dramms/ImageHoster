@@ -2,6 +2,10 @@ require 'spec_helper.rb'
 
 describe Message do
 
+	before :all do
+		User.new(:email => "dr@mymail.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456").save
+	end
+
 	it "testing start page" do
 		visit "/"
 		page.should have_content "Sign in"

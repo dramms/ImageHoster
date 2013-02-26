@@ -5,9 +5,9 @@
 		<% @requests.each do |request| %>
 			<%= form_for request, :url => { :action => "accept_friendship_request", :controller => "friend" } do |f|%>
 			  	<li>
-			  		<%= link_to request.first_name + " " + request.last_name, :controller => "user", :action => "show_profile", :user => request.id %>
+			  		<%= link_to request.name, :controller => "user", :action => "show", :user => request.id %>
 			  		<%= f.hidden_field :id, :value => request.id %>
-			  		<%= f.submit "Annehmen" %> 
+			  		<%= f.submit "Annehmen", :id => "accept" %> 
 			  	</li><br><br>
 			<% end %>
 		<% end %>

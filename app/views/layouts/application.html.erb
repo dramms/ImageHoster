@@ -19,7 +19,7 @@
 			</div>
 			<% if user_signed_in? %>
 			<ul>
-				<li><div class="MenuButton"><%= link_to 'Home', user_home_path, :id => "home" %></div></li>
+				<li><div class="MenuButton"><%= link_to 'Home', user_index_path, :id => "home" %></div></li>
 				<li><div class="MenuButton"><%= I18n.t('main.pictures') %></div>
 					<ul>
 						<li><div class="MenuButton"><%= link_to I18n.t('main.myProjects'), projects_path, :id => "showProjects" %></div></li>
@@ -48,8 +48,8 @@
 			<ul class="LogOut">
 				<li><div class="MenuButton"><%= I18n.t('main.settings') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= link_to "Einstellungen", user_settings_path, :id => "settings" %></div></li>
-						<li><div class="MenuButton"><%= link_to "Profil", user_profile_path, :id => "profile" %></div></li>
+						<li><div class="MenuButton"><%= link_to "Einstellungen", :controller => "user", :action => "edit", :id => "settings" %></div></li>
+						<li><div class="MenuButton"><%= link_to "Profil", user_show_path, :id => "profile" %></div></li>
 					</ul>
 				</li>
 				<li><div class="MenuButton"><%= link_to I18n.t('main.sign_out'), destroy_user_session_path, :id => "sign_out", :method => :delete %></div></li>

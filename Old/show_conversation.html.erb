@@ -1,0 +1,14 @@
+<h1>Nachricht</h1>
+
+<% if @message.present? %>
+	<% @message.each do |m| %>
+		<%= m.content %><br>
+	<% end %>
+<% end %>
+<br>
+Antworten
+<%= form_tag messages_create_answer_path do %>
+	<%= text_area_tag "answer", nil, :size => "50x10" %><br>
+	<%= hidden_field_tag :conv_id, @conv_id %>
+	<%= submit_tag "Antworten" %>
+<% end %>

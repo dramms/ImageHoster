@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 	before_filter :set_locale
 	before_filter :get_message_info
 
+	helper :all
+
 	def get_message_info
 		if user_signed_in?
 			@message_info = MessageInfo.new_message current_user.id
@@ -21,6 +23,6 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_in_path_for(resource)
-		user_home_path
+		user_index_path
 	end
 end

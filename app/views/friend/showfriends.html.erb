@@ -17,11 +17,11 @@
 				<%= image_tag friend.avatar(:miniThumb) %>
 			</td>
 				<td class="UserName">
-					<%= link_to friend.first_name + " " + friend.last_name, :controller => "user", :action => "show_profile", :user => friend.id %>
+					<%= link_to friend.name, :controller => "user", :action => "show", :user => friend.id %>
 				</td>
 				<td>
 					<%= f.hidden_field :id, :value => friend.id %>
-					<%= f.submit "Freundschaft löschen", :class => "MenuButton" %>
+					<%= f.submit "Freundschaft löschen", :class => "MenuButton", :id => "deleteFriendship" + friend.id.to_s %>
 				</td>
 			<% end %>
 		</tr>
