@@ -1,6 +1,6 @@
 require 'spec_helper.rb'
 
-describe Friend do
+describe Project do
 
 	before :each do
 		User.new(:email => "dr@mymail.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456").save
@@ -20,7 +20,42 @@ describe Friend do
 	end
 
 	it "is valid new project" do
-		
+		click_link "project"
+		page.should have_content "Meine Projekte"
+		click_link "newProject"
+		fill_in "project_title", :with => "Test Titel"
+		fill_in "project_content", :with => "Test Content"
+		click_button "createProject"
+		page.should have_content "Test Titel"
+	end
+
+	it "can show a project" do
+		Project.create(:title => "Test Project", :user_id => 1, :content => "Test Content")
+		click_link "project"
+		page.should have_content "Test Project"
+		visit "projects/1"
+		page.should have_content "Test Project"
+	end
+
+	it "can edit a project" do
+		Project.create(:title => "Test Project", :user_id => 1, :content => "Test Content")
+		click_link "project"
+		page.should have_content "Test Project"
+		visit "projects/1/edit"
+		page.should have_content "Editing project"
+		fill_in "project_title", :with => "Test Titel"
+		fill_in "project_content", :with => "Test Content"
+		click_button "createProject"
+		page.should have_content "Test Titel"
+	end
+
+	it "can delete a project" do
+		Project.create(:title => "Test Project", :user_id => 1, :content => "Test Content")
+		click_link "project"
+		page.should have_content "Test Project"
+		click_link "delete1"
+		page.should have_content "Meine Projekte"
+		page.should_not have_content "Test Project"
 	end
 
 end

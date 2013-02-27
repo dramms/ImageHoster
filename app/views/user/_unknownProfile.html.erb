@@ -8,7 +8,7 @@
 					<% @users.each do |user| %>
 						<%= form_for user, :url => friend_delete_friendship_request_path do |f| %>
 					  		<%= f.hidden_field :id, :value => @user_id %>
-					  		<%= f.submit "Anfrage zurückziehen", :class => "MenuButton" %>
+					  		<%= f.submit "Anfrage zurückziehen", :class => "MenuButton", :id => "rejectRequest" %> %>
 						<% end %>
 					<% end %>
 				<% elsif @other_user_request == 1 %>

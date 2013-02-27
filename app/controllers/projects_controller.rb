@@ -77,7 +77,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
 
-    if @project.user_id == current_user.user_id
+    if @project.user_id == current_user.id
       @project.destroy
     end
 

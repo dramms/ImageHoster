@@ -63,15 +63,26 @@ describe Message do
 		page.should have_content "Till Krueger"
 	end
 
-	it "see if new message info appers" do
-
-	end
-
-	it "see if new message info disapears" do
-
-	end
-
 	it "send message from friend profile" do
+		visit "/de/user/show?user=2"
+		fill_in "topic", :with => "Test Topic"
+		fill_in "content", :with => "Inhalt"
+		click_button "sendMessage"
+		page.should have_content "Test Topic"
+	end
 
+	it "delete user from message" do
+		click_link "showConversation1"
+		click_button "deleteFromConv"
+		page.should_not have_content "Spass"
+	end
+
+	it "deletes conversation" do
+		Conversation.create(:topic => "Test")
+		ConvUser.create(:user_id => 1, :conversation_id => 2)
+		click_link "message"
+		click_link "showConversation2"
+		click_button "deleteFromConv"
+		page.should_not have_content "Test"
 	end
 end

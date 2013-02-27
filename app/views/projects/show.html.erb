@@ -16,7 +16,7 @@
       <div class="PictureToolbar">
           <div class="PictureToolbarIcon"><%= link_to image_tag("/assets/show.png", :border=>0), image %></div>
       </div>
-<%= link_to image_tag(image.images(:small)), image %>
+<%= link_to image_tag(image.images(:small)), image, :id => "image" + image.id.to_s %>
 </div>
 <% end %>
 </p>

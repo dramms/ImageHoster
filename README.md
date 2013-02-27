@@ -21,6 +21,7 @@ Test-URL: http://imagehosterdr.herokuapps.com
 1.3.1 Vor jedem ausführen der Seeds müssen die Ordner: "Apps/imagehoster/avatar" und "Apps/imagehoster/images" in der Dropbox gelöscht werden, da es sonst zu Problemen mit bereits existierenden Dateinamen geben kann!
 1.3.2 Das ausführen der Seeds kann länger dauern, da einige Bilder auf Dropbox geladend werden müssen
 1.3.3 PostGreSQL muss installiert sein (gem wegen Heroku)
+1.3.4 Es muss ImageMagick installiert sein, damit Paperclip funktioniert (sudo apt-get install imagemagick imagemagick-doc)
 
 
 2) Applikation
@@ -37,30 +38,4 @@ Test-URL: http://imagehosterdr.herokuapps.com
 2.2.2)
 
 2.3) Funktionen
-
-
-
-
-Name:	Image
-Nach:	Hoster
-image.hoster@gmx.de
-passwd: imagehoster123
-
-
-DROPBOX
-Name: Image
-Nach:	Hoster
-Mail: image.hoster@gmx.de
-passwd: imagehoster123
-
-App name	
-App status	 					Development (Apply for production status)
-App key								rirzg3k330zg8a3
-App secret						lb93gsg1e0hj5r5
-Access type						App folder
-Name of app folder		imagehoster
-
-rake dropbox:authorize APP_KEY=rirzg3k330zg8a3 APP_SECRET=lb93gsg1e0hj5r5 ACCESS_TYPE=App folder
-
-rake dropbox:authorize APP_KEY=huzinzmpiicmdat APP_SECRET=q1u00nrovbzjrew ACCESS_TYPE=Full Dropbox
 

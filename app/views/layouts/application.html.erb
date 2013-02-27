@@ -22,7 +22,7 @@
 				<li><div class="MenuButton"><%= link_to 'Home', user_index_path, :id => "home" %></div></li>
 				<li><div class="MenuButton"><%= I18n.t('main.pictures') %></div>
 					<ul>
-						<li><%= link_to projects_path do %>
+						<li><%= link_to projects_path, :id => "project" do %>
 							<div class="MenuButton"><%= I18n.t('main.myProjects') %></div>
 						<% end %></li>
 						<li><%= link_to images_path do %>
