@@ -19,6 +19,8 @@ describe Friend do
 		click_button "sign_in_button"
 	end
 
-	
+	it "is valid new project" do
+		
+	end
 
 end

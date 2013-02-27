@@ -1,3 +1,4 @@
+
 Eigene Anfragen <br>
 
 
@@ -8,4 +9,16 @@ Eigene Anfragen <br>
 	<% end %>
 <% end %>
 
-Under Construction!
+Eigene Anfragen <br><br>
+
+<% if @requests.present? %>
+	<% @requests.each do |r| %>
+		<%= form_for r, :url => friend_delete_friendship_request_path do |f| %>
+			<%= f.hidden_field :id, :value => r.id %>
+			<%= r.name %>
+			<%= f.submit "Zurückziehen", :id => "deleteRequest" %>
+		<% end %>
+	<% end %>
+<% end %>
+<br>
+

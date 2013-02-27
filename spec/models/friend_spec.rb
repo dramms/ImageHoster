@@ -32,15 +32,22 @@ describe Friend do
 		Friend.is_friend(1, 2).should == 1
 	end
 
-	it "find_friends" do
-
-	end
-
-	it "find_requests" do
-
-	end
-
 	it "find_not_in_conversations" do
+		User.new(:email => "dr@mymail.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456").save
+		User.new(:email => "sn@mymail.com", :first_name => "Sascha", :last_name => "Nonte", :password => "123456").save
+		u1 = User.new({"email"=>"mc@mymail.com", "first_name"=>"Marvin", "last_name"=>"Caspar", "password"=>"123456"})
+		u1.save
 
+		Friend.new(:user_id => 1, :friend_id => 2).save
+		Friend.new(:user_id => 2, :friend_id => 1).save
+		Friend.new(:user_id => 1, :friend_id => 3).save
+		Friend.new(:user_id => 3, :friend_id => 1).save
+
+		Conversation.create(:topic => "Test")
+		ConvUser.create(:conversation_id => 1, :user_id => 1)
+		ConvUser.create(:conversation_id => 1, :user_id => 2)
+
+		u2 = Friend.find_not_in_conversation 1, 1
+		u2[0].should == u1
 	end
 end

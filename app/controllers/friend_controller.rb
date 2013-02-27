@@ -4,12 +4,18 @@ class FriendController < ApplicationController
 
 	def search
 		if params[:search]
-			@users = User.search params[:search], params[:search_last_name], current_user.id.to_s
-			if @users.length > 0
-				user = @users[0]
-				@is_friend = Friend.is_friend current_user.id, user.id
+
+			if (params[:search] == "" || params[:search_last_name] == "")
+
+			else
+				@users = User.search params[:search], params[:search_last_name], current_user.id.to_s
+				if @users.length > 0
+					user = @users[0]
+					@is_friend = Friend.is_friend current_user.id, user.id
+				end
+				render :action => 'search'
 			end
-			render :action => 'search'
+			
 		end
 	end
 
