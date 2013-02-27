@@ -55,6 +55,12 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     diff-lcs (1.1.3)
+    dropbox (1.3.0)
+      json (>= 1.2.0)
+      multipart-post (>= 1.1.0)
+      oauth (>= 0.3.6)
+    dropbox-sdk (1.5.1)
+      json
     dynamic_form (1.1.4)
     erubis (2.7.0)
     excon (0.16.10)
@@ -87,8 +93,10 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.3.7)
+    multipart-post (1.2.0)
     netrc (0.7.7)
     nokogiri (1.5.5)
+    oauth (0.4.7)
     orm_adapter (0.4.0)
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
@@ -96,6 +104,12 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.4.0)
       mime-types
+    paperclip-dropbox (1.1.2)
+      dropbox-sdk (~> 1.3)
+      paperclip (~> 3.1)
+    paperclipdropbox (1.0.9)
+      dropbox
+      paperclip
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -175,10 +189,13 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 3.2.1)
   devise (= 2.1.2)
+  dropbox
   dynamic_form
   heroku
   jquery-rails
   paperclip
+  paperclip-dropbox
+  paperclipdropbox
   rails (= 3.2.9)
   rspec-rails
   sass-rails (~> 3.2.3)

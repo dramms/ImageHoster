@@ -31,7 +31,10 @@ class User < ActiveRecord::Base
 	has_many :message_infos
 
 	has_many :projects
-	has_attached_file :avatar, :styles => {:medium => "300x300>", :thumb => "100x100>", :miniThumb => "50x50>"}
+	has_attached_file :avatar,  	:styles => {:medium => "300x300>", :thumb => "100x100>", :miniThumb => "50x50>"},
+								    :storage => :Dropboxstorage,
+									:path => proc { |style| "avatars/:attachment/:id/:style/:filename" }
+                    				#:path => "avatars/:attachment/:attachment/:id/:style/:filename"
 
 	def self.search(search_first_name, search_last_name)
 		search_condition = search_first_name
