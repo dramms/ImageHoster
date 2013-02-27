@@ -1,0 +1,5 @@
+development:
+  dropbox_key: dropbox_developer_key   <--- This are not required unless you are modding the gem
+  dropbox_secret: dropbox_developer_secret   <--- This are not required unless you are modding the gem
+  path: "/:attachment/:attachment/:id/:style/:filename"
+

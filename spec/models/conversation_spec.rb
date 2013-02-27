@@ -56,7 +56,7 @@ describe Conversation do
 	end
 
 	it "create conversations" do
-		Conversation.create_conversation("Topic", 1, 2)
+		Conversation.create_conversation("Topic", 1, 2, "Nachricht")
 		c = Conversation.find(1)
 		Conversation.exists?(c).should == true
 	end

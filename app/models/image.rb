@@ -15,7 +15,11 @@ class Image < ActiveRecord::Base
     :medium => "300x300#",
     :large =>   "400x400#",
     :middleLarge => "700x700>",
-    :xtraLarge => "1024*1024>" }
+    :xtraLarge => "1024x1024>" },
+    :storage => :dropbox, 
+      :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
+      :dropbox_options => { :path => proc {|style| "images/#{id}/#{style}/#{images.original_filename}"}}
+      
 
     accepts_nested_attributes_for :project
 

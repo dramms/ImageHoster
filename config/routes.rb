@@ -14,6 +14,7 @@ ImageHoster::Application.routes.draw do
     get "friend/search"
     get "friend/showrequest"
     get "friend/showfriends"
+    get "friend/show_own_requests"
     put "friend/delete_friendship"
     post "friend/search"
     post "friend/send_friendship_request"
@@ -21,6 +22,7 @@ ImageHoster::Application.routes.draw do
     post "friend/accept_friendship_request"
     put "friend/accept_friendship_request"
     put "friend/delete_friendship_request"
+    put "friend/reject_friendship_request"
 
     resources :messages
     post "messages/create_answer"

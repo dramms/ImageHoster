@@ -10,7 +10,7 @@ class Conversation < ActiveRecord::Base
    has_many :users, :through => :conv_users
 
 	def self.get_conversations uid
-		user = ConvUser.where(:user_id => uid)
+		user = ConvUser.where(:user_id => uid).order(:created_at)
 		conversations = Array.new
 		user.each do |u|
 			conversations << u.conversation
@@ -18,11 +18,12 @@ class Conversation < ActiveRecord::Base
 		return conversations
 	end
 
-	def self.create_conversation topic, uid, fid
+	def self.create_conversation topic, uid, fid, content
 		conversation = Conversation.new
 		conversation.topic = topic
 		conversation.save
 		ConvUser.create(:user_id => uid, :conversation_id => conversation.id)
 		ConvUser.create(:user_id => fid, :conversation_id => conversation.id)
+		Message.send_message(conversation.id, uid, content)
 	end
 end

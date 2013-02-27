@@ -34,14 +34,15 @@ describe User do
 	it "didn't return a search user by its first and last name" do
 		u = User.new(:email => "dominic@ramms.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456")
 		u.save
-		u1 = User.search("Sascha", "Nonte")
+		u1 = User.search("Sascha", "Nonte", 1)
 		u1[0].should_not == u
 	end
 
 	it "returns a search user by its first and last name" do
-		u = User.new(:email => "dominic@ramms.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456").save
+		User.new(:email => "dominic@ramms.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456").save
+		#User.new(:email => "sascha@nonte.com", :first_name => "Sascha", :last_name => "Nonte", :password => "123456").save
 		u = User.find(1)
-		u1 = User.search("Dominic", "Ramms")
+		u1 = User.search("Dominic", "Ramms", 2)
 		u1[0].should == u
 	end
 

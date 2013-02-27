@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
 <h1>Freunde suchen</h1>
 <p>
 <%= form_tag :controller => 'friend', :action => 'search' do %>
@@ -22,23 +26,25 @@
 			</tr>
 		</thead>
 		<tbody>
-<%= @is_friend %>
 <% if @users.present? %>
 
-
 		<% @users.each do |users| %>
-			<%= form_for @users, :url => { :action => "send_friendship_request", :controller => "friend" } do |f|%>
-			  	<tr>
-			  		<td class="Thumb"><%= image_tag users.avatar(:miniThumb) %></td>
-			  		<td class="UserName"><%= link_to users.name, :controller => "user", :action => "show", :user => users.id %></td>
-			  		<%= f.hidden_field :id, :value => users.id %>
-			  		
-			  		<% if @is_friend == 1 %>
-			  			<td>Ist bereits dein Freund</td>
-			  		<% else %>
-			  			<td><%= f.submit "Send Request", :class => "MenuButton", :id => "sendRequest" %> </td>
-			  		<% end %>
-			  	</tr>
+			<% if users.id == current_user.id %>
+
+			<% else %>
+				<%= form_for @users, :url => { :action => "send_friendship_request", :controller => "friend" } do |f|%>
+				  	<tr>
+				  		<td class="Thumb"><%= image_tag users.avatar(:miniThumb) %></td>
+				  		<td class="UserName"><%= link_to users.name, :controller => "user", :action => "show", :user => users.id %></td>
+				  		<%= f.hidden_field :id, :value => users.id %>
+				  		
+				  		<% if @is_friend == 1 %>
+				  			<td>Ist bereits dein Freund</td>
+				  		<% else %>
+				  			<td><%= f.submit "Send Request", :class => "MenuButton", :id => "sendRequest" %> </td>
+				  		<% end %>
+				  	</tr>
+				<% end %>
 			<% end %>
 		<% end %>
 	</tbody>
