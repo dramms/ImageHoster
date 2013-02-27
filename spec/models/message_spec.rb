@@ -25,12 +25,4 @@ describe Message do
 		m = Message.new(:conversation_id => 1, :user_id => 1, :content => "Test123")
 		m.should be_valid
 	end
-
-	it "get ordered messages" do
-
-	end
-
-	it "send at" do
-
-	end
 end

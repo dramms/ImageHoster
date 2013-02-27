@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
 			:storage => :dropbox, 
 			:dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
 			:styles => {:medium => "300x300", :thumb => "100x100", :miniThumb => "50x50"},
-			#:dropbox_options => { :path => proc {|style| "#{style}/#{id}_#{avatar.original_filename}"}}
 			:dropbox_options => { :path => proc {|style| "avatar/#{id}/#{style}/#{avatar.original_filename}"}}
 
 	def self.search(search_first_name, search_last_name, uid)
@@ -61,7 +60,7 @@ class User < ActiveRecord::Base
 	end
 
 	def self.find_own_requests uid
-		User.joins(:friend_requestss).where(:friend_requests => {:user_id => uid})
+		User.find_by_sql ("SELECT users.* FROM users INNER JOIN friend_requests AS fs ON users.id = fs.friend_id WHERE fs.user_id = " + uid.to_s)
 	end
 
 	def name

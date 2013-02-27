@@ -26,6 +26,12 @@ describe User do
 		u.should_not be_valid
 	end
 
+	it "is a valid user" do
+		u = User.new(:email => "dominic@ramms.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456")
+		u.should be_valid
+	end
+
+	#methods
 	it "returns a users full name as a string" do
 		u = User.new(:email => "dominicramms.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456")
 		u.name.should == "Dominic Ramms"
@@ -47,10 +53,31 @@ describe User do
 	end
 
 	it "find friends" do
-
+		User.new(:email => "dr@mymail.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456").save
+		u1 = User.new(:email => "sn@mymail.com", :first_name => "Sascha", :last_name => "Nonte", :password => "123456")
+		u1.save
+		#User.new(:email => "mc@mymail.com", :first_name => "Marvin", :last_name => "Caspar", :password => "123456").save
+		Friend.new(:user_id => 1, :friend_id => 2).save
+		Friend.new(:user_id => 2, :friend_id => 1).save
+		u2 = User.find_friends 1
+		u2[0].should == u1
 	end
 
 	it "find requests" do
+		User.new(:email => "dr@mymail.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456").save
+		u1 = User.new(:email => "sn@mymail.com", :first_name => "Sascha", :last_name => "Nonte", :password => "123456")
+		u1.save
+		FriendRequests.new(:user_id => 2, :friend_id => 1).save
+		u2 = User.find_requests 1
+		u2[0].should == u1
+	end
 
+	it "find own requests" do
+		User.new(:email => "dr@mymail.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456").save
+		u1 = User.new(:email => "sn@mymail.com", :first_name => "Sascha", :last_name => "Nonte", :password => "123456")
+		u1.save
+		FriendRequests.new(:user_id => 1, :friend_id => 2).save
+		u2 = User.find_own_requests 1
+		u2[0].should == u1
 	end
 end

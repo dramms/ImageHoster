@@ -2,6 +2,16 @@ class Image < ActiveRecord::Base
   belongs_to :project
   has_many :imageComments
   attr_accessible :content, :title, :images, :project_id
+
+  validates :title,
+            :presence => true,
+            :length => { :minimum => 2 };
+
+  validates :project_id,
+            :presence => true;
+
+  validates :images,
+            :presence => true;
   
 	validates_presence_of :title, :on => :create, :message => "can't be blank"
 	validates_presence_of :content, :on => :create, :message => "can't be blank"
@@ -18,7 +28,6 @@ class Image < ActiveRecord::Base
     :xtraLarge => "1024*1024>" },
     :storage => :dropbox, 
       :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
-      #:dropbox_options => { :path => proc {|style| "#{style}/#{id}_#{avatar.original_filename}"}}
       :dropbox_options => { :path => proc {|style| "images/#{id}/#{style}/#{images.original_filename}"}}
       
 

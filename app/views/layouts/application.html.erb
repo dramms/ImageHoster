@@ -38,7 +38,8 @@
 					<ul>
 						<li><div class="MenuButton"><%= link_to I18n.t('main.myFriends'), friend_showfriends_path, :id => "myFriends" %></div></li>
 						<li><div class="MenuButton"><%= link_to I18n.t('main.findFriends'), friend_search_path, :id => "findFriends" %><div>
-						<li><div class="MenuButton"><%= link_to 'Anfragen anzeigen', friend_showrequest_path, :id => "showRequests" %>
+						<li><div class="MenuButton"><%= link_to 'Fremde Anfragen anzeigen', friend_showrequest_path, :id => "showRequests" %>
+						<li><div class="MenuButton"><%= link_to 'Eigene Anfragen anzeigen', friend_show_own_requests_path, :id => "showOwnRequests" %>
 						</div></li>
 					</ul>
 				</li>

@@ -39,15 +39,23 @@ describe Friend do
 		page.should have_content "Tobias Prein"
 	end
 
-	it "find friends search first name" do
+	it "should not find friend in search if only first name known" do
 		click_link "findFriends"
 		fill_in "search_field", :with => "Tobias"
 		click_button "search"
-		page.should have_content "Tobias Prein"
+		page.should_not have_content "Tobias Prein"
 	end
 
-	it "find friends search last name" do
+	it "should not find friend in search if only last name known" do
 		click_link "findFriends"
+		fill_in "search_field_last_name", :with => "Tobias"
+		click_button "search"
+		page.should_not have_content "Tobias Prein"
+	end
+
+	it "find friends search" do
+		click_link "findFriends"
+		fill_in "search_field", :with => "Tobias"
 		fill_in "search_field_last_name", :with => "Prein"
 		click_button "search"
 		page.should have_content "Tobias Prein"
@@ -55,6 +63,7 @@ describe Friend do
 
 	it "create request" do
 		click_link "findFriends"
+		fill_in "search_field", :with => "Tobias"
 		fill_in "search_field_last_name", :with => "Prein"
 		click_button "search"
 		click_button "sendRequest"

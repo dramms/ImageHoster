@@ -12,7 +12,7 @@
 			<% end %>
 			<%= form_for request, :url => { :action => "reject_friendship_request", :controller => "friend" } do |f|%>
 				<%= f.hidden_field :id, :value => request.id %>
-				<%= f.submit "Ablehnen", :id => "accept" %>
+				<%= f.submit "Ablehnen", :id => "reject" %>
 				</li><br><br>
 			<% end %>
 		<% end %>

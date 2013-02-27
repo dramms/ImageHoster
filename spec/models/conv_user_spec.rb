@@ -15,4 +15,12 @@ describe ConvUser do
 		u = ConvUser.new(:conversation_id => 1, :user_id => 1)
 		u.should be_valid
 	end
+
+	it "can add a user" do
+		User.create(:email => "dominic@ramms.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456")
+		Conversation.create(:topic => "Test Topic")
+		ConvUser.add_user(1, 1)
+		c = ConvUser.find(1)
+		c.should be_valid
+	end
 end
