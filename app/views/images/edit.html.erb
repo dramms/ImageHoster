@@ -1,6 +1,9 @@
-<h1>Editing image</h1>
-<%= link_to 'Show', @image, :class => "MenuButton" %> 
-<%= link_to 'Back', images_path, :class => "MenuButton" %>
+<div class="SubMenu">
+	<%= link_to 'Show', @image, :class => "MenuButton" %> 
+	<%= link_to 'Back', images_path, :class => "MenuButton" %>
+</div>
+<h1>Bild bearbeiten</h1>
+
 
 <p>
 <%= render 'form' %>

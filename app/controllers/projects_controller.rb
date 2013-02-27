@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
     @image = Image.where("project_id = " + params[:id])
-    end
+  end
 
   # POST /projects
   # POST /projects.json
@@ -77,8 +77,9 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
 
-
-    @project.destroy
+    if @project.user_id == current_user.user_id
+      @project.destroy
+    end
 
 
     respond_to do |format|

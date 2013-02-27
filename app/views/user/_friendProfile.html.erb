@@ -1,0 +1,60 @@
+<% @users.each do |user| %>
+			<%= form_for user, :url => friend_delete_friendship_path do |f|%>
+			<div class="SubMenu">
+		  		<%= f.hidden_field :id, :value => @user_id %>
+		  		<%= f.submit "Freundschaft löschen", :class => "MenuButton" %>
+		  		<input type="Button" value="Nachricht schicken" class="MenuButton" />
+		  	</div>
+			<% end %>
+		<p>
+			<h1>
+				<% if @thisUser.avatar? %>
+					<div class="ProfileThumb"><%= image_tag user.avatar(:medium) %></div>
+				<% else %>
+					
+				<% end %>
+				<%= @thisUser.first_name %>
+				<%= @thisUser.last_name %>'s Profil
+			</h1>
+			
+<div class="ProfileContainer">
+			<h3 class="ProjectHead"><%= user.first_name %> <%= user.last_name %>'s Projekte:</h3>
+			<table>
+				<tbody>
+				<% user.projects.each do |project| %>
+						<tr class="ProjectSearchRow Show">
+						    <td class="Title"><%= link_to project.title, project %></td>
+						    <td class="Content"><%= project.content %></td>
+						    <td>
+						      <%= link_to 'Show', project, :class => 'MenuButton' %>
+						      </td>
+						</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+<div class="ProfileContainer">
+		<h3 class="ProjectHead"><%= user.first_name %> <%= user.last_name %>'s Bilder:</h3>
+				<% user.projects.each do |project| %>
+						<% project.images.each do |image| %>
+								<div class="Picture"><%= link_to image_tag(image.images(:miniThumb)), image %></div>
+						<% end %>
+
+				<% end %>
+		<% end %>
+</div>
+<div class="ProfileContainer">
+		<h3 class="ProjectHead">Freunde:</h3>
+			<% if @friends.present? %>
+				<table>
+					<tbody>
+						<% @friends.each do |f| %>
+							<tr>
+								<td class="Thumb"><%= image_tag f.avatar(:miniThumb) %></td>
+								<td class="UserName"><%= link_to f.name, :controller => "user", :action => "show", :user => f.id %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% end %>
+</div>

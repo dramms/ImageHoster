@@ -1,7 +1,13 @@
 <% if @conversations.present? %>
+<table>
 	<% @conversations.each do |c| %>
-		<%= link_to c.topic, messages_show_conversation_path(:conv_id => c.id) %><br>
+		<tr>
+			<td>
+				<%= link_to c.topic, messages_show_conversation_path(:conv_id => c.id) %>
+			</td>
+		</tr>
 	<% end %>
+</table>
 <% end %>
 
 <%= link_to "Neue Nachricht", messages_new_conversation_path, :class => "MenuButton" %>

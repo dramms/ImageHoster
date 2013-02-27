@@ -6,7 +6,7 @@
 	<% end %>
 <% end %>
 <br>
-Antworten
+
 <%= form_tag messages_create_answer_path do %>
 	<%= text_area_tag "answer", nil, :size => "50x10" %><br>
 	<%= hidden_field_tag :conv_id, @conv_id %>

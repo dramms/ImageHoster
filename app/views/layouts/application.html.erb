@@ -22,24 +22,43 @@
 				<li><div class="MenuButton"><%= link_to 'Home', user_index_path, :id => "home" %></div></li>
 				<li><div class="MenuButton"><%= I18n.t('main.pictures') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.myProjects'), projects_path, :id => "showProjects" %></div></li>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.myPics'), images_path, :id => "showPictures" %></div></li>
+						<li><%= link_to projects_path do %>
+							<div class="MenuButton"><%= I18n.t('main.myProjects') %></div>
+						<% end %></li>
+						<li><%= link_to images_path do %>
+							<div class="MenuButton"><%= I18n.t('main.myPics') %></div>
+						<% end %></li>
 
 					</ul>
 				</li>
 				<li>
 					<% if @message_info %>
-						<div class="MenuButton"><%= link_to "Neue Nachrichten", messages_path, :id => "message" %></div>
+						<%= link_to messages_path do %>
+							<div class="MenuButton" id="message">Neue Nachrichten</div>
+						<% end %>
 					<% else %>
-						<div class="MenuButton"><%= link_to "Nachrichten", messages_path, :id => "message" %></div>
+					<%= link_to messages_path do %>
+							<div class="MenuButton" id="message">Nachrichten</div>
+						<% end %>
 					<% end %>
 				</li>
 				<li><div class="MenuButton"><%= I18n.t('main.friends') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.myFriends'), friend_showfriends_path, :id => "myFriends" %></div></li>
-						<li><div class="MenuButton"><%= link_to I18n.t('main.findFriends'), friend_search_path, :id => "findFriends" %><div>
-						<li><div class="MenuButton"><%= link_to 'Anfragen anzeigen', friend_showrequest_path, :id => "showRequests" %>
-						</div></li>
+						<li>
+							<%= link_to friend_showfriends_path, :id => "myFriends" do %>
+								<div class="MenuButton"><%= I18n.t('main.myFriends') %></div>
+							<% end %>
+						</li>
+						<li>
+							<%= link_to friend_search_path, :id => "findFriends" do %>
+								<div class="MenuButton"><%= I18n.t('main.findFriends') %></div>
+							<% end %>
+						</li>
+						<li>
+							<%= link_to friend_showrequest_path, :id => "showRequests" do %>
+								<div class="MenuButton">Anfragen anzeigen</div>
+							<% end %>
+						</li>
 					</ul>
 				</li>
 				
@@ -48,11 +67,23 @@
 			<ul class="LogOut">
 				<li><div class="MenuButton"><%= I18n.t('main.settings') %></div>
 					<ul>
-						<li><div class="MenuButton"><%= link_to "Einstellungen", :controller => "user", :action => "edit", :id => "settings" %></div></li>
-						<li><div class="MenuButton"><%= link_to "Profil", user_show_path, :id => "profile" %></div></li>
+						<li>
+							<%= link_to :controller => "user", :action => "edit", :id => "settings" do %>
+								<div class="MenuButton">Einstellungen</div>
+							<% end %>
+						</li>
+						<li><%= link_to user_show_path, :id => "profile" do %>
+								<div class="MenuButton">Profil</div>
+							<% end %>
+						</li>
 					</ul>
 				</li>
-				<li><div class="MenuButton"><%= link_to I18n.t('main.sign_out'), destroy_user_session_path, :id => "sign_out", :method => :delete %></div></li>
+				<li>
+					<li>
+						<%= link_to destroy_user_session_path, :id => "sign_out", :method => :delete do %>
+								<div class="MenuButton"><%= I18n.t('main.sign_out') %></div>
+							<% end %>
+					</li>
 			</ul>
 		</div>
 		<% end %>

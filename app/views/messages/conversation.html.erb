@@ -3,27 +3,34 @@
 		<%= link_to c.topic, messages_conversation_path(:conv_id => c.id) %><br>
 	<% end %>
 <% end %>
-
 <br>
 
 <%= link_to "Neue Nachricht", messages_conversation_path(:new_message => true), :class => "MenuButton" %>
 
 <h1>Nachricht</h1>
 
-<% if @message.present? %>
-	<% @message.each do |m| %>
-		<%= m.content %><br>
+	<% if @message.present? %>
+	<table>
+		<% @message.each do |m| %>
+		<tr>
+			<td>
+				<%= m.content %>
+			</td>
+		</tr>
+		<% end %>
 	<% end %>
-<% end %>
-<% if @is_answer %>
-	Antworten
-	<%= form_tag messages_create_answer_path do %>
-		<%= text_area_tag "answer", nil, :size => "50x10" %><br>
-		<%= hidden_field_tag :conv_id, @conv_id %>
-		<%= submit_tag "Antworten", :class => "MenuButton" %>
+		<% if @is_answer %>
+			<%= form_tag messages_create_answer_path do %>
+			<tr>
+				<td><%= text_area_tag "answer", nil, :size => "50x10" %><br/>
+				<%= hidden_field_tag :conv_id, @conv_id %>
+				<%= submit_tag "Antworten", :class => "MenuButton" %></td>
+				
+			</tr>
+			<% end %>
+	</table>
 	<% end %>
-<% end %>
-<br>
+
 
 <% if @friends.present? %>
 	<%= form_tag messages_create_conversation_path do %>	
