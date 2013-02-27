@@ -1,8 +1,8 @@
 
-<%= image_tag @image.images(:medium) %>   
+<%= image_tag @image.images(:medium), :class => "Picture" %>   
 <%= form_for @image, :html => {:multipart => true} do |f| %>
 
-       
+     <div class="MainDiv">  
         <table>
             <tr>
                 <th><%= f.label :title %></th>
@@ -21,6 +21,7 @@
                 <td><%= f.submit "Abschicken", :class => "MenuButton", :id => "editImage" %></td>
             </tr>
         </table>
+    </div>
 <%= f.hidden_field :project_id %>
 
     <% end %>

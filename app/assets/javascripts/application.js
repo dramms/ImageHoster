@@ -71,6 +71,16 @@ jQuery('#ProfileMessageButton').click(function(){
 	jQuery('#ProfileMessage').toggle();
 });
 
+/*****************************MessageButton on Profile***********************************************************/
+jQuery('.MessageTopic').mouseover(function(){
+	jQuery(this).next().next().show();
+	/*jQuery('.MessagesParticipants').show();*/
+});
+
+jQuery('.MessageTopic').mouseout(function(){
+
+	jQuery('.MessagesParticipants').hide();
+});
 
 
 });

@@ -1,15 +1,16 @@
-<div class="SubMenu">  
-  <%= link_to I18n.t('main.myProjects'), projects_path, :class => "MenuButton" %>
-  <%= link_to I18n.t('main.edit') , edit_project_path(@project), :class => "MenuButton" %>
+<div class="MainDiv">
+	<div class="SubMenu">  
+	  <%= link_to I18n.t('main.myProjects'), projects_path, :class => "MenuButton" %>
+	  <%= link_to I18n.t('main.edit') , edit_project_path(@project), :class => "MenuButton" %>
+	</div>
+	 
+	<h1><%= @project.title %></h1>
+	<p id="notice"><%= notice %></p>
+
+	<h4>
+	  <%= @project.content %>
+	</h4>
 </div>
- 
-<h1><%= @project.title %></h1>
-<p id="notice"><%= notice %></p>
-
-<h4>
-  <%= @project.content %>
-</h4>
-
 <p>
 <% @project.images.each do |image|%>
   <div class="Picture">
