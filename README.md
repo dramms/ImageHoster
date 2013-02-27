@@ -27,7 +27,7 @@ Test-URL: http://imagehosterdr.herokuapps.com
 2.1) Applikation ans laufen bekommen
 2.1.1) git pull...
 2.1.2) bundle install ausführen
-2.1.3) "rake dropbox:authorize APP_KEY=rirzg3k330zg8a3 APP_SECRET=lb93gsg1e0hj5r5 ACCESS_TYPE=app_folder" ausführen
+2.1.3) evtl. "rake dropbox:authorize APP_KEY=rirzg3k330zg8a3 APP_SECRET=lb93gsg1e0hj5r5 ACCESS_TYPE=app_folder" ausführen
 2.1.4) "rake db:migrate" ausführen
 2.1.5) "rake db:seeds" ausführen (Achtung: Kann einige Minuten dauern bis es durchgelaufen ist -> Fortschritt kann auf Dropbox beobachtet werden, indem geguckt wird ob die einzelnen Ordner unter Avatar und später under images angelegt werden)
 2.1.6) "rails s" ausführen um den Server zu starten

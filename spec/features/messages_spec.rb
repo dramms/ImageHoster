@@ -26,7 +26,7 @@ describe Message do
 		Message.create(:conversation_id => 1, :user_id => 2, :content => "Hallo, wie gehts?")
 		Message.create(:conversation_id => 1, :user_id => 3, :content => "Hallo, gut und euch?")
 
-		visit "/"
+		visit "/users/sign_in"
 		fill_in "user_email", :with => "dr@mymail.com"
 		fill_in "user_password", :with => "123456"
 		click_button "sign_in_button"
@@ -68,6 +68,10 @@ describe Message do
 	end
 
 	it "see if new message info disapears" do
+
+	end
+
+	it "send message from friend profile" do
 
 	end
 end

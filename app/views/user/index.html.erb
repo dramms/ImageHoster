@@ -2,30 +2,28 @@
 <h1>Willkommen <%= current_user.name %></h1>
 
 <div class="MainDiv">
-	<div>
-		<h3 class="ProjectHead">Freundschaftsanfragen:</h3>
-		<table>
-			<% current_user.friend_requestss.each do |r| %>
-				<tr>
-					<%= r.friend_id %>
-				</tr>
-			<% end %>
-		</table>
-	</div>
+	<% if @friend_requests.present? %>
+		<div>
+			<h3 class="ProjectHead">Freundschaftsanfragen:</h3>
+			<table>
+				<% @friend_requests.each do |r| %>
+					<tr>
+						<%= r.name %>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	<% end %>
 </div>
 <div class="MainDiv">
 	<h3 class="ProjectHead">Letzten Nachrichten:</h3>
 	<table>
-		<% current_user.conversations.order("created_at desc").each do |cu| %>
-			<% cu.messages.each do |m| %>
-				<tr>
-					<td class="MessageTime"><%= m.send_at %></td>
-					<td class="MessageTopic"><%= link_to cu.topic, messages_path %></td>
-					<td class="MessageContent"><%= link_to m.content, "/messages?conv_id="+cu.id.to_s %></td>
-				</tr>
-			<% end %>
+		<% @messages.each do |me| %>
+			<td class="MessageTime"><%= me.send_at %></td>
+				<td class="MessageTopic"><%= link_to me.conversation.topic, messages_path %></td>
+				<td class="MessageContent"><%= link_to me.content, "/messages?conv_id=" + me.conversation.id.to_s %></td>
+			</tr>
 		<% end %>
-
 	</table>
 </div>
 

@@ -12,7 +12,7 @@ describe Message do
 	end
 
 	it "testing sign in" do
-		visit "/"
+		visit "/users/sign_in"
 		fill_in "user_email", :with => "dr@mymail.com"
 		fill_in "user_password", :with => "123456"
 		click_button "sign_in_button"
@@ -21,7 +21,7 @@ describe Message do
 	end
 
 	it "testing sign out" do 
-		visit "/"
+		visit "/users/sign_in"
 		fill_in "user_email", :with => "dr@mymail.com"
 		fill_in "user_password", :with => "123456"
 		click_button "sign_in_button"

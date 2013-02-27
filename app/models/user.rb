@@ -62,9 +62,7 @@ class User < ActiveRecord::Base
 	end
 
 	def self.find_own_requests uid
-
 		User.find_by_sql ("SELECT users.* FROM users INNER JOIN friend_requests AS fs ON users.id = fs.friend_id WHERE fs.user_id = " + uid.to_s)
-
 	end
 
 	def name

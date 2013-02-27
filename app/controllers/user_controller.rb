@@ -4,6 +4,18 @@ class UserController < ApplicationController
 
 	def index
 		@users = User.all()
+		@friend_requests = User.find_requests current_user.id
+		conversation = current_user.conversations
+		@messages = Array.new
+
+		conversation.each do |c|
+			messages = c.messages
+			messages.each do |m|
+				@messages << m
+			end
+		end
+		@messages.sort!
+		@messages = @messages.take(10)
   	end
 
   	def show
@@ -41,7 +53,7 @@ class UserController < ApplicationController
   	end
 
   	def edit
-#  		redirect_to :controller => "user", :action => "edit"
+
   	end
 
   	def settings

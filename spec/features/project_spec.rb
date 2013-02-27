@@ -13,7 +13,7 @@ describe Friend do
 		Friend.new(:user_id => 1, :friend_id => 3).save
 		Friend.new(:user_id => 3, :friend_id => 1).save
 
-		visit "/"
+		visit "/users/sign_in"
 		fill_in "user_email", :with => "dr@mymail.com"
 		fill_in "user_password", :with => "123456"
 		click_button "sign_in_button"
