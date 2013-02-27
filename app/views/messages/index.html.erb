@@ -4,11 +4,11 @@
 </div>
 
 <% if @conversations.present? %>
-	<div style="width: 300px; min-height: 200px; float: left;">
+	<div class="MainDiv" style="width: 300px; min-height: 200px; float: left;">
 		<table>
 			<thead>
 				<tr>
-					<th>Nachrichten:</th>
+					<th><h3>Nachrichten:</h3></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,13 +28,14 @@
 
 <div style="float: left; padding-left: 20px;">
 <% if @message.present? %>
-
+<div class="MainDiv">
+	<h3>Messages:</h3>
 		<% @message.each do |m| %>
 			<%= m.user.name %> gesendet am: <%= m.send_at %><br>
 			<%= simple_format m.content %><br><br>
 		<% end %>
 		<%= will_paginate @message %>
-	
+</div>	
 <% end %>
 
 <% if @is_answer %>

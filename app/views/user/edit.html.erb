@@ -1,18 +1,14 @@
+
+
 <!--<% if flash[:notice] %>
 	<%= flash[:notice] %>
 <% end %>-->
-
-Edit
-
-<h1>
-	<% if current_user.avatar.url(:thumb).present? %>
-	<%= image_tag current_user.avatar.url(:thumb) %>
-	<% end %> Dein Profil</h1>
+<div class="MainDiv">
+<h1>Profileinstellungen</h1>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 
-	<%= devise_error_messages! %><br>
-
-<p>
+	<%= devise_error_messages! %>
+<div>
 	<table style="clear: both;">
 		<tr>
 			<th><%= I18n.t('settings.email') %>*</th>
@@ -35,20 +31,20 @@ Edit
 			<td><%= f.password_field :password_confirmation %></td>
 		</tr>
 		<tr>
-			<th><%= f.label "aktuelles Passwort*" %></th>
-			<td><%= f.password_field :current_password %></td>
+			<th><% if current_user.avatar? %><%= image_tag current_user.avatar.url(:thumb) %><% end %></th>
+			<td><%= f.file_field :avatar %></td>
 		</tr>
 		<tr>
-			<th></th>
-			<td><%= f.file_field :avatar %></td>
+			<th><%= f.label "aktuelles Passwort*" %></th>
+			<td><%= f.password_field :current_password %></td>
 		</tr>
 		<tr>
 			<th></th>
 			<td><%= f.submit "Update", data: { confirm: 'Sollen die Profildaten wirklich geändert werden?' }, :class => "MenuButton" %></td>
 		</tr>
 	</table>
-	Mit * gekenntzeichnete Felder müssen angegeben werden
-</p>	  
+	Mit * gekenntzeichnete Felder müssen angegeben werden  
 <% end %>
-
+</div>
+</div>
 

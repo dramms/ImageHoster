@@ -1,6 +1,4 @@
-<% if current_user.avatar? %><div class="ProfileThumb"><%= image_tag current_user.avatar(:medium) %> </div><% end %>
-
-
+<div class="MainDiv">
 <h1>Meine Projekte</h1>
 <div class="SubMenu">
   <%= link_to 'New Project', new_project_path, :class => "MenuButton" %>
@@ -35,5 +33,5 @@
 <% end %>
 </tbody>
 </table>
-</p>
+</div>
 

@@ -1,10 +1,14 @@
-Du bist nicht mit ... befreundet
+<div class="MainDiv">
+		<h1><%= @thisUser.first_name %> <%= @thisUser.last_name %>'s Profil</h1>
+		<% if @thisUser.avatar? %><div class="ProfileThumb"><%= image_tag @thisUser.avatar(:medium) %></div><% end %>
+
+<h4>Du bist nicht mit <%= @thisUser.first_name %> <%= @thisUser.last_name %> befreundet</h4>
 				<% if @current_user_request == 1 %>
 					<% users = [@user_id] %>
 					<% @users.each do |user| %>
 						<%= form_for user, :url => friend_delete_friendship_request_path do |f| %>
 					  		<%= f.hidden_field :id, :value => @user_id %>
-					  		<%= f.submit "Anfrage zurückziehen" %>
+					  		<%= f.submit "Anfrage zurückziehen", :class => "MenuButton" %>
 						<% end %>
 					<% end %>
 				<% elsif @other_user_request == 1 %>
@@ -12,7 +16,7 @@ Du bist nicht mit ... befreundet
 					<% @users.each do |user| %>
 						<%= form_for user, :url => friend_accept_friendship_request_path do |f| %>
 					  		<%= f.hidden_field :id, :value => @user_id %>
-					  		<%= f.submit "Freundschaft bestätigen", :id => "acceptRequest" %>
+					  		<%= f.submit "Freundschaft bestätigen", :class => "MenuButton", :id => "acceptRequest" %>
 						<% end %>
 					<% end %>
 				<% else %>
@@ -20,7 +24,8 @@ Du bist nicht mit ... befreundet
 					<% @users.each do |user| %>
 						<%= form_for user, :url => friend_send_friendship_request_path do |f| %>
 					  		<%= f.hidden_field :id, :value => @user_id %>
-					  		<%= f.submit "Freundschaft anfragen", :id => "sendRequest" %>
+					  		<%= f.submit "Freundschaft anfragen", :class => "MenuButton", :id => "sendRequest" %>
 						<% end %>
 					<% end %>
 				<% end %>
+</div>

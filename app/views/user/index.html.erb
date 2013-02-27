@@ -1,5 +1,4 @@
-<div class="ProfileThumb"><%= image_tag current_user.avatar(:medium) %> </div>
-<h1>Willkommen <%= current_user.name %></h1>
+<div class="MainDiv"><h1>Willkommen <%= current_user.name %></h1>
 
 <div class="MainDiv">
 	<% if @friend_requests.present? %>
@@ -17,6 +16,7 @@
 </div>
 <div class="MainDiv">
 	<h3 class="ProjectHead">Letzten Nachrichten:</h3>
+	<% if !current_user.conversations.empty? %>
 	<table>
 		<% @messages.each do |me| %>
 			<td class="MessageTime"><%= me.send_at %></td>
@@ -25,11 +25,12 @@
 			</tr>
 		<% end %>
 	</table>
-</div>
-
-
-<div class="MainDiv">
-<h3 class="ProjectHead"><%= link_to I18n.t('main.myProjects'), projects_path %>:</h2>
+	<% else %>
+		<h4>Keine Nachrichten vorhanden</h4>
+	<% end %>
+<hr/>
+<h3 class="ProjectHead"><%= I18n.t('main.myProjects')%>:</h2>
+	<% if !current_user.projects.empty? %>
 <table>
 		<% current_user.projects.each do |project| %>
 			<tr class="ProjectSearchRow Show">
@@ -41,14 +42,23 @@
 			      <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'All pictures of this project will be deleted too. Are you sure?' }, :class => "MenuButton" %></td>
 			</tr>
 		<% end %>
-</table> 
+</table>
+<% else %> 
+	<h4>Keine Projekte angelegt</h4>
+<% end %>
 </div>
-<h3 class="ProjectHead"><%= link_to I18n.t('main.myPics') , images_path %>:</h2>
-<% current_user.projects.each do |project| %>
-  		<% project.images.each do |image| %>
-  			<div class="Picture">
-     		
-        	<%= link_to image_tag(image.images(:miniThumb)), image %>
-     	</div>
-  	<% end %>
-  <% end %>
+
+	<div class="AllPictureDiv">
+	<h3 class="ProjectHead"><%= I18n.t('main.myPics') %>:</h2>
+
+	<% current_user.projects.each do |project| %>
+	  		<% project.images.each do |image| %>
+	  			<div class="Picture">
+	     		
+	        	<%= link_to image_tag(image.images(:miniThumb)), image %>
+	     	</div>
+	  	<% end %>
+	  <% end %>
+	</div>
+
+
