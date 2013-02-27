@@ -1,6 +1,11 @@
 require 'spec_helper.rb'
 
 describe ImageComment do
+	before :each do
+		User.new(:email => "dominic@ramms.com", :first_name => "Dominic", :last_name => "Ramms", :password => "123456").save
+		Project.new(:user_id => 1, :title => "Test Titel").save
+	end
+
 	it "is invalid without title" do
 		i = Image.create(:content => "TestContent", :project_id => 1)
 		i.should_not be_valid
@@ -18,7 +23,7 @@ describe ImageComment do
 
 	#noch nicht implementiert, da file_upload auf dropbox
 	it "is valid" do
-		i = Image.create(:content => "TestContent", :title => "testTitle", :project_id => 1)
-		#i.should be_valid
+		i = Image.new(:content => "TestContent", :title => "testTitle", :project_id => 1)
+		i.should be_valid
 	end
 end

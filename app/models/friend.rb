@@ -57,4 +57,8 @@ class Friend < ActiveRecord::Base
 		end
 		return nfriends
 	end
+
+	def self.find_in_conversation conv_id
+		User.joins(:conv_users).where(:conv_users => {:conversation_id => conv_id})
+	end
 end

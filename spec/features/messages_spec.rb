@@ -60,7 +60,7 @@ describe Message do
 		click_link "showConversation1"
 		page.should have_content "Till Krueger"
 		click_button "addUser"
-		page.should_not have_content "Till Krueger"
+		page.should have_content "Till Krueger"
 	end
 
 	it "see if new message info appers" do

@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
 	has_many :friend_requestss
 
 	has_many :messages
+	has_many :conv_users
 	has_many :conversations, :through => :conv_users
 	has_many :message_infos
 

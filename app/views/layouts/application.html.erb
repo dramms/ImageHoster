@@ -33,12 +33,12 @@
 				</li>
 				<li>
 					<% if @message_info %>
-						<%= link_to messages_path do %>
-							<div class="MenuButton" id="message">Neue Nachrichten</div>
+						<%= link_to messages_path, :id => "message" do %>
+							<div class="MenuButton">Neue Nachrichten</div>
 						<% end %>
 					<% else %>
-					<%= link_to messages_path do %>
-							<div class="MenuButton" id="message">Nachrichten</div>
+					<%= link_to messages_path, :id => "message" do %>
+							<div class="MenuButton">Nachrichten</div>
 						<% end %>
 					<% end %>
 				</li>

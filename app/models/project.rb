@@ -8,6 +8,8 @@ class Project < ActiveRecord::Base
             :presence => true,
             :length => { :minimum => 2 };
 
+  validates :user, :presence => true;
+
   has_many :images, dependent: :destroy
   belongs_to :user
   accepts_nested_attributes_for :images

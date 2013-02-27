@@ -28,6 +28,7 @@ ImageHoster::Application.routes.draw do
     post "messages/create_answer"
     post "messages/create_conversation"
     post "messages/add_user"
+    post "messages/delete_user"
 
     resources :file_uploads
     resources :images
