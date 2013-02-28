@@ -1,24 +1,21 @@
+<% if current_user.avatar? %><div class="ProfileThumb"><%= image_tag current_user.avatar(:medium) %> </div><% end %>
+<h1>Eigene Anfragen </h1>
 
-Eigene Anfragen <br>
-
-
-
-<% if @requests.present? %>
-	<% @requests.each do |r| %>
-		<%= r.name %>
-	<% end %>
-<% end %>
-
-Eigene Anfragen <br><br>
 
 <% if @requests.present? %>
-	<% @requests.each do |r| %>
-		<%= form_for r, :url => friend_delete_friendship_request_path do |f| %>
-			<%= f.hidden_field :id, :value => r.id %>
-			<%= r.name %>
-			<%= f.submit "Zurückziehen", :id => "deleteRequest" %>
+	<table>
+		<% @requests.each do |r| %>
+			<tr>
+				<%= form_for r, :url => friend_delete_friendship_request_path do |f| %>
+					<%= f.hidden_field :id, :value => r.id %>
+					<td class="Thumb"><%= image_tag r.avatar(:miniThumb) %></td>
+					<td class="UserName"><%= r.name %></td>
+					<td><%= f.submit "Zurückziehen", :id => "deleteRequest", :class => "MenuButton" %></td>
+				<% end %>
+			</tr>
 		<% end %>
-	<% end %>
+	</table>
+<% else %>
+	<h3>Aktuell sind keine Anfragen offen</h3>
 <% end %>
-<br>
 

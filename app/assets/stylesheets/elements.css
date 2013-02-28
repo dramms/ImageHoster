@@ -12,6 +12,7 @@ h1{
 text-transform: uppercase;
 color: grey;
 font-size: 20px;
+color: #378DE5;
 }
 
 /*table{
@@ -70,7 +71,7 @@ text-transform: uppercase;*/
     
 }
 
-   .MenuPlaceholder{
+.MenuPlaceholder{
 	height: 15px;
 	width: 100%;
 	position: absolute;
@@ -220,4 +221,20 @@ div.ProfileContainer{
 div.ProfileThumb{
     position:absolute; 
     right: 0;
+}
+
+.MessageTopic{
+    width: 520px;
+}
+.MessageContent{
+    width: 400px;
+}
+.MessageTime{
+    width: 180px;
+}
+
+.TestTest{
+    background-color: #E9E9E9;
+    border-radius: 10px;
+    padding: 10px;
 }

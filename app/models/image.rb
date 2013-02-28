@@ -23,9 +23,7 @@ class Image < ActiveRecord::Base
     :thumb=> "100x100#",
     :small  => "150x150#",
     :medium => "300x300#",
-    :large =>   "400x400#",
-    :middleLarge => "700x700>",
-    :xtraLarge => "1024x1024>" },
+    :middleLarge => "700x700>"},
     :storage => :dropbox, 
       :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
       :dropbox_options => { :path => proc {|style| "images/#{id}/#{style}/#{images.original_filename}"}}

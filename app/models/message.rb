@@ -32,6 +32,6 @@ class Message < ActiveRecord::Base
 	end
 
 	def send_at
-		"#{created_at}"
+		"#{created_at.strftime("%d.%m.%Y; %H:%M Uhr")}"
 	end
 end

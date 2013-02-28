@@ -28,10 +28,10 @@ jQuery(document).ready(function(){
 	});
 
 	jQuery('tbody tr').mouseover(function(){
-		jQuery(this).css('background-color', '#E9E9E9');
+		jQuery(this).css('background-color', 'white');
 	});
 	jQuery('tbody tr').mouseout(function(){
-		jQuery(this).css('background-color', 'white');
+		jQuery(this).css('background-color', '#E9E9E9');
 	});
 
 /*****************************ProjectSearch***********************************************************/

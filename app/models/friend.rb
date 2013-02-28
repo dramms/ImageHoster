@@ -37,6 +37,14 @@ class Friend < ActiveRecord::Base
 
 	end
 
+	def self.find_friends uid
+		User.joins(:friends).where(:friends => {:friend_id => uid})
+	end
+
+	def self.find_requests uid
+		User.joins(:friend_requestss).where(:friend_requests => {:friend_id => uid})
+	end
+
 	def self.find_not_in_conversation uid, conv_id
 		friends = Friend.find_friends uid
 		nfriends = Array.new

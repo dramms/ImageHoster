@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
@@ -62,13 +64,15 @@ class ImagesController < ApplicationController
   def update
     @image = Image.find(params[:id])
 
-    respond_to do |format|
-      if @image.update_attributes(params[:image])
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
+    if @image.project.user_id == current_user.user_id
+      respond_to do |format|
+        if @image.update_attributes(params[:image])
+          format.html { redirect_to @image, notice: 'Bild wurde erfolgreich geändert.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @image.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
