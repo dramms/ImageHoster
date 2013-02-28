@@ -1,6 +1,5 @@
 <div class="MainDiv"><h1>Willkommen <%= current_user.name %></h1>
 
-<div class="MainDiv">
 	<% if @friend_requests.present? %>
 		<div>
 			<h3 class="ProjectHead">Freundschaftsanfragen:</h3>
@@ -13,8 +12,6 @@
 			</table>
 		</div>
 	<% end %>
-</div>
-<div class="MainDiv">
 	<h3 class="ProjectHead">Letzten Nachrichten:</h3>
 	<% if !current_user.conversations.empty? %>
 	<table>
@@ -48,7 +45,7 @@
 <% end %>
 </div>
 
-	<div class="AllPictureDiv">
+<div class="AllPictureDiv">
 	<h3 class="ProjectHead"><%= I18n.t('main.myPics') %>:</h2>
 
 	<% current_user.projects.each do |project| %>
@@ -59,6 +56,6 @@
 	     	</div>
 	  	<% end %>
 	  <% end %>
-	</div>
+</div>
 
 

@@ -4,14 +4,15 @@
 	</head>
 
 	<body>
+		<div class="MainDiv" style="width: 350px; min-height: 200px; float: left;">
 		<h1>Willkommen zu ImageHoster</h1>
 		<div id="sign_in">
 			<%= render "devise/sessions/new" %>
 		</div>
 		<div id="sign_up">
-			<%= link_to "Registrieren", new_user_registration_path %>
+			<%= render "devise/registrations/new" %>
 		</div>
-
+	</div>
 
 	</body>
 </html>

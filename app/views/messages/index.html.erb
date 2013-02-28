@@ -3,6 +3,7 @@
 	<%= link_to "Neue Nachricht", messages_path(:new_message => true), :class=>"MenuButton", :id => "newMessage" %>
 </div>
 
+
 <% if @conversations.present? %>
 	<div class="MainDiv" style="width: 300px; min-height: 200px; float: left;">
 		<table>
@@ -31,7 +32,7 @@
 <div class="MainDiv">
 	<h3>Messages:</h3>
 		<% @message.each do |m| %>
-			<%= m.user.name %> gesendet am: <%= m.send_at %><br>
+			<b><%= m.user.name %> gesendet am: <%= m.send_at %></b><br>
 			<%= simple_format m.content %><br><br>
 		<% end %>
 		<%= will_paginate @message %>
@@ -39,27 +40,25 @@
 <% end %>
 
 <% if @is_answer %>
+
+<div>
 	Antworten
 	<%= form_tag messages_create_answer_path do %>
 		<%= text_area_tag "answer", nil, :size => "50x10" %><br>
 		<%= hidden_field_tag :conv_id, @conv_id %>
 		<%= submit_tag "Antworten", :class => "MenuButton" %>
 	<% end %>
-	Teilnehmer:
-	<% if @participants.present? %>
-		<% @participants.each do |p| %>
-			<%= link_to p.name, :controller => "user", :action => "show", :user => p.id %>
-		<% end %>
-	<% end %>
 </div>
-<div style="width: 300px; float: left; padding-left: 20px;">
-	Neuen Nutzer hinzufügen:
+
+</div>
+<div class ="MainDiv" style="margin-left: 20px; width: 300px; float: left; padding-left: 20px;">
+	<h3>Neuen Nutzer hinzufügen:</h3>
 	<%= form_tag messages_add_user_path do %>	
 		<select name = "friend">
 			<% @friends.each do |f| %>
 				<option value=<%= f.id %>><%= f.name %></option>
 			<% end %>
-		</select><br>
+		</select><p>
 		<%= hidden_field_tag :conv_id, @conv_id %>
 		<%= submit_tag "Hinzufügen", :class => "MenuButton", :id => "addUser" %>
 	<% end %>
@@ -67,22 +66,52 @@
 		<%= hidden_field_tag :conv_id, @conv_id %>
 		<%= submit_tag "Aus Konversation austreten", :class => "MenuButton", :id => "deleteFromConv" %>
 	<% end %>
+
+		<h3>Teilnehmer:</h3>
+	<% if @participants.present? %>
+		<table>
+			<% @participants.each do |p| %>
+				<tr><td><%= link_to p.name, :controller => "user", :action => "show", :user => p.id %></td></tr>
+			<% end %>
+		</table>
+	<% end %>
 </div>
 <%end%>
+</div>
 <div style="float: left">
 <% if @is_new_conversation %>
+<div class="MainDiv">
 	<% if @friends.present? %>
-		<%= form_tag messages_create_conversation_path do %>	
-			<select name = "friend">
-				<% @friends.each do |f| %>
-					<option value=<%= f.id %>><%= f.name %></option>
+		<table>
+			<tr>
+				<td>An:</td>
+				<td>
+				<%= form_tag messages_create_conversation_path do %>	
+					<select name = "friend">
+						<% @friends.each do |f| %>
+							<option value=<%= f.id %>><%= f.name %></option>
+						<% end %>
+					</select></td>
+			</tr>
+			<tr>
+				<th>Thema eingeben:</th>
+				<td> <%= text_field_tag :topic %></td>
+			</tr>
+			<tr>
+				<th>Inhalt:</th>
+				<td></td>
+			</tr>
+			<tr>
+				<td colspan="2"><%= text_area_tag "answer", nil, :size => "50x10" %></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><%= submit_tag "Schreiben", :class=>"MenuButton" %></td>
+					
+			</tr>
 				<% end %>
-			</select><br>
-			Thema eingeben: <%= text_field_tag :topic %><br>
-			Inhalt:<br>
-			<%= text_area_tag "answer", nil, :size => "50x10" %><br>
-			<%= submit_tag "Schreiben", :class=>"MenuButton" %>
-		<% end %>
+		</table>
 	<% end %>
-<% end %>
 </div>
+<% end %>
+
