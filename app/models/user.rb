@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
 	def self.search(search_first_name, search_last_name, uid)
 		search_condition = search_first_name
 		search_condition_last = search_last_name
-		temp = find(:all, :conditions => ['lower(first_name) like ? AND lower(last_name) like ?', '%' + search_condition + '%', '%' + search_condition_last + '%'])
+		temp = find(:all, :conditions => ['first_name like ? AND last_name like ?', '%' + search_condition + '%', '%' + search_condition_last + '%'])
 		result = Array.new
 		temp.each do |t|
 			a = Friend.where(:user_id => uid, :friend_id => t.id).count

@@ -34,7 +34,14 @@ class Friend < ActiveRecord::Base
 
 	def self.is_friendd uid
 		Friend.where(:user_id => uid)
+	end
 
+	def self.find_friends uid
+		User.joins(:friends).where(:friends => {:friend_id => uid})
+	end
+
+	def self.find_requests uid
+		User.joins(:friend_requestss).where(:friend_requests => {:friend_id => uid})
 	end
 
 	def self.find_friends uid
@@ -57,5 +64,9 @@ class Friend < ActiveRecord::Base
 			end
 		end
 		return nfriends
+	end
+
+	def self.find_in_conversation conv_id
+		User.joins(:conv_users).where(:conv_users => {:conversation_id => conv_id})
 	end
 end

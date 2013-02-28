@@ -14,7 +14,8 @@ class Message < ActiveRecord::Base
 						:presence => true,
 						:length => { :minimum => 2 };
 
-	#validates_associated
+	validates :conversation, :presence => true;
+	validates :user, :presence => true;
 
 	def self.send_message cid, uid, con
 		Message.create(:conversation_id => cid, :user_id => uid, :content => con)

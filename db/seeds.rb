@@ -90,6 +90,21 @@ Message.create(:conversation_id => 1, :user_id => 1, :content => "Hallo zusammen
 Message.create(:conversation_id => 1, :user_id => 2, :content => "Hallo, wie gehts?")
 Message.create(:conversation_id => 1, :user_id => 3, :content => "Hallo, gut und euch?")
 
+Conversation.create(:topic => "Project")
+ConvUser.create(:user_id => 1, :conversation_id => 1)
+ConvUser.create(:user_id => 2, :conversation_id => 1)
+Message.create(:conversation_id => 1, :user_id => 1, :content => "Was müssen wir noch machen?")
+Message.create(:conversation_id => 1, :user_id => 2, :content => "Alles, setzte mich gleich mal an das Design")
+Message.create(:conversation_id => 1, :user_id => 1, :content => "Hört sich gut an")
+Message.create(:conversation_id => 1, :user_id => 1, :content => "Hab noch einen Bug im Nachrichtenmodul gefunden")
+Message.create(:conversation_id => 1, :user_id => 2, :content => "Dann beheb ihn mal ;-)")
+Message.create(:conversation_id => 1, :user_id => 1, :content => "Bin schon dabei")
+Message.create(:conversation_id => 1, :user_id => 2, :content => "Und wie siehts aus?")
+Message.create(:conversation_id => 1, :user_id => 1, :content => "Läuft")
+
+
+
+
 Project.create(:title => "Urlaub", :content => "Urlaubsfotos", :user_id => 1)
 Image.create(:title => "Strand 1", :content => "Ein Strand am Meer", :project_id => 1, :images => File.new(Rails.root + 'Pictures/strand1.jpg'))
 Image.create(:title => "Strand 2", :content => "Noch ein Strand am Meer", :project_id => 1, :images => File.new(Rails.root + 'Pictures/strand2.jpg'))
@@ -97,15 +112,21 @@ Image.create(:title => "Strand 3", :content => "Wow! noch ein Strand am Meer", :
 Image.create(:title => "Strand 4", :content => "Mehr Strand!!!!!", :project_id => 1, :images => File.new(Rails.root + 'Pictures/strand4.jpg'))
 ImageComment.create(:image_id => 1, :user_id => 3, :comment => "Schoenes Foto")
 ImageComment.create(:image_id => 1, :user_id => 2, :comment => "Ist wirklich so!")
+ImageComment.create(:image_id => 2, :user_id => 3, :comment => "Schoenes Foto")
+ImageComment.create(:image_id => 2, :user_id => 2, :comment => "Ist wirklich so!")
 Project.create(:title => "New York", :content => "New York Fotos", :user_id => 1)
 Image.create(:title => "New York 1", :content => "Foto New York 1", :project_id => 2, :images => File.new(Rails.root + 'Pictures/newyork1.jpg'))
 Image.create(:title => "New York 2", :content => "Foto New York 2", :project_id => 2, :images => File.new(Rails.root + 'Pictures/newyork2.jpg'))
 Image.create(:title => "New York 3", :content => "Foto New York 3", :project_id => 2, :images => File.new(Rails.root + 'Pictures/newyork3.jpg'))
 Project.create(:title => "Haus", :content => "Fotos vom Haus", :user_id => 1)
+Project.create(:title => "Berge", :content => "Fotos von Bergen", :user_id => 1)
 
 Project.create(:title => "Ex-Freundinnen", :content => "Fotos von Ex's", :user_id => 2)
 
 Project.create(:title => "Mac-Bilder", :content => "Fotos von Apple MacBooks", :user_id => 3)
 Project.create(:title => "iPhone-Bilder", :content => "Fotos von Apple iPhones", :user_id => 3)
+Project.create(:title => "iPad-Bilder", :content => "Bilder von iPads", :user_id => 3)
 
 Project.create(:title => "Lala", :content => "Test", :user_id => 17)
+
+Project.create(:title => "Berge", :content => "Fotos von Bergen", :user_id => 1)

@@ -15,15 +15,15 @@ Edit
 <p>
 	<table style="clear: both;">
 		<tr>
-			<th><%= I18n.t('settings.email') %></th>
+			<th><%= I18n.t('settings.email') %>*</th>
 			<td><%= f.text_field :email, :value => current_user.email  %></td>
 		</tr>
 		<tr>
-			<th><%= I18n.t('settings.firstname') %></th>
+			<th><%= I18n.t('settings.firstname') %>*</th>
 			<td><%= f.text_field :first_name, :value => current_user.first_name %></td>
 		</tr>
 		<tr>
-			<th><%= I18n.t('settings.lastname') %></th>
+			<th><%= I18n.t('settings.lastname') %>*</th>
 			<td><%= f.text_field :last_name, :value => current_user.last_name %></td>
 		</tr>
 		<tr>
@@ -35,7 +35,7 @@ Edit
 			<td><%= f.password_field :password_confirmation %></td>
 		</tr>
 		<tr>
-			<th><%= f.label "aktuelles Passwort" %></th>
+			<th><%= f.label "aktuelles Passwort*" %></th>
 			<td><%= f.password_field :current_password %></td>
 		</tr>
 		<tr>
@@ -47,6 +47,7 @@ Edit
 			<td><%= f.submit "Update", data: { confirm: 'Sollen die Profildaten wirklich geändert werden?' }, :class => "MenuButton" %></td>
 		</tr>
 	</table>
+	Mit * gekenntzeichnete Felder müssen angegeben werden
 </p>	  
 <% end %>
 

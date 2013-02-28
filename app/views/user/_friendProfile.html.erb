@@ -1,11 +1,24 @@
 <% @users.each do |user| %>
-			<%= form_for user, :url => friend_delete_friendship_path do |f|%>
 			<div class="SubMenu">
+			<%= form_for user, :url => friend_delete_friendship_path do |f| %>
+			
 		  		<%= f.hidden_field :id, :value => @user_id %>
+
 		  		<%= f.submit "Freundschaft löschen", data: { confirm: 'Soll die Freundschaft wirklich gelöscht werden?' },  :class => "MenuButton" %>
 		  		<input type="Button" value="Nachricht schicken" class="MenuButton" />
-		  	</div>
+		
+
+		  
 			<% end %>
+			<%= form_tag messages_create_conversation_path do |f| %>
+				Thema eingeben: <%= text_field_tag :topic %><br>
+				Inhalt:<br>
+				<% friend = @user_id %>
+				<%= text_area_tag "answer", nil, :size => "50x10" %><br>
+				<input type="hidden", name="friend", value=<%= @user_id %> >
+				<%= submit_tag "Nachricht Schreiben", :class => "MenuButton" %>
+			<% end %>
+				</div>
 		<p>
 			<h1>
 				<% if @thisUser.avatar? %>

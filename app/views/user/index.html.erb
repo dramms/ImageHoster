@@ -1,7 +1,7 @@
 <div class="ProfileThumb"><%= image_tag current_user.avatar(:medium) %> </div>
 <h1>Willkommen <%= current_user.name %></h1>
 
-<div class="TestTest">
+<div class="MainDiv">
 	<div>
 		<h3 class="ProjectHead">Freundschaftsanfragen:</h3>
 		<table>
@@ -13,7 +13,7 @@
 		</table>
 	</div>
 </div>
-<div class="TestTest">
+<div class="MainDiv">
 	<h3 class="ProjectHead">Letzten Nachrichten:</h3>
 	<table>
 		<% current_user.conversations.order("created_at desc").each do |cu| %>
@@ -30,7 +30,7 @@
 </div>
 
 
-<div class="TestTest">
+<div class="MainDiv">
 <h3 class="ProjectHead"><%= link_to I18n.t('main.myProjects'), projects_path %>:</h2>
 <table>
 		<% current_user.projects.each do |project| %>
