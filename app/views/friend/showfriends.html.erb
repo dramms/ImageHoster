@@ -2,12 +2,14 @@
 	<%= flash[:notice] %>
 <% end %>
 
+<div class="MainDiv">
 <h1>Deine Freunde</h1>
 <div class="SubMenu">
 	<input type="Button" value="in meine Freunde suchen" id="searchButton" class="MenuButton" />
 	<%= link_to I18n.t('main.findFriends'), friend_search_path, :class => "MenuButton" %>
 </div>
 <% if @friends.present? %>
+
 	<table class="UserList" id="searchTable" >
 		<tr>
 			<td class="Thumb"></td>
@@ -18,7 +20,7 @@
 		<tr class="SearchRow">
 			<%= form_for friend, :url => friend_delete_friendship_path do |f| %>
 			<td class="Thumb" >
-				<%= image_tag friend.avatar(:miniThumb) %>
+				<% if friend.avatar? %><%= image_tag friend.avatar(:miniThumb) %><% end %>
 			</td>
 				<td class="UserName">
 					<%= link_to friend.name, :controller => "user", :action => "show", :user => friend.id %>
@@ -31,5 +33,6 @@
 		</tr>
 	<% end %>
 	</table>
-<% end %>
-</p>
+
+<% end %>	
+</div>

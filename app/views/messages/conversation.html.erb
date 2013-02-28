@@ -10,6 +10,7 @@
 <h1>Nachricht</h1>
 
 	<% if @message.present? %>
+	<div class="MainDiv">
 	<table>
 		<% @message.each do |m| %>
 		<tr>
@@ -18,6 +19,7 @@
 			</td>
 		</tr>
 		<% end %>
+	</div>
 	<% end %>
 		<% if @is_answer %>
 			<%= form_tag messages_create_answer_path do %>

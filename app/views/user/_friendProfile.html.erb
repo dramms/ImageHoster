@@ -1,3 +1,4 @@
+<div class="MainDiv">
 <% @users.each do |user| %>
 			<div class="SubMenu">
 			<%= form_for user, :url => friend_delete_friendship_path do |f| %>
@@ -5,32 +6,36 @@
 		  		<%= f.hidden_field :id, :value => @user_id %>
 
 		  		<%= f.submit "Freundschaft löschen", data: { confirm: 'Soll die Freundschaft wirklich gelöscht werden?' },  :class => "MenuButton" %>
-		  		<input type="Button" value="Nachricht schicken" class="MenuButton" />
-		
+		  		<input type="Button" value="Nachricht schicken" class="MenuButton" id="ProfileMessageButton" />
+			<% end %>
 
-		  
-			<% end %>
-			<%= form_tag messages_create_conversation_path do |f| %>
-				Thema eingeben: <%= text_field_tag :topic %><br>
-				Inhalt:<br>
-				<% friend = @user_id %>
-				<%= text_area_tag "answer", nil, :size => "50x10" %><br>
-				<input type="hidden", name="friend", value=<%= @user_id %> >
-				<%= submit_tag "Nachricht Schreiben", :class => "MenuButton" %>
-			<% end %>
+
+				<div id="ProfileMessage" style="display: none;">
+					<%= form_tag messages_create_conversation_path do |f| %>
+						<table>
+							<tr>
+								<th>Thema:</th>
+								<td><%= text_field_tag :topic %></td>
+							</tr>
+							<tr>
+								<th>Nachricht:</th>
+								<td><%= text_area_tag "answer", nil, :size => "50x10" %></td>
+							</tr>
+							<tr>
+								<th><input type="hidden", name="friend", value=<%= @user_id %> ></th>
+								<td><%= submit_tag "Nachricht Schreiben", :class => "MenuButton" %></td>
+							</tr>
+						</table>
+					<% end %>
 				</div>
-		<p>
-			<h1>
-				<% if @thisUser.avatar? %>
-					<div class="ProfileThumb"><%= image_tag user.avatar(:medium) %></div>
-				<% else %>
-					
-				<% end %>
-				<%= @thisUser.first_name %>
-				<%= @thisUser.last_name %>'s Profil
-			</h1>
+			</div>
+
+
+
+			<h1><%= @thisUser.first_name %><%= @thisUser.last_name %>'s Profil</h1>
+			<% if @thisUser.avatar? %><div class="ProfileThumb"><%= image_tag user.avatar(:medium) %></div><% end %>
 			
-<div class="ProfileContainer">
+
 			<h3 class="ProjectHead"><%= user.first_name %> <%= user.last_name %>'s Projekte:</h3>
 			<table>
 				<tbody>
@@ -45,8 +50,24 @@
 				<% end %>
 			</tbody>
 		</table>
-	</div>
-<div class="ProfileContainer">
+
+
+
+		<h3 class="ProjectHead">Freunde:</h3>
+			<% if @friends.present? %>
+				<table>
+					<tbody>
+						<% @friends.each do |f| %>
+							<tr>
+								<td class="Thumb"><% if f.avatar? %><%= image_tag f.avatar(:miniThumb) %><% end %></td>
+								<td class="UserName"><%= link_to f.name, :controller => "user", :action => "show", :user => f.id %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% end %>
+</div>
+<div class="AllPictureDiv">
 		<h3 class="ProjectHead"><%= user.first_name %> <%= user.last_name %>'s Bilder:</h3>
 				<% user.projects.each do |project| %>
 						<% project.images.each do |image| %>
@@ -55,19 +76,4 @@
 
 				<% end %>
 		<% end %>
-</div>
-<div class="ProfileContainer">
-		<h3 class="ProjectHead">Freunde:</h3>
-			<% if @friends.present? %>
-				<table>
-					<tbody>
-						<% @friends.each do |f| %>
-							<tr>
-								<td class="Thumb"><%= image_tag f.avatar(:miniThumb) %></td>
-								<td class="UserName"><%= link_to f.name, :controller => "user", :action => "show", :user => f.id %></td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
-			<% end %>
 </div>

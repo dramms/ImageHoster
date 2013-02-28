@@ -1,22 +1,25 @@
-<% if current_user.avatar? %><div class="ProfileThumb"><%= image_tag current_user.avatar(:medium) %> </div><% end %>
+<div class="MainDiv">
 <h1> Freundschaftsanfragen </h1>
 
-<% if @requests.present? %>
-	<ul>
-		<% @requests.each do |request| %>
-			<%= form_for request, :url => { :action => "accept_friendship_request", :controller => "friend" } do |f|%>
-			  	<li>
-			  		<%= link_to request.name, :controller => "user", :action => "show", :user => request.id %>
-			  		<%= f.hidden_field :id, :value => request.id %>
-			  		<%= f.submit "Annehmen", :id => "accept" %>
-			  	
-			<% end %>
-			<%= form_for request, :url => { :action => "reject_friendship_request", :controller => "friend" } do |f|%>
-				<%= f.hidden_field :id, :value => request.id %>
+	<% if @requests.present? %>
+		<ul>
+			<% @requests.each do |request| %>
+				<%= form_for request, :url => { :action => "accept_friendship_request", :controller => "friend" } do |f|%>
+				  	<li>
+				  		<%= link_to request.name, :controller => "user", :action => "show", :user => request.id %>
+				  		<%= f.hidden_field :id, :value => request.id %>
+				  		<%= f.submit "Annehmen", :id => "accept" %>
+				  	
+				<% end %>
+				<%= form_for request, :url => { :action => "reject_friendship_request", :controller => "friend" } do |f|%>
+					<%= f.hidden_field :id, :value => request.id %>
 
-				<%= f.submit "Ablehnen", :id => "reject" %>
-				</li><br><br>
+					<%= f.submit "Ablehnen", :id => "reject" %>
+					</li><br><br>
+				<% end %>
 			<% end %>
-		<% end %>
-	</ul>
-<% end %>
+		</ul>
+	<% else %>
+		<h4>Es liegen keine Anfragen vor</h4>
+	<% end %>
+</div>

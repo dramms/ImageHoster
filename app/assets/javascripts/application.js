@@ -65,8 +65,13 @@ jQuery(document).ready(function(){
 		});
 	});
 
+/*****************************MessageButton on Profile***********************************************************/
 
+jQuery('#ProfileMessageButton').click(function(){
+	jQuery('#ProfileMessage').toggle();
+});
 
 
 
 });
+

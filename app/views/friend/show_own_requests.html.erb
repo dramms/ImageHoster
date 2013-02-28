@@ -1,4 +1,4 @@
-<% if current_user.avatar? %><div class="ProfileThumb"><%= image_tag current_user.avatar(:medium) %> </div><% end %>
+<div class="MainDiv">
 <h1>Eigene Anfragen </h1>
 
 
@@ -16,6 +16,7 @@
 		<% end %>
 	</table>
 <% else %>
-	<h3>Aktuell sind keine Anfragen offen</h3>
+	<h4>Aktuell sind keine Anfragen offen</h4>
 <% end %>
+</div>
 

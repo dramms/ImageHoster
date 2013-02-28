@@ -15,6 +15,10 @@ font-size: 20px;
 color: #378DE5;
 }
 
+h3{
+    color: #378DE5;
+}
+
 /*table{
 width: 900px;
 }*/
@@ -218,9 +222,20 @@ div.ProfileContainer{
     padding-top: 10px;
 }
 
-div.ProfileThumb{
+div.PageThumb{
     position:absolute; 
     right: 0;
+    -webkit-transform: rotate(9deg); 
+    -moz-transform: rotate(9deg);
+    -o-transform: rotate(9deg); 
+    margin: opx;
+    padding: 0px;
+    font-weight: bold; 
+    font-size: 40px; color: #378DE5;
+}
+
+.ProfileThumb{
+    display: inline-block;
 }
 
 .MessageTopic{
@@ -235,6 +250,10 @@ div.ProfileThumb{
 
 .MainDiv{
     background-color: #E9E9E9;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 30px 30px 30px 0px;
+    padding: 10px 40px 30px 40px;
+}
+
+.AllPictureDiv{
+    padding: 0px 40px 30px 40px;
 }
