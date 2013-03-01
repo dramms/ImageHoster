@@ -147,27 +147,6 @@ text-transform: uppercase;*/
 }
 
 
-/*
-table.UserList td.Thumb{
-    width: 60px;
-}
-
-table.ProjectList{
-    border-collapse: collapse;
-}
-
-table.ProjectList .ProjectSearchRow{
-    cursor: pointer;
-}
-
-table.ProjectList td.Title,
-table.ProjectList th.Title{
-    width: 200px;
-}
-
-table.ProjectList td.Content{
-    width: 400px;
-}*/
 
 table th.Thumb,
 table td.Thumb{
@@ -256,4 +235,8 @@ div.PageThumb{
 
 .AllPictureDiv{
     padding: 0px 40px 30px 40px;
+}
+
+.Picture img{
+    margin-right: 20px;
 }
