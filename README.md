@@ -5,7 +5,7 @@ Informationen um die Application ans laufen zu bekommen.
 E-Mail: image.hoster@gmx.de
 Password: imagehoster123
 
-Diesen befehl ausführen:
+Evtl muss dieser Befehl ausgeführt werden, aber es sollte erstmal ohne probiert werden
 rake dropbox:authorize APP_KEY=rirzg3k330zg8a3 APP_SECRET=lb93gsg1e0hj5r5 ACCESS_TYPE=app_folder
 !!bevor ihr "y" eingebt auf den Bestätigungslink klicken!!
 
@@ -26,16 +26,17 @@ Test-URL: http://imagehosterdr.herokuapps.com
 
 2) Applikation
 2.1) Applikation ans laufen bekommen
-2.1.1) git pull...
-2.1.2) bundle install ausführen
-2.1.3) evtl. "rake dropbox:authorize APP_KEY=rirzg3k330zg8a3 APP_SECRET=lb93gsg1e0hj5r5 ACCESS_TYPE=app_folder" ausführen
-2.1.4) "rake db:migrate" ausführen
-2.1.5) "rake db:seeds" ausführen (Achtung: Kann einige Minuten dauern bis es durchgelaufen ist -> Fortschritt kann auf Dropbox beobachtet werden, indem geguckt wird ob die einzelnen Ordner unter Avatar und später under images angelegt werden)
-2.1.6) "rails s" ausführen um den Server zu starten
+2.1.1) git config --global http.postBuffer 524288000
+2.1.2) git clone http://github.com/Dominic90/ImageHoster
+2.1.3) sudo apt-get update
+2.1.4) sudo apt-get install postgresql
+2.1.5) sudo apt-get install libpq-dev
+2.1.6) sudo apt-get install imagemagick
+2.1.7) bundle install
+2.1.8) rake db:migrate
+2.1.9) rake db:seeds (Achtung: da die Bilder schon im Dropbox ordner liegen, müssen dort erst die Ordner "Apps/imagehoster/avatar" und "Apps/imagehoster/image" gelöscht werden, damit der seed durchlaufen kann. Der Seed ist auf Heroku schon durchgelaufen und somit greift Heroku auf die gleichen Daten zu, weshalb man es nicht nutzen sollte, solange der seed durchläuft. Wenn der lokale seed fertig ist, sind heroku und die lokale Anwendung auf dem gleichen Stand.
+Das Ausführen der Seeds kann recht lange dauern. Den aktuellen Fortschritt der Bilder kann man auf in der Dropbox erkennen, in man guckt, ob die einzelnen Ordner angelegt werden)
+2.1.10) "rails s" ausführen um den Server zu starten
 
 2.2) Wichtige Informationen zum Verhalten
 2.2.1) Das lokale Projekt und Heroku nutzen den gleichen Ordner in der Dropbox, weshalb es dabei zu überschneidungen von Dateinamen kommen kann.
-2.2.2)
-
-2.3) Funktionen
-
