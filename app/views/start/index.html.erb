@@ -3,15 +3,18 @@
 		<title>Index</title>
 	</head>
 
-	<body>
-		<div class="MainDiv" style="width: 350px; min-height: 200px; float: left;">
-		<h1>Willkommen zu ImageHoster</h1>
-		<div id="sign_in">
-			<%= render "devise/sessions/new" %>
+	<body style="min-height: 500px;">
+		<div class="MainDiv" style="width: 350px; min-height: 200px; float: left; margin-right: 20px;">
+			<h1>Willkommen zu ImageHoster</h1>
+			<div id="sign_in">
+				<%= render "devise/sessions/new" %>
 		</div>
-		<div id="sign_up">
-			<%= render "devise/registrations/new" %>
 		</div>
+		<div class="MainDiv" style="float: left;">
+			
+			<div id="sign_up">
+				<%= render "devise/registrations/new" %>
+			</div>
 	</div>
 
 	</body>
