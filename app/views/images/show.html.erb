@@ -1,5 +1,5 @@
 <div class="SubMenu">
-	<%= link_to 'Bearbeiten', edit_image_path(@image), :class => "MenuButton" %>
+	<%= link_to 'Bearbeiten', edit_image_path(@image), :class => "MenuButton", :id => "editImage" %>
 </div>
 <p id="notice"><%= notice %></p>
 
@@ -37,7 +37,7 @@ Kommentar<br/>
 		<%= form_tag images_addComment_path do %>
 		<tr>
 			<td colspan="2"><%= text_area_tag :comment, params[:comment], :class => "InputComment" %><br/>
-			<%= submit_tag "Kommentieren", :class => "MenuButton" %></td>
+			<%= submit_tag "Kommentieren", :class => "MenuButton", :id => "sendComment" %></td>
 			<%= hidden_field_tag :imageid, params[:imageid], :value => @image.id %>
 		</tr>
 

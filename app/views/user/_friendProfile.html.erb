@@ -5,7 +5,7 @@
 			
 		  		<%= f.hidden_field :id, :value => @user_id %>
 
-		  		<%= f.submit "Freundschaft löschen", data: { confirm: 'Soll die Freundschaft wirklich gelöscht werden?' },  :class => "MenuButton" %>
+		  		<%= f.submit "Freundschaft löschen", data: { confirm: 'Soll die Freundschaft wirklich gelöscht werden?' },  :class => "MenuButton", :id => "deleteFriendship" %>
 		  		<input type="Button" value="Nachricht schicken" class="MenuButton" id="ProfileMessageButton" />
 			<% end %>
 
@@ -15,15 +15,15 @@
 						<table>
 							<tr>
 								<th>Thema:</th>
-								<td><%= text_field_tag :topic %></td>
+								<td><%= text_field_tag :topic, :id => "topic" %></td>
 							</tr>
 							<tr>
 								<th>Nachricht:</th>
-								<td><%= text_area_tag "answer", nil, :size => "50x10" %></td>
+								<td><%= text_area_tag "answer", nil, :size => "50x10", :id => "content" %></td>
 							</tr>
 							<tr>
 								<th><input type="hidden", name="friend", value=<%= @user_id %> ></th>
-								<td><%= submit_tag "Nachricht Schreiben", :class => "MenuButton" %></td>
+								<td><%= submit_tag "Nachricht Schreiben", :class => "MenuButton", :id => "sendMessage" %></td>
 							</tr>
 						</table>
 					<% end %>

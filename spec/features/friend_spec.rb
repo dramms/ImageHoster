@@ -62,20 +62,6 @@ describe Friend do
 		page.should have_content "Tobias Prein"
 	end
 
-	#it "create request" do
-	#	click_link "findFriends"
-	#	fill_in "search_field", :with => "Tobias"
-	#	fill_in "search_field_last_name", :with => "Prein"
-	#	click_button "search"
-	#	click_button "sendRequest"
-	#	page.should have_content "Freunde suchen"
-	#	page.should_not have_content "Tobias Prein"
-	#end
-
-	#it "can't create friendship if already exists" do
-#
-#	end
-
 	it "show requests to me and accept" do
 		FriendRequests.new(:user_id => 4, :friend_id => 1).save
 		click_link "showRequests"
@@ -85,15 +71,6 @@ describe Friend do
 		click_link "myFriends"
 		page.should have_content "Tobias Prein"
 	end
-
-	#it "accept request" do
-	#	FriendRequests.new(:user_id => 4, :friend_id => 1).save
-	#	click_link "showRequests"
-	#	click_button "accept"
-	#	page.should_not have_content "Tobias Prein"
-	#	click_link "myFriends"
-	#	page.should have_content "Tobias Prein"
-	#end
 
 	it "cancel request" do
 		FriendRequests.new(:user_id => 1, :friend_id => 4).save
@@ -118,18 +95,17 @@ describe Friend do
 	it "accepts friendshipRequest over profile" do
 		FriendRequests.create(:user_id => 4, :friend_id => 1)
 		visit "/de/user/show?user=4"
-
-		#click_link "findFriends"
-		#fill_in "search_field", :with => "Tobias"
-		#fill_in "search_field_last_name", :with => "Prein"
-		#click_button "search"
-		#page.should have_content "Tobias Prein"
-		#click_link "profile4"
 		click_button "acceptRequest"
 	end
 
 	it "deletes friendship over profile" do
 		visit "/de/user/show?user=3"
-		
+		click_button "deleteFriendship"
+	end
+
+	it "accepts friendshipRequest over profile" do
+		FriendRequests.create(:user_id => 1, :friend_id => 4)
+		visit "/de/user/show?user=4"
+		click_button "rejectRequest"
 	end
 end

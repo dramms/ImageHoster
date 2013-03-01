@@ -64,7 +64,7 @@ class ImagesController < ApplicationController
   def update
     @image = Image.find(params[:id])
 
-    if @image.project.user_id == current_user.user_id
+    if @image.project.user_id == current_user.id
       respond_to do |format|
         if @image.update_attributes(params[:image])
           format.html { redirect_to @image, notice: 'Bild wurde erfolgreich geändert.' }
@@ -94,14 +94,5 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:imageid])
 
     redirect_to @image
-    
-
-  end
-
-
-
-
-
-
-
+   end
 end

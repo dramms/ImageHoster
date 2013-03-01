@@ -1,7 +1,7 @@
 <div class="MainDiv">
 <h1>Meine Projekte</h1>
 <div class="SubMenu">
-  <%= link_to 'New Project', new_project_path, :class => "MenuButton" %>
+  <%= link_to 'New Project', new_project_path, :class => "MenuButton", :id => "newProject" %>
   <input type="Button" value="Projekt suchen" id="searchButton" class="MenuButton" />
 </div>
 
@@ -23,12 +23,12 @@
   <tbody>
 <% @projects.each do |project| %>
   <tr class="SearchRow Show">
-    <td class="Title"><%= link_to project.title, project %></td>
+    <td class="Title"><%= link_to project.title, project, :id => "show" + project.id.to_s %></td>
     <td class="Content"><%= project.content %></td>
     <td>
       <%= link_to "Projekt ansehen", project, :class => 'MenuButton' %>
       <%= link_to 'Bearbeiten', edit_project_path(project), :class => 'MenuButton' %>
-      <%= link_to 'Löschen', project, method: :delete, data: { confirm: 'All pictures of this project will be deleted too. Are you sure?' }, :class => "MenuButton" %></td>
+      <%= link_to 'Löschen', project, method: :delete, data: { confirm: 'All pictures of this project will be deleted too. Are you sure?' }, :class => "MenuButton", :id => "delete" + project.id.to_s %></td>
   </tr>
 <% end %>
 </tbody>
