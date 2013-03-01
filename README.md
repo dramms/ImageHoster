@@ -7,7 +7,7 @@ Password: imagehoster123
 
 Evtl muss dieser Befehl ausgeführt werden, aber es sollte erstmal ohne probiert werden
 rake dropbox:authorize APP_KEY=rirzg3k330zg8a3 APP_SECRET=lb93gsg1e0hj5r5 ACCESS_TYPE=app_folder
-!!bevor ihr "y" eingebt auf den Bestätigungslink klicken!!
+!!bevor  "y" eingeben wird auf den Bestätigungslink klicken!!
 
 Weitere Dropbox Informationen
 access_token: cn611bh6vly3mrk
@@ -16,6 +16,7 @@ user_id: 148455259
 
 1.2 Heroku
 Test-URL: http://imagehosterdr.herokuapps.com
+Auf heroku liegt eine mit seeds fertig eingerichtete Datenbank. Sofern nicht ein seed lokal ausgeführt wird, sollte das Testen über Heroku funktionieren (siehe u.a. bei 1.3.1 oder bei 2.1.9)
 
 1.3 Sonstiges
 1.3.1 Vor jedem ausführen der Seeds müssen die Ordner: "Apps/imagehoster/avatar" und "Apps/imagehoster/images" in der Dropbox gelöscht werden, da es sonst zu Problemen mit bereits existierenden Dateinamen geben kann!
@@ -40,3 +41,4 @@ Das Ausführen der Seeds kann recht lange dauern. Den aktuellen Fortschritt der 
 
 2.2) Wichtige Informationen zum Verhalten
 2.2.1) Das lokale Projekt und Heroku nutzen den gleichen Ordner in der Dropbox, weshalb es dabei zu überschneidungen von Dateinamen kommen kann.
+2.2.2) Namen, E-Mail-Adressen und Passwörter von Beispielnutzern stehen in der DB (Passwörter verschlüsselt) und in der seeds.rb. Passwörter sind immer "123456". Die ersten angelegten Nutzer sind miteinander befreundet und haben Projekte mit Bildern und Nachrichten, während die Nutzer weiter unten nichts dergleichen haben.

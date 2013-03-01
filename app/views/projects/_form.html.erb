@@ -11,17 +11,19 @@
     </div>
   <% end %>
 <p>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-    <div class="actions">
-    <%= f.submit :class => "MenuButton", :id => "createProject" %>
-  </div>
+  <% if current_user.id == @project.user_id %>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :content %><br />
+      <%= f.text_area :content %>
+    </div>
+      <div class="actions">
+      <%= f.submit :class => "MenuButton", :id => "createProject" %>
+    </div>
+  <% end %>
 </p>
 
   <%  @project.images.each do |image|%>

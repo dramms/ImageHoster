@@ -168,16 +168,16 @@ p.save
 
 p = Project.new(:title => "BvB", :content => "Fotos vom BvB", :user_id => 2)
 p.save
-i = Image.new(:title => "Ex 1", :content => "Foto Ex 1", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/bvb1.jpg'))
+i = Image.new(:title => "BvB 1", :content => "Foto BvB 1", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/bvb1.jpg'))
 i.save
-i = Image.new(:title => "Ex 2", :content => "Foto Ex 2", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/bvb1.jpg'))
+i = Image.new(:title => "BvB 2", :content => "Foto BvB 2", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/bvb2.jpg'))
 i.save
-i = Image.new(:title => "Ex 3", :content => "Foto Ex 3", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/bvb1.jpg'))
+i = Image.new(:title => "BvB 3", :content => "Foto BvB 3", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/bvb3.jpg'))
 i.save
 
 p = Project.new(:title => "Mac-Bilder", :content => "Fotos von Apple MacBooks", :user_id => 3)
 p.save
-i = Image.new(:title => "Mac 1", :content => "Foto Mac 1", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/mac1.jpg'))
+i = Image.new(:title => "Mac 1", :content => "Foto Mac 1", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/mac1.png'))
 i.save
 i = Image.new(:title => "Mac 2", :content => "Foto Mac 2", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/mac2.jpg'))
 i.save
@@ -195,7 +195,7 @@ p = Project.new(:title => "iPad-Bilder", :content => "Bilder von iPads", :user_i
 p.save
 i = Image.new(:title => "iPads 1", :content => "Foto iPads 1", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/ipad1.jpg'))
 i.save
-i = Image.new(:title => "iPads 2", :content => "Foto iPads 2", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/ipad2.jpg'))
+i = Image.new(:title => "iPads 2", :content => "Foto iPads 2", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/ipad2.jpeg'))
 i.save
 i = Image.new(:title => "iPads 3", :content => "Foto iPads 3", :project_id => p.id, :images => File.new(Rails.root + 'Pictures/ipad3.jpg'))
 i.save

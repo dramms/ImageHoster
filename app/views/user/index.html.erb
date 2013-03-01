@@ -6,7 +6,7 @@
 			<table>
 				<% @friend_requests.each do |r| %>
 					<tr>
-						<%= r.name %>
+						<%= link_to r.name, :controller => "user", :action => "show", :user => r.id %><br>
 					</tr>
 				<% end %>
 			</table>
